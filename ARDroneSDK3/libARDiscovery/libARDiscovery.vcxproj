@@ -154,7 +154,9 @@
     <ClCompile Include="Sources\ARDISCOVERY_Connection.c" />
     <ClCompile Include="Sources\ARDISCOVERY_Device.c" />
     <ClCompile Include="Sources\ARDISCOVERY_Discovery.c" />
+    <ClCompile Include="Sources\ARDISCOVERY_Error.c" />
     <ClCompile Include="Sources\ARDISCOVERY_NetworkConfiguration.c" />
+    <ClCompile Include="Sources\BLE\ARDISCOVERY_DEVICE_Ble.c" />
     <ClCompile Include="Sources\Wifi\ARDISCOVERY_DEVICE_Wifi.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

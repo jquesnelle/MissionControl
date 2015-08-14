@@ -136,6 +136,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\ARNETWORKAL_Error.c" />
     <ClCompile Include="Sources\ARNETWORKAL_Manager.c" />
     <ClCompile Include="Sources\Wifi\ARNETWORKAL_WifiNetwork.c" />
   </ItemGroup>

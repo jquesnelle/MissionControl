@@ -74,5 +74,11 @@
     <ClCompile Include="Sources\Wifi\ARDISCOVERY_DEVICE_Wifi.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\ARDISCOVERY_Error.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\BLE\ARDISCOVERY_DEVICE_Ble.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

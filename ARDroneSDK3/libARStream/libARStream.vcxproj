@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\ARSTREAM_Buffers.c" />
+    <ClCompile Include="Sources\ARSTREAM_Error.c" />
     <ClCompile Include="Sources\ARSTREAM_NetworkHeaders.c" />
     <ClCompile Include="Sources\ARSTREAM_Reader.c" />
     <ClCompile Include="Sources\ARSTREAM_Sender.c" />

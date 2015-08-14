@@ -773,7 +773,7 @@ eARDISCOVERY_ERROR ARDISCOVERY_DEVICE_Wifi_ReceiveJsonCallback (uint8_t *dataRx,
         
         // parssing of the json 
         jsonObj = json_tokener_parse ((char *)dataRx);
-        if (is_error (jsonObj))
+        if (jsonObj == NULL)
         {
             error = ARDISCOVERY_ERROR_JSON_PARSSING;
         }

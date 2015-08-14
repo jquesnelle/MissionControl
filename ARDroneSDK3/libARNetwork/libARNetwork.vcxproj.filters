@@ -65,5 +65,8 @@
     <ClCompile Include="Sources\ARNETWORK_Sender.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\ARNETWORK_Error.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

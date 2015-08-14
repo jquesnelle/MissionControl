@@ -156,6 +156,7 @@
     <ClInclude Include="Sources\ARSAL_MD5.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\ARSAL_Error.c" />
     <ClCompile Include="Sources\ARSAL_Ftw.c" />
     <ClCompile Include="Sources\ARSAL_MD5_Manager.c" />
     <ClCompile Include="Sources\ARSAL_MD5_WinCrypt.c" />

@@ -95,7 +95,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>json-c.lib;libARCommands.lib;libARController.lib;libARNetwork.lib;libARNetworkAL.lib;libARSAL.lib;libARStream.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;json-c.lib;libARCommands.lib;libARController.lib;libARNetwork.lib;libARNetworkAL.lib;libARSAL.lib;libARStream.lib;libARDiscovery.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>ARDroneSDK3.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
@@ -127,7 +127,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>json-c.lib;libARCommands.lib;libARController.lib;libARNetwork.lib;libARNetworkAL.lib;libARSAL.lib;libARStream.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;json-c.lib;libARCommands.lib;libARController.lib;libARNetwork.lib;libARNetworkAL.lib;libARSAL.lib;libARStream.lib;libARDiscovery.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>ARDroneSDK3.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>

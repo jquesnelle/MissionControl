@@ -47,5 +47,8 @@
     <ClCompile Include="Sources\ARSTREAM_Sender.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\ARSTREAM_Error.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

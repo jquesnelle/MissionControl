@@ -155,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\ARCONTROLLER_Dictionary.c" />
+    <ClCompile Include="Sources\ARCONTROLLER_Error.c" />
     <ClCompile Include="Sources\ARCONTROLLER_Feature.c" />
     <ClCompile Include="Sources\ARCONTROLLER_Frame.c" />
     <ClCompile Include="Sources\ARCONTROLLER_Network.c" />

@@ -597,7 +597,11 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_ControllerInitSocket (ARDISCOVE
             // in that particular case, we retry a connection because the host may be not resolved after a very recent connection
             if (error == ARDISCOVERY_ERROR_SOCKET_UNREACHABLE)
             {
+#ifndef _WIN32
                 sleep(ARDISCOVERY_RECONNECTION_TIME_SEC);
+#else
+				Sleep(ARDISCOVERY_RECONNECTION_TIME_SEC * 1000ul);
+#endif
             }
             error = ARDISCOVERY_Socket_Connect(connectionData->socket, (struct sockaddr*) &(connectionData->address), sizeof (connectionData->address));
             nbTryToConnect++;

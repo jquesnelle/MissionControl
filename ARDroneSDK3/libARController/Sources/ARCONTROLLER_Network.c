@@ -824,7 +824,11 @@ void *ARCONTROLLER_Network_ReaderRun (void *data)
             else
             {
                 //sleep
+#ifndef _WIN32
                 sleep (1); //TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! replace by signal 
+#else
+				Sleep(1000);
+#endif
             }
         }
     }

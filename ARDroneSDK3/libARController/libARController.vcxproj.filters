@@ -89,5 +89,8 @@
     <ClCompile Include="Sources\ARCONTROLLER_StreamQueue.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\ARCONTROLLER_Error.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

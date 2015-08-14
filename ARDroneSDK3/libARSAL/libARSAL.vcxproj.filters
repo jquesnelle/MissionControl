@@ -89,5 +89,8 @@
     <ClCompile Include="Sources\ARSAL_Thread_Win32.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\ARSAL_Error.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -147,6 +147,7 @@
     <ClInclude Include="Sources\ARNETWORK_Sender.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\ARNETWORK_Error.c" />
     <ClCompile Include="Sources\ARNETWORK_IOBuffer.c" />
     <ClCompile Include="Sources\ARNETWORK_IOBufferParam.c" />
     <ClCompile Include="Sources\ARNETWORK_Manager.c" />

@@ -24,6 +24,9 @@
     <ClCompile Include="Sources\Wifi\ARNETWORKAL_WifiNetwork.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\ARNETWORKAL_Error.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\ARNETWORKAL_Manager.h">
