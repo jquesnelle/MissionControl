@@ -656,7 +656,7 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_ControllerInitSocket (ARDISCOVE
         flags = fcntl(connectionData->socket, F_GETFL, 0);
         fcntl(connectionData->socket, F_SETFL, flags & (~O_NONBLOCK));
 #else
-		unsigned long enable = 0;
+		enable = 0;
 		ioctlsocket(connectionData->socket, FIONBIO, &enable);
 #endif
       

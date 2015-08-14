@@ -70,6 +70,10 @@ uint16_t ARCOMMANDS_ReadWrite_Read16FromBuffer (uint8_t *buffer, int32_t capacit
 // On error, return zero and set *error to 1, else set *error to 0
 uint32_t ARCOMMANDS_ReadWrite_Read32FromBuffer (uint8_t *buffer, int32_t capacity, int32_t *offset, int32_t *error);
 
+// Read a 64 bit value from the buffer
+// On error, return zero and set *error to 1, else set *error to 0
+uint64_t ARCOMMANDS_ReadWrite_Read64FromBuffer (uint8_t *buffer, int32_t capacity, int32_t *offset, int32_t *error);
+
 // Read a float value from the buffer
 // On error, return zero and set *error to 1, else set *error to 0
 float ARCOMMANDS_ReadWrite_ReadFloatFromBuffer (uint8_t *buffer, int32_t capacity, int32_t *offset, int32_t *error);
@@ -94,6 +98,10 @@ int ARCOMMANDS_ReadWrite_WriteString (const char *stringToWrite, char *output, i
 // On error, return -1, else return offset in string
 int ARCOMMANDS_ReadWrite_PrintU8 (const char *name, uint8_t arg, char *output, int outputLen, int outputOffset);
 
+// Write a string in a buffer from an int8_t arg
+// On error, return -1, else return offset in string
+int ARCOMMANDS_ReadWrite_PrintI8 (const char *name, int8_t arg, char *output, int outputLen, int outputOffset);
+
 // Write a string in a buffer from an uint16_t arg
 // On error, return -1, else return offset in string
 int ARCOMMANDS_ReadWrite_PrintU16 (const char *name, uint16_t arg, char *output, int outputLen, int outputOffset);
@@ -109,6 +117,10 @@ int ARCOMMANDS_ReadWrite_PrintU32 (const char *name, uint32_t arg, char *output,
 // Write a string in a buffer from an int32_t arg
 // On error, return -1, else return offset in string
 int ARCOMMANDS_ReadWrite_PrintI32 (const char *name, int32_t arg, char *output, int outputLen, int outputOffset);
+
+// Write a string in a buffer from an uint64_t arg
+// On error, return -1, else return offset in string
+int ARCOMMANDS_ReadWrite_PrintU64 (const char *name, uint64_t arg, char *output, int outputLen, int outputOffset);
 
 // Write a string in a buffer from float arg
 // On error, return -1, else return offset in string

@@ -19,6 +19,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libARNetwork", "ARDroneSDK3
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "json-c", "ARDroneSDK3\json\json-c.vcxproj", "{04D8CDBE-FB3E-4362-87E6-07DC3C0083B2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libARController", "ARDroneSDK3\libARController\libARController.vcxproj", "{6F29DEFD-6747-4EEC-8E60-086F9EA31729}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libARStream", "ARDroneSDK3\libARStream\libARStream.vcxproj", "{5597B426-F3AB-44C7-B6C9-EE3A3BE89CCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +117,26 @@ Global
 		{04D8CDBE-FB3E-4362-87E6-07DC3C0083B2}.Release|x64.Build.0 = Release|x64
 		{04D8CDBE-FB3E-4362-87E6-07DC3C0083B2}.Release|x86.ActiveCfg = Release|Win32
 		{04D8CDBE-FB3E-4362-87E6-07DC3C0083B2}.Release|x86.Build.0 = Release|Win32
+		{6F29DEFD-6747-4EEC-8E60-086F9EA31729}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{6F29DEFD-6747-4EEC-8E60-086F9EA31729}.Debug|x64.ActiveCfg = Debug|x64
+		{6F29DEFD-6747-4EEC-8E60-086F9EA31729}.Debug|x64.Build.0 = Debug|x64
+		{6F29DEFD-6747-4EEC-8E60-086F9EA31729}.Debug|x86.ActiveCfg = Debug|Win32
+		{6F29DEFD-6747-4EEC-8E60-086F9EA31729}.Debug|x86.Build.0 = Debug|Win32
+		{6F29DEFD-6747-4EEC-8E60-086F9EA31729}.Release|Any CPU.ActiveCfg = Release|Win32
+		{6F29DEFD-6747-4EEC-8E60-086F9EA31729}.Release|x64.ActiveCfg = Release|x64
+		{6F29DEFD-6747-4EEC-8E60-086F9EA31729}.Release|x64.Build.0 = Release|x64
+		{6F29DEFD-6747-4EEC-8E60-086F9EA31729}.Release|x86.ActiveCfg = Release|Win32
+		{6F29DEFD-6747-4EEC-8E60-086F9EA31729}.Release|x86.Build.0 = Release|Win32
+		{5597B426-F3AB-44C7-B6C9-EE3A3BE89CCB}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{5597B426-F3AB-44C7-B6C9-EE3A3BE89CCB}.Debug|x64.ActiveCfg = Debug|x64
+		{5597B426-F3AB-44C7-B6C9-EE3A3BE89CCB}.Debug|x64.Build.0 = Debug|x64
+		{5597B426-F3AB-44C7-B6C9-EE3A3BE89CCB}.Debug|x86.ActiveCfg = Debug|Win32
+		{5597B426-F3AB-44C7-B6C9-EE3A3BE89CCB}.Debug|x86.Build.0 = Debug|Win32
+		{5597B426-F3AB-44C7-B6C9-EE3A3BE89CCB}.Release|Any CPU.ActiveCfg = Release|Win32
+		{5597B426-F3AB-44C7-B6C9-EE3A3BE89CCB}.Release|x64.ActiveCfg = Release|x64
+		{5597B426-F3AB-44C7-B6C9-EE3A3BE89CCB}.Release|x64.Build.0 = Release|x64
+		{5597B426-F3AB-44C7-B6C9-EE3A3BE89CCB}.Release|x86.ActiveCfg = Release|Win32
+		{5597B426-F3AB-44C7-B6C9-EE3A3BE89CCB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
