@@ -7,7 +7,7 @@ DUMPLIB_PATH = '\"J:\\Microsoft Visual Studio 14.0\\VC\\bin\\dumpbin.exe\" /LINK
 LIB_PATH = join(split(abspath(__file__))[0],join('..','Debug'))
 LIB_FILES = [ f for f in listdir(LIB_PATH) if f.endswith('.lib') and isfile(join(LIB_PATH, f)) and f != 'ARDroneSDK3.lib' ]
 
-FUNCTION_PREFIXES = ['_ARCONTROLLER']
+FUNCTION_PREFIXES = ['_ARCONTROLLER', '_ARDISCOVERY']
 
 out = open('ARDroneSDK3.def', 'w')
 out.write('LIBRARY ARDroneSDK3\n')
