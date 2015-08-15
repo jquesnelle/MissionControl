@@ -3307,8 +3307,8 @@ void *ARCONTROLLER_Device_ControllerLooperThread (void *data)
     
     eARCONTROLLER_ERROR error = ARCONTROLLER_OK;
     ARCONTROLLER_Device_t *deviceController = data;
-    u_int8_t cmdBuffer[ARCONTROLLER_DEVICE_DEFAULT_LOOPER_CMD_BUFFER_SIZE];
-    int controllerLoopIntervalUs = 0;
+    uint8_t cmdBuffer[ARCONTROLLER_DEVICE_DEFAULT_LOOPER_CMD_BUFFER_SIZE];
+	int controllerLoopIntervalUs = 0, controllerLookIntervalMs = 0;
     
     // Check parameters
     if ((deviceController == NULL) || (deviceController->privatePart == NULL))
@@ -3319,7 +3319,8 @@ void *ARCONTROLLER_Device_ControllerLooperThread (void *data)
     
     if (error == ARCONTROLLER_OK)
     {
-        controllerLoopIntervalUs = MSEC_TO_USEC (deviceController->privatePart->networkConfiguration.controllerLoopIntervalMs);
+		controllerLookIntervalMs = deviceController->privatePart->networkConfiguration.controllerLoopIntervalMs;
+        controllerLoopIntervalUs = MSEC_TO_USEC (controllerLookIntervalMs);
         if (!(controllerLoopIntervalUs > 0))
         {
             error = ARCONTROLLER_ERROR;
@@ -3333,7 +3334,11 @@ void *ARCONTROLLER_Device_ControllerLooperThread (void *data)
                (deviceController->privatePart->state == ARCONTROLLER_DEVICE_STATE_PAUSED))
         {
             //TODO manager pause !!!!!!!!!!!!!!!!!!!!!!!!!
+#ifndef _WIN32
             usleep (controllerLoopIntervalUs);
+#else
+			Sleep(controllerLookIntervalMs);
+#endif
             
             if (deviceController->aRDrone3 != NULL)
             {

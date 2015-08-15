@@ -154,7 +154,9 @@
     <ClInclude Include="Sources\ARCONTROLLER_StreamQueue.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\ARCONTROLLER_Device.c" />
     <ClCompile Include="Sources\ARCONTROLLER_Dictionary.c" />
+    <ClCompile Include="Sources\ARCONTROLLER_DICTIONARY_Key.c" />
     <ClCompile Include="Sources\ARCONTROLLER_Error.c" />
     <ClCompile Include="Sources\ARCONTROLLER_Feature.c" />
     <ClCompile Include="Sources\ARCONTROLLER_Frame.c" />

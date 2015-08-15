@@ -92,5 +92,11 @@
     <ClCompile Include="Sources\ARCONTROLLER_Error.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\ARCONTROLLER_Device.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\ARCONTROLLER_DICTIONARY_Key.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

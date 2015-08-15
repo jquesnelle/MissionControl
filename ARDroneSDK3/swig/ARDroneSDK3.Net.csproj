@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B881C8D8-41C6-4706-9441-E20DA08E4F42}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ARDroneSDK3.Net</RootNamespace>
+    <AssemblyName>ARDroneSDK3.Net</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ARCONTROLLER_Device_t.cs" />
+    <Compile Include="ARCONTROLLER_DICTIONARY_ARG_t.cs" />
+    <Compile Include="ARCONTROLLER_DICTIONARY_COMMANDS_t.cs" />
+    <Compile Include="ARCONTROLLER_DICTIONARY_ELEMENT_t.cs" />
+    <Compile Include="ARCONTROLLER_DICTIONARY_VALUE_t.cs" />
+    <Compile Include="ARCONTROLLER_FEATURE_ARDrone3Debug_t.cs" />
+    <Compile Include="ARCONTROLLER_FEATURE_ARDrone3_t.cs" />
+    <Compile Include="ARCONTROLLER_FEATURE_CommonDebug_t.cs" />
+    <Compile Include="ARCONTROLLER_FEATURE_Common_t.cs" />
+    <Compile Include="ARCONTROLLER_FEATURE_JumpingSumoDebug_t.cs" />
+    <Compile Include="ARCONTROLLER_FEATURE_JumpingSumo_t.cs" />
+    <Compile Include="ARCONTROLLER_FEATURE_MiniDroneDebug_t.cs" />
+    <Compile Include="ARCONTROLLER_FEATURE_MiniDrone_t.cs" />
+    <Compile Include="ARCONTROLLER_FEATURE_SkyControllerDebug_t.cs" />
+    <Compile Include="ARCONTROLLER_FEATURE_SkyController_t.cs" />
+    <Compile Include="ARCONTROLLER_NETWORK_SendingConfiguration_t.cs" />
+    <Compile Include="ARDISCOVERY_Device_t.cs" />
+    <Compile Include="ARDISCOVERY_NetworkConfiguration_t.cs" />
+    <Compile Include="ARDroneSDK3.cs" />
+    <Compile Include="ARDroneSDK3PINVOKE.cs" />
+    <Compile Include="eARCONTROLLER_DEVICE_STATE.cs" />
+    <Compile Include="eARCONTROLLER_DICTIONARY_KEY.cs" />
+    <Compile Include="eARCONTROLLER_DICTIONARY_VALUE_TYPE.cs" />
+    <Compile Include="eARCONTROLLER_ERROR.cs" />
+    <Compile Include="eARCONTROLLER_NETWORK_SENDING_DATA_TYPE.cs" />
+    <Compile Include="eARCONTROLLER_NETWORK_STATE.cs" />
+    <Compile Include="eARDISCOVERY_ERROR.cs" />
+    <Compile Include="eARDISCOVERY_PRODUCT.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_Device_Private_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_Dictionary_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3Debug_Private_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3Debug_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3_Private_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_CommonDebug_Private_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_CommonDebug_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_Common_Private_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_Common_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_JumpingSumoDebug_Private_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_JumpingSumoDebug_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_JumpingSumo_Private_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_JumpingSumo_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_MiniDroneDebug_Private_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_MiniDroneDebug_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_MiniDrone_Private_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_MiniDrone_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_SkyControllerDebug_Private_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_SkyControllerDebug_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_SkyController_Private_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_SkyController_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_Network_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARDISCOVERY_Connection_ConnectionData_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARDISCOVERY_Device_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARNETWORKAL_BLEDeviceManager_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARNETWORKAL_BLEDevice_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARNETWORKAL_Manager_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARNETWORKAL_Stream_DidReceiveFrameCallback_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARNETWORKAL_Stream_TimeoutFrameCallback_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARNETWORK_IOBufferParam_t.cs" />
+    <Compile Include="SWIGTYPE_p_eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_eARDISCOVERY_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_eARDISCOVERY_ERRORff.cs" />
+    <Compile Include="SWIGTYPE_p_eARNETWORKAL_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_eARNETWORK_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_eARNETWORK_MANAGER_CALLBACK_RETURN.cs" />
+    <Compile Include="SWIGTYPE_p_f_enum_eARCONTROLLER_DEVICE_STATE_enum_eARCONTROLLER_ERROR_p_void__void.cs" />
+    <Compile Include="SWIGTYPE_p_f_enum_eARCONTROLLER_DICTIONARY_KEY_p_ARCONTROLLER_DICTIONARY_ELEMENT_t_p_void__void.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_json_object_p_void__eARDISCOVERY_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3Debug_t_float_float__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3Debug_t_uint8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3Debug_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_double_double_double_double_double__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_double_double_double__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_eARCOMMANDS_ARDRONE3_ANIMATIONS_FLIP_DIRECTION__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_eARCOMMANDS_ARDRONE3_ANTIFLICKERING_ELECTRICFREQUENCY_FREQUENCY__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_eARCOMMANDS_ARDRONE3_ANTIFLICKERING_SETMODE_MODE__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_eARCOMMANDS_ARDRONE3_GPSSETTINGS_HOMETYPE_TYPE__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_eARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEOV2_RECORD__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_eARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEO_RECORD_uint8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_eARCOMMANDS_ARDRONE3_NETWORKSETTINGS_WIFISELECTION_TYPE_eARCOMMANDS_ARDRONE3_NETWORKSETTINGS_WIFISELECTION_BAND_uint8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_eARCOMMANDS_ARDRONE3_NETWORK_WIFISCAN_BAND__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_eARCOMMANDS_ARDRONE3_PICTURESETTINGS_AUTOWHITEBALANCESELECTION_TYPE__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_eARCOMMANDS_ARDRONE3_PICTURESETTINGS_PICTUREFORMATSELECTION_TYPE__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_float__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_int8_t_int8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_int8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_uint16_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_uint8_t_float__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_uint8_t_int8_t_int8_t_int8_t_int8_t_float__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_uint8_t_uint8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t_uint8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_ARDrone3_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_CommonDebug_t_p_char__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_CommonDebug_t_uint8_t_uint8_t_uint32_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_CommonDebug_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_Common_t_double_double__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_Common_t_p_char_eARCOMMANDS_COMMON_MAVLINK_START_TYPE__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_Common_t_p_char__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_Common_t_uint8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_Common_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumoDebug_t_float__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumoDebug_t_int8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumoDebug_t_p_char__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumoDebug_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_eARCOMMANDS_JUMPINGSUMO_ANIMATIONS_JUMP_TYPE__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_eARCOMMANDS_JUMPINGSUMO_ANIMATIONS_SIMPLEANIMATION_ID__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_eARCOMMANDS_JUMPINGSUMO_AUDIOSETTINGS_THEME_THEME__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_eARCOMMANDS_JUMPINGSUMO_MEDIARECORD_VIDEOV2_RECORD__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_eARCOMMANDS_JUMPINGSUMO_MEDIARECORD_VIDEO_RECORD_uint8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_eARCOMMANDS_JUMPINGSUMO_NETWORKSETTINGS_WIFISELECTION_TYPE_eARCOMMANDS_JUMPINGSUMO_NETWORKSETTINGS_WIFISELECTION_BAND_uint8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_eARCOMMANDS_JUMPINGSUMO_NETWORK_WIFISCAN_BAND__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_eARCOMMANDS_JUMPINGSUMO_PILOTING_POSTURE_TYPE__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_float__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_int8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_p_char_p_char__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_p_char__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_uint8_t_int8_t_int8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t_uint8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_JumpingSumo_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDroneDebug_t_int8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDrone_t_double__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDrone_t_eARCOMMANDS_MINIDRONE_ANIMATIONS_FLIP_DIRECTION__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDrone_t_float__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDrone_t_int16_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDrone_t_int8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDrone_t_uint8_t_int8_t_int8_t_int8_t_int8_t_float__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDrone_t_uint8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDrone_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_SkyControllerDebug_t_int8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_SkyController_t_eARCOMMANDS_SKYCONTROLLER_ACCESSPOINTSETTINGS_WIFISELECTION_TYPE_eARCOMMANDS_SKYCONTROLLER_ACCESSPOINTSETTINGS_WIFISELECTION_BAND_uint8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_SkyController_t_eARCOMMANDS_SKYCONTROLLER_COPILOTING_SETPILOTINGSOURCE_SOURCE__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_SkyController_t_int32_t_p_char__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_SkyController_t_p_char_p_char_p_char__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_SkyController_t_p_char__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_SkyController_t_uint8_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_SkyController_t__eARCONTROLLER_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARDISCOVERY_Device_t_p_ARDISCOVERY_NetworkConfiguration_t__eARDISCOVERY_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARDISCOVERY_Device_t_p_enum_eARDISCOVERY_ERROR_p_eARNETWORKAL_ERROR__p_ARNETWORKAL_Manager_t.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARDISCOVERY_Device_t_p_enum_eARDISCOVERY_ERROR__p_void.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARDISCOVERY_Device_t_p_p_ARNETWORKAL_Manager_t__eARDISCOVERY_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARDISCOVERY_Device_t__eARDISCOVERY_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_uint8_t_p_uint32_t_p_void__eARDISCOVERY_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_uint8_t_uint32_t_p_char_p_void__eARDISCOVERY_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_void__void.cs" />
+    <Compile Include="SWIGTYPE_p_int.cs" />
+    <Compile Include="SWIGTYPE_p_int16_t.cs" />
+    <Compile Include="SWIGTYPE_p_int32_t.cs" />
+    <Compile Include="SWIGTYPE_p_int64_t.cs" />
+    <Compile Include="SWIGTYPE_p_int8_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_Device_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_Dictionary_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_FEATURE_ARDrone3Debug_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_FEATURE_ARDrone3_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_FEATURE_CommonDebug_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_FEATURE_Common_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_FEATURE_JumpingSumoDebug_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_FEATURE_JumpingSumo_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_FEATURE_MiniDroneDebug_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_FEATURE_MiniDrone_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_FEATURE_SkyControllerDebug_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_FEATURE_SkyController_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_Network_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARDISCOVERY_Connection_ConnectionData_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARDISCOVERY_Device_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARNETWORKAL_Manager_t.cs" />
+    <Compile Include="SWIGTYPE_p_uint16_t.cs" />
+    <Compile Include="SWIGTYPE_p_uint32_t.cs" />
+    <Compile Include="SWIGTYPE_p_uint64_t.cs" />
+    <Compile Include="SWIGTYPE_p_uint8_t.cs" />
+    <Compile Include="SWIGTYPE_p_UT_hash_handle.cs" />
+    <Compile Include="SWIGTYPE_p_void.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
