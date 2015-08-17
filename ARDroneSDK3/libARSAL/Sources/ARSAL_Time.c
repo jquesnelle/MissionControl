@@ -149,7 +149,7 @@ int ARSAL_Time_GetLocalTime (struct timespec *res, struct tm *localTime)
 			struct tm* lt = localtime(&(ts.tv_sec));
 			if (lt != NULL)
 			{
-				memcpy(localTime, lt, sizeof(localTime));
+				memcpy(localTime, lt, sizeof(struct tm));
 			}
 #endif
         }

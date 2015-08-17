@@ -89,6 +89,12 @@ int ARSAL_Thread_Join(ARSAL_Thread_t thread, void **retval)
 
 int ARSAL_Thread_Destroy(ARSAL_Thread_t *thread)
 {
+	/* Code currently does some weird stuff with thread. For example in ARCONTROLLER_Device_Start it calls
+	* ARSAL_Thread_Destroy immediately after the thread starts. Fine for pthread but we need *thread to exist
+	* throughout the limetime of the thread (makes sense right?). For now we'll just have to leak sizeof(win32_thread_info_t)
+	* until I can rearchitecture it.
+	*/
+#if 0
 	if (*thread)
 	{
 		win32_thread_info_t* info = (win32_thread_info_t*)*thread;
@@ -100,4 +106,6 @@ int ARSAL_Thread_Destroy(ARSAL_Thread_t *thread)
 		return 0;
 	}
 	return ARSAL_ERROR_BAD_PARAMETER;
+#endif
+	return 0;
 }

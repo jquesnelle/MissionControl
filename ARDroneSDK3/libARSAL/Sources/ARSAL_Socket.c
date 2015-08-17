@@ -60,7 +60,17 @@ int ARSAL_Socket_Create(int domain, int type, int protocol)
 
 int ARSAL_Socket_Connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen)
 {
-    return connect(sockfd, addr, addrlen);
+	int ret = connect(sockfd, addr, addrlen);
+#ifdef _WIN32
+	int wsaError;
+	if (ret == SOCKET_ERROR)
+	{
+		wsaError = WSAGetLastError();
+		if (wsaError == WSAEWOULDBLOCK)
+			errno = EINPROGRESS;
+	}
+#endif
+	return ret;
 }
 
 ssize_t ARSAL_Socket_Sendto(int sockfd, const void *buf, size_t buflen, int flags, const struct sockaddr *dest_addr, socklen_t addrlen)

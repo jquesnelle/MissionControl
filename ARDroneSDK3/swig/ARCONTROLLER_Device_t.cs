@@ -10,7 +10,7 @@
 
 
 public class ARCONTROLLER_Device_t : global::System.IDisposable {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  public global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
   internal ARCONTROLLER_Device_t(global::System.IntPtr cPtr, bool cMemoryOwn) {

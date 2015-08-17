@@ -92,15 +92,10 @@ public class ARDISCOVERY_Device_t : global::System.IDisposable {
     } 
   }
 
-  public SWIGTYPE_p_void specificParameters {
+  public System.IntPtr specificParameters {
     set {
-      ARDroneSDK3PINVOKE.ARDISCOVERY_Device_t_specificParameters_set(swigCPtr, SWIGTYPE_p_void.getCPtr(value));
-    } 
-    get {
-      global::System.IntPtr cPtr = ARDroneSDK3PINVOKE.ARDISCOVERY_Device_t_specificParameters_get(swigCPtr);
-      SWIGTYPE_p_void ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_void(cPtr, false);
-      return ret;
-    } 
+      ARDroneSDK3PINVOKE.ARDISCOVERY_Device_t_specificParameters_set(swigCPtr, new global::System.Runtime.InteropServices.HandleRef(null, value));
+    } get{System.IntPtr res = ARDroneSDK3PINVOKE.ARDISCOVERY_Device_t_specificParameters_get(swigCPtr); ; return res;}
   }
 
   public SWIGTYPE_p_f_p_struct_ARDISCOVERY_Device_t_p_enum_eARDISCOVERY_ERROR__p_void getCopyOfSpecificParameters {

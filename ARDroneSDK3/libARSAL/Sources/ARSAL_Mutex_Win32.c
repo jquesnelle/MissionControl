@@ -82,7 +82,9 @@ int ARSAL_Mutex_Trylock(ARSAL_Mutex_t *mutex)
 {
 	if (mutex && *mutex)
 	{
-		return TryEnterCriticalSection((CRITICAL_SECTION*)*mutex) ? 0 : EBUSY;
+		CRITICAL_SECTION* pcs = *mutex;
+		DWORD ret = TryEnterCriticalSection(pcs);
+		return ret != 0 ? 0 : EBUSY;
 	}
 	return ARSAL_ERROR_BAD_PARAMETER;
 }
@@ -92,6 +94,7 @@ int ARSAL_Mutex_Unlock(ARSAL_Mutex_t *mutex)
 	if (mutex && *mutex)
 	{
 		LeaveCriticalSection((CRITICAL_SECTION*)*mutex);
+		return 0;
 	}
 	return ARSAL_ERROR_BAD_PARAMETER;
 }

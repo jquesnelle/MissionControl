@@ -968,7 +968,7 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_RxPending(ARDISCOVERY_Connectio
 	dataBuf.len = ARDISCOVERY_CONNECTION_RX_BUFFER_SIZE;
 
 	int res = WSARecv(connectionData->socket, &dataBuf, 1, &recvBytes, &flags, &overlapped, NULL);
-	if ((res == SOCKET_ERROR) && (WSA_IO_PENDING != GetLastError()))
+	if ((res == SOCKET_ERROR) && (WSA_IO_PENDING != WSAGetLastError()))
 	{
 		error = ARDISCOVERY_ERROR_READ;
 	}
@@ -1134,16 +1134,18 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_TxPending(ARDISCOVERY_Connectio
 		ARSAL_PRINT(ARSAL_PRINT_DEBUG, ARDISCOVERY_CONNECTION_TAG, "data send: %s", connectionData->txData.buffer);
 
 		OVERLAPPED overlapped;
+		ZeroMemory(&overlapped, sizeof(overlapped));
 		overlapped.hEvent = WSACreateEvent();
 
+		int wsaError;
 		DWORD sentBytes, flags;
 		WSABUF dataBuf;
 
 		dataBuf.buf = connectionData->txData.buffer;
 		dataBuf.len = connectionData->txData.size;
 
-		int res = WSARecv(connectionData->socket, &dataBuf, 1, &sentBytes, &flags, &overlapped, NULL);
-		if ((res == SOCKET_ERROR) && (WSA_IO_PENDING != GetLastError()))
+		int res = WSASend(connectionData->socket, &dataBuf, 1, &sentBytes, &flags, &overlapped, NULL);
+		if ((res == SOCKET_ERROR) && (WSA_IO_PENDING != (wsaError = WSAGetLastError())))
 		{
 			error = ARDISCOVERY_ERROR_SEND;
 		}

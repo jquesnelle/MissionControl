@@ -1416,7 +1416,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ARCONTROLLER_NETWORK_SendingConfigurat
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Network_New(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5, void * jarg6) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Network_New(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5, eARCONTROLLER_ERROR * jarg6) {
   void * jresult ;
   ARDISCOVERY_Device_t *arg1 = (ARDISCOVERY_Device_t *) 0 ;
   ARCONTROLLER_Network_DisconnectionCallback_t arg2 = (ARCONTROLLER_Network_DisconnectionCallback_t) 0 ;
@@ -1470,23 +1470,17 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Network_Resume(void * jarg1) {
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Network_SetVideoReceiveCallback(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Network_SetVideoReceiveCallback(void * jarg1, void* jarg2, void * jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_Network_t *arg1 = (ARCONTROLLER_Network_t *) 0 ;
   ARNETWORKAL_Stream_DidReceiveFrameCallback_t arg2 ;
   ARNETWORKAL_Stream_TimeoutFrameCallback_t arg3 ;
   void *arg4 = (void *) 0 ;
-  ARNETWORKAL_Stream_DidReceiveFrameCallback_t *argp2 ;
   ARNETWORKAL_Stream_TimeoutFrameCallback_t *argp3 ;
   eARCONTROLLER_ERROR result;
   
   arg1 = (ARCONTROLLER_Network_t *)jarg1; 
-  argp2 = (ARNETWORKAL_Stream_DidReceiveFrameCallback_t *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ARNETWORKAL_Stream_DidReceiveFrameCallback_t", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
+  arg2 = (ARNETWORKAL_Stream_DidReceiveFrameCallback_t)jarg2; 
   argp3 = (ARNETWORKAL_Stream_TimeoutFrameCallback_t *)jarg3; 
   if (!argp3) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ARNETWORKAL_Stream_TimeoutFrameCallback_t", 0);
@@ -2217,7 +2211,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ARCONTROLLER_DICTIONARY_COMMANDS_t(voi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_New(int jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_New(int jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   eARCONTROLLER_DICTIONARY_KEY arg1 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -2239,7 +2233,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_Delete(void * jarg1) 
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_AddCallback(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_AddCallback(void * jarg1, void* jarg2, void * jarg3) {
   int jresult ;
   ARCONTROLLER_Dictionary_t *arg1 = (ARCONTROLLER_Dictionary_t *) 0 ;
   ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
@@ -2255,7 +2249,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_AddCallback(void * jar
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_RemoveCallback(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_RemoveCallback(void * jarg1, void* jarg2, void * jarg3) {
   int jresult ;
   ARCONTROLLER_Dictionary_t *arg1 = (ARCONTROLLER_Dictionary_t *) 0 ;
   ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
@@ -2271,7 +2265,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_RemoveCallback(void * 
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_AddDictionaryElement(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_AddDictionaryElement(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_Dictionary_t **arg1 = (ARCONTROLLER_Dictionary_t **) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -2289,7 +2283,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_AddDictionaryElement(v
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_RemoveDictionaryElement(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_RemoveDictionaryElement(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_Dictionary_t *arg1 = (ARCONTROLLER_Dictionary_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -2339,7 +2333,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_DeleteCallbackList(vo
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_AddCallbackInList(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_AddCallbackInList(void * jarg1, void* jarg2, void * jarg3) {
   int jresult ;
   ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **arg1 = (ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **) 0 ;
   ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
@@ -2355,7 +2349,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_AddCallbackInList(void
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_RemoveCallbackFromList(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_RemoveCallbackFromList(void * jarg1, void* jarg2, void * jarg3) {
   int jresult ;
   ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **arg1 = (ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **) 0 ;
   ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
@@ -2383,7 +2377,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_NotifyAllCallbackInLi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_New(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_New(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_Network_t *arg1 = (ARCONTROLLER_Network_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -2405,7 +2399,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_Delete(void * j
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_GetDictionary(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_GetDictionary(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_FEATURE_ARDrone3_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -2419,7 +2413,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_GetDictionary
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_AddCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_AddCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_ARDrone3_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -2437,7 +2431,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_AddCallback(void
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_RemoveCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_RemoveCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_ARDrone3_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -6143,7 +6137,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_SetNetworkContro
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_ARDrone3_GetCommandElements(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_ARDrone3_GetCommandElements(void * jarg1, int jarg2, eARCONTROLLER_ERROR * jarg3) {
   void * jresult ;
   ARCONTROLLER_FEATURE_ARDrone3_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -6159,7 +6153,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_ARDrone3_GetCommandElements(vo
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_New(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_New(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_Network_t *arg1 = (ARCONTROLLER_Network_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -6181,7 +6175,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_Delete(voi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_GetDictionary(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_GetDictionary(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_FEATURE_ARDrone3Debug_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3Debug_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -6195,7 +6189,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_GetDicti
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_AddCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_AddCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_ARDrone3Debug_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3Debug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -6213,7 +6207,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_AddCallback
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_RemoveCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_RemoveCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_ARDrone3Debug_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3Debug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -6423,7 +6417,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_SetNetworkC
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_ARDrone3Debug_GetCommandElements(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_ARDrone3Debug_GetCommandElements(void * jarg1, int jarg2, eARCONTROLLER_ERROR * jarg3) {
   void * jresult ;
   ARCONTROLLER_FEATURE_ARDrone3Debug_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3Debug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -6439,7 +6433,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_ARDrone3Debug_GetCommandElemen
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_Common_New(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_Common_New(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_Network_t *arg1 = (ARCONTROLLER_Network_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -6461,7 +6455,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_Common_Delete(void * jar
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_Common_GetDictionary(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_Common_GetDictionary(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_FEATURE_Common_t *arg1 = (ARCONTROLLER_FEATURE_Common_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -6475,7 +6469,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_Common_GetDictionary(v
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_Common_AddCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_Common_AddCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_Common_t *arg1 = (ARCONTROLLER_FEATURE_Common_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -6493,7 +6487,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_Common_AddCallback(void *
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_Common_RemoveCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_Common_RemoveCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_Common_t *arg1 = (ARCONTROLLER_FEATURE_Common_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -8211,7 +8205,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_Common_SetNetworkControll
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Common_GetCommandElements(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Common_GetCommandElements(void * jarg1, int jarg2, eARCONTROLLER_ERROR * jarg3) {
   void * jresult ;
   ARCONTROLLER_FEATURE_Common_t *arg1 = (ARCONTROLLER_FEATURE_Common_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -8227,7 +8221,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Common_GetCommandElements(void
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_CommonDebug_New(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_CommonDebug_New(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_Network_t *arg1 = (ARCONTROLLER_Network_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -8249,7 +8243,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_CommonDebug_Delete(void 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_CommonDebug_GetDictionary(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_CommonDebug_GetDictionary(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_FEATURE_CommonDebug_t *arg1 = (ARCONTROLLER_FEATURE_CommonDebug_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -8263,7 +8257,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_CommonDebug_GetDiction
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_CommonDebug_AddCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_CommonDebug_AddCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_CommonDebug_t *arg1 = (ARCONTROLLER_FEATURE_CommonDebug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -8281,7 +8275,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_CommonDebug_AddCallback(v
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_CommonDebug_RemoveCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_CommonDebug_RemoveCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_CommonDebug_t *arg1 = (ARCONTROLLER_FEATURE_CommonDebug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -8444,7 +8438,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_CommonDebug_SetNetworkCon
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_CommonDebug_GetCommandElements(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_CommonDebug_GetCommandElements(void * jarg1, int jarg2, eARCONTROLLER_ERROR * jarg3) {
   void * jresult ;
   ARCONTROLLER_FEATURE_CommonDebug_t *arg1 = (ARCONTROLLER_FEATURE_CommonDebug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -8460,7 +8454,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_CommonDebug_GetCommandElements
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumo_New(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumo_New(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_Network_t *arg1 = (ARCONTROLLER_Network_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -8482,7 +8476,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumo_Delete(void 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumo_GetDictionary(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumo_GetDictionary(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_FEATURE_JumpingSumo_t *arg1 = (ARCONTROLLER_FEATURE_JumpingSumo_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -8496,7 +8490,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumo_GetDiction
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumo_AddCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumo_AddCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_JumpingSumo_t *arg1 = (ARCONTROLLER_FEATURE_JumpingSumo_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -8514,7 +8508,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumo_AddCallback(v
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumo_RemoveCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumo_RemoveCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_JumpingSumo_t *arg1 = (ARCONTROLLER_FEATURE_JumpingSumo_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -10252,7 +10246,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumo_SetNetworkCon
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_JumpingSumo_GetCommandElements(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_JumpingSumo_GetCommandElements(void * jarg1, int jarg2, eARCONTROLLER_ERROR * jarg3) {
   void * jresult ;
   ARCONTROLLER_FEATURE_JumpingSumo_t *arg1 = (ARCONTROLLER_FEATURE_JumpingSumo_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -10268,7 +10262,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_JumpingSumo_GetCommandElements
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_New(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_New(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_Network_t *arg1 = (ARCONTROLLER_Network_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -10290,7 +10284,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_Delete(
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_GetDictionary(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_GetDictionary(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_FEATURE_JumpingSumoDebug_t *arg1 = (ARCONTROLLER_FEATURE_JumpingSumoDebug_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -10304,7 +10298,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_GetDi
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_AddCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_AddCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_JumpingSumoDebug_t *arg1 = (ARCONTROLLER_FEATURE_JumpingSumoDebug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -10322,7 +10316,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_AddCallb
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_RemoveCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_RemoveCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_JumpingSumoDebug_t *arg1 = (ARCONTROLLER_FEATURE_JumpingSumoDebug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -10598,7 +10592,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_SetNetwo
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_JumpingSumoDebug_GetCommandElements(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_JumpingSumoDebug_GetCommandElements(void * jarg1, int jarg2, eARCONTROLLER_ERROR * jarg3) {
   void * jresult ;
   ARCONTROLLER_FEATURE_JumpingSumoDebug_t *arg1 = (ARCONTROLLER_FEATURE_JumpingSumoDebug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -10614,7 +10608,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_JumpingSumoDebug_GetCommandEle
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDrone_New(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDrone_New(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_Network_t *arg1 = (ARCONTROLLER_Network_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -10636,7 +10630,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDrone_Delete(void * 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDrone_GetDictionary(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDrone_GetDictionary(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_FEATURE_MiniDrone_t *arg1 = (ARCONTROLLER_FEATURE_MiniDrone_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -10650,7 +10644,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDrone_GetDictionar
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDrone_AddCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDrone_AddCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_MiniDrone_t *arg1 = (ARCONTROLLER_FEATURE_MiniDrone_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -10668,7 +10662,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDrone_AddCallback(voi
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDrone_RemoveCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDrone_RemoveCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_MiniDrone_t *arg1 = (ARCONTROLLER_FEATURE_MiniDrone_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -12062,7 +12056,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDrone_SetNetworkContr
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_MiniDrone_GetCommandElements(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_MiniDrone_GetCommandElements(void * jarg1, int jarg2, eARCONTROLLER_ERROR * jarg3) {
   void * jresult ;
   ARCONTROLLER_FEATURE_MiniDrone_t *arg1 = (ARCONTROLLER_FEATURE_MiniDrone_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -12078,7 +12072,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_MiniDrone_GetCommandElements(v
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_New(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_New(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_Network_t *arg1 = (ARCONTROLLER_Network_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -12100,7 +12094,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_Delete(vo
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_GetDictionary(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_GetDictionary(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_FEATURE_MiniDroneDebug_t *arg1 = (ARCONTROLLER_FEATURE_MiniDroneDebug_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -12114,7 +12108,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_GetDict
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_AddCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_AddCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_MiniDroneDebug_t *arg1 = (ARCONTROLLER_FEATURE_MiniDroneDebug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -12132,7 +12126,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_AddCallbac
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_RemoveCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_RemoveCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_MiniDroneDebug_t *arg1 = (ARCONTROLLER_FEATURE_MiniDroneDebug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -12270,7 +12264,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_SetNetwork
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_MiniDroneDebug_GetCommandElements(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_MiniDroneDebug_GetCommandElements(void * jarg1, int jarg2, eARCONTROLLER_ERROR * jarg3) {
   void * jresult ;
   ARCONTROLLER_FEATURE_MiniDroneDebug_t *arg1 = (ARCONTROLLER_FEATURE_MiniDroneDebug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -12286,7 +12280,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_MiniDroneDebug_GetCommandEleme
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyController_New(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyController_New(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_Network_t *arg1 = (ARCONTROLLER_Network_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -12308,7 +12302,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyController_Delete(voi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyController_GetDictionary(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyController_GetDictionary(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_FEATURE_SkyController_t *arg1 = (ARCONTROLLER_FEATURE_SkyController_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -12322,7 +12316,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyController_GetDicti
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyController_AddCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyController_AddCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_SkyController_t *arg1 = (ARCONTROLLER_FEATURE_SkyController_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -12340,7 +12334,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyController_AddCallback
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyController_RemoveCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyController_RemoveCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_SkyController_t *arg1 = (ARCONTROLLER_FEATURE_SkyController_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -14297,7 +14291,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyController_SetNetworkC
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_SkyController_GetCommandElements(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_SkyController_GetCommandElements(void * jarg1, int jarg2, eARCONTROLLER_ERROR * jarg3) {
   void * jresult ;
   ARCONTROLLER_FEATURE_SkyController_t *arg1 = (ARCONTROLLER_FEATURE_SkyController_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -14313,7 +14307,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_SkyController_GetCommandElemen
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_New(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_New(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_Network_t *arg1 = (ARCONTROLLER_Network_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -14335,7 +14329,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_Delet
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_GetDictionary(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_GetDictionary(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARCONTROLLER_FEATURE_SkyControllerDebug_t *arg1 = (ARCONTROLLER_FEATURE_SkyControllerDebug_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -14349,7 +14343,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_Get
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_AddCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_AddCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_SkyControllerDebug_t *arg1 = (ARCONTROLLER_FEATURE_SkyControllerDebug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -14367,7 +14361,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_AddCal
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_RemoveCallback(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_RemoveCallback(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_FEATURE_SkyControllerDebug_t *arg1 = (ARCONTROLLER_FEATURE_SkyControllerDebug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -14461,7 +14455,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_SetNet
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_SkyControllerDebug_GetCommandElements(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_SkyControllerDebug_GetCommandElements(void * jarg1, int jarg2, eARCONTROLLER_ERROR * jarg3) {
   void * jresult ;
   ARCONTROLLER_FEATURE_SkyControllerDebug_t *arg1 = (ARCONTROLLER_FEATURE_SkyControllerDebug_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -14737,7 +14731,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ARCONTROLLER_Device_t(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_New(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_New(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   void * jresult ;
   ARDISCOVERY_Device_t *arg1 = (ARDISCOVERY_Device_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
@@ -14783,23 +14777,17 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_Stop(void * jarg1) {
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_SetVideoReceiveCallback(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_SetVideoReceiveCallback(void * jarg1, void* jarg2, void * jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
   ARNETWORKAL_Stream_DidReceiveFrameCallback_t arg2 ;
   ARNETWORKAL_Stream_TimeoutFrameCallback_t arg3 ;
   void *arg4 = (void *) 0 ;
-  ARNETWORKAL_Stream_DidReceiveFrameCallback_t *argp2 ;
   ARNETWORKAL_Stream_TimeoutFrameCallback_t *argp3 ;
   eARCONTROLLER_ERROR result;
   
   arg1 = (ARCONTROLLER_Device_t *)jarg1; 
-  argp2 = (ARNETWORKAL_Stream_DidReceiveFrameCallback_t *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ARNETWORKAL_Stream_DidReceiveFrameCallback_t", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
+  arg2 = (ARNETWORKAL_Stream_DidReceiveFrameCallback_t)jarg2; 
   argp3 = (ARNETWORKAL_Stream_TimeoutFrameCallback_t *)jarg3; 
   if (!argp3) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ARNETWORKAL_Stream_TimeoutFrameCallback_t", 0);
@@ -14813,7 +14801,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_SetVideoReceiveCallback(vo
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_AddCommandReceivedCallback(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_AddCommandReceivedCallback(void * jarg1, void* jarg2, void * jarg3) {
   int jresult ;
   ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
   ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
@@ -14829,7 +14817,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_AddCommandReceivedCallback
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_RemoveCommandReceivedCallback(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_RemoveCommandReceivedCallback(void * jarg1, void* jarg2, void * jarg3) {
   int jresult ;
   ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
   ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
@@ -14845,7 +14833,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_RemoveCommandReceivedCallb
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_AddStateChangedCallback(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_AddStateChangedCallback(void * jarg1, void* jarg2, void * jarg3) {
   int jresult ;
   ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
   ARCONTROLLER_Device_StateChangedCallback_t arg2 = (ARCONTROLLER_Device_StateChangedCallback_t) 0 ;
@@ -14861,7 +14849,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_AddStateChangedCallback(vo
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_RemoveStateChangedCallback(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_RemoveStateChangedCallback(void * jarg1, void* jarg2, void * jarg3) {
   int jresult ;
   ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
   ARCONTROLLER_Device_StateChangedCallback_t arg2 = (ARCONTROLLER_Device_StateChangedCallback_t) 0 ;
@@ -14877,7 +14865,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_RemoveStateChangedCallback
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_GetCommandElements(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_GetCommandElements(void * jarg1, int jarg2, eARCONTROLLER_ERROR * jarg3) {
   void * jresult ;
   ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
   eARCONTROLLER_DICTIONARY_KEY arg2 ;
@@ -14893,7 +14881,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_GetCommandElements(void
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_GetState(void * jarg1, void * jarg2) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_GetState(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
   int jresult ;
   ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
   eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;

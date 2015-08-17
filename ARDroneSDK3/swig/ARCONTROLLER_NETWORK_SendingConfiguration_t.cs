@@ -51,15 +51,10 @@ public class ARCONTROLLER_NETWORK_SendingConfiguration_t : global::System.IDispo
     } 
   }
 
-  public SWIGTYPE_p_void customData {
+  public System.IntPtr customData {
     set {
-      ARDroneSDK3PINVOKE.ARCONTROLLER_NETWORK_SendingConfiguration_t_customData_set(swigCPtr, SWIGTYPE_p_void.getCPtr(value));
-    } 
-    get {
-      global::System.IntPtr cPtr = ARDroneSDK3PINVOKE.ARCONTROLLER_NETWORK_SendingConfiguration_t_customData_get(swigCPtr);
-      SWIGTYPE_p_void ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_void(cPtr, false);
-      return ret;
-    } 
+      ARDroneSDK3PINVOKE.ARCONTROLLER_NETWORK_SendingConfiguration_t_customData_set(swigCPtr, new global::System.Runtime.InteropServices.HandleRef(null, value));
+    } get{System.IntPtr res = ARDroneSDK3PINVOKE.ARCONTROLLER_NETWORK_SendingConfiguration_t_customData_get(swigCPtr); ; return res;}
   }
 
   public ARCONTROLLER_NETWORK_SendingConfiguration_t() : this(ARDroneSDK3PINVOKE.new_ARCONTROLLER_NETWORK_SendingConfiguration_t(), true) {
