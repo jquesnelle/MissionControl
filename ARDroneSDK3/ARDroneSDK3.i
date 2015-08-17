@@ -38,10 +38,10 @@
 ENUM_PTR_TYPEMAP(eARDISCOVERY_ERROR)
 ENUM_PTR_TYPEMAP(eARCONTROLLER_ERROR)
 
-%cs_callback(ARCONTROLLER_Device_StateChangedCallback_t, System.Delegate)
-%cs_callback(ARCONTROLLER_DICTIONARY_CALLBACK_t, System.Delegate)
-%cs_callback(ARNETWORKAL_Stream_DidReceiveFrameCallback_t, System.Delegate)
-
+%cs_callback(ARCONTROLLER_Device_StateChangedCallback_t, System.IntPtr)
+%cs_callback(ARCONTROLLER_DICTIONARY_CALLBACK_t, System.IntPtr)
+%cs_callback(ARNETWORKAL_Stream_DidReceiveFrameCallback_t, System.IntPtr)
+%cs_callback(ARNETWORKAL_Stream_TimeoutFrameCallback_t, System.IntPtr)
 
 %typemap(cstype) void* "System.IntPtr" 
 %typemap(csin) void* "new global::System.Runtime.InteropServices.HandleRef(null, $csinput)" 

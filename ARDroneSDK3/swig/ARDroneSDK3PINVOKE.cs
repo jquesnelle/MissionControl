@@ -491,7 +491,7 @@ class ARDroneSDK3PINVOKE {
   public static extern int ARCONTROLLER_Network_Resume(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Network_SetVideoReceiveCallback")]
-  public static extern int ARCONTROLLER_Network_SetVideoReceiveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.Delegate jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_Network_SetVideoReceiveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.IntPtr jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Network_SendData")]
   public static extern int ARCONTROLLER_Network_SendData(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, int jarg3, int jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
@@ -659,16 +659,16 @@ class ARDroneSDK3PINVOKE {
   public static extern void ARCONTROLLER_Dictionary_Delete(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Dictionary_AddCallback")]
-  public static extern int ARCONTROLLER_Dictionary_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.Delegate jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern int ARCONTROLLER_Dictionary_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Dictionary_RemoveCallback")]
-  public static extern int ARCONTROLLER_Dictionary_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.Delegate jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern int ARCONTROLLER_Dictionary_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Dictionary_AddDictionaryElement")]
-  public static extern int ARCONTROLLER_Dictionary_AddDictionaryElement(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_Dictionary_AddDictionaryElement(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Dictionary_RemoveDictionaryElement")]
-  public static extern int ARCONTROLLER_Dictionary_RemoveDictionaryElement(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_Dictionary_RemoveDictionaryElement(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Dictionary_DeleteDictionary")]
   public static extern void ARCONTROLLER_Dictionary_DeleteDictionary(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -680,10 +680,10 @@ class ARDroneSDK3PINVOKE {
   public static extern void ARCONTROLLER_Dictionary_DeleteCallbackList(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Dictionary_AddCallbackInList")]
-  public static extern int ARCONTROLLER_Dictionary_AddCallbackInList(global::System.Runtime.InteropServices.HandleRef jarg1, System.Delegate jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern int ARCONTROLLER_Dictionary_AddCallbackInList(global::System.Runtime.InteropServices.HandleRef jarg1, System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Dictionary_RemoveCallbackFromList")]
-  public static extern int ARCONTROLLER_Dictionary_RemoveCallbackFromList(global::System.Runtime.InteropServices.HandleRef jarg1, System.Delegate jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern int ARCONTROLLER_Dictionary_RemoveCallbackFromList(global::System.Runtime.InteropServices.HandleRef jarg1, System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_DICTIONARY_NotifyAllCallbackInList")]
   public static extern void ARCONTROLLER_DICTIONARY_NotifyAllCallbackInList(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -698,10 +698,10 @@ class ARDroneSDK3PINVOKE {
   public static extern global::System.IntPtr ARCONTROLLER_FEATURE_ARDrone3_GetDictionary(global::System.Runtime.InteropServices.HandleRef jarg1, ref eARCONTROLLER_ERROR jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_ARDrone3_AddCallback")]
-  public static extern int ARCONTROLLER_FEATURE_ARDrone3_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_ARDrone3_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_ARDrone3_RemoveCallback")]
-  public static extern int ARCONTROLLER_FEATURE_ARDrone3_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_ARDrone3_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_ARDrone3_SendPilotingPCMDStruct")]
   public static extern int ARCONTROLLER_ARDrone3_SendPilotingPCMDStruct(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -1634,10 +1634,10 @@ class ARDroneSDK3PINVOKE {
   public static extern global::System.IntPtr ARCONTROLLER_FEATURE_ARDrone3Debug_GetDictionary(global::System.Runtime.InteropServices.HandleRef jarg1, ref eARCONTROLLER_ERROR jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_AddCallback")]
-  public static extern int ARCONTROLLER_FEATURE_ARDrone3Debug_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_ARDrone3Debug_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_ARDrone3Debug_RemoveCallback")]
-  public static extern int ARCONTROLLER_FEATURE_ARDrone3Debug_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_ARDrone3Debug_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_DICTIONARY_KEY_ARDRONE3DEBUG_BATTERYDEBUGSETTINGSSTATE_USEDRONE2BATTERYCHANGED_DRONE2BATTERYUSED_set")]
   public static extern void ARCONTROLLER_DICTIONARY_KEY_ARDRONE3DEBUG_BATTERYDEBUGSETTINGSSTATE_USEDRONE2BATTERYCHANGED_DRONE2BATTERYUSED_set(string jarg1);
@@ -1703,10 +1703,10 @@ class ARDroneSDK3PINVOKE {
   public static extern global::System.IntPtr ARCONTROLLER_FEATURE_Common_GetDictionary(global::System.Runtime.InteropServices.HandleRef jarg1, ref eARCONTROLLER_ERROR jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_Common_AddCallback")]
-  public static extern int ARCONTROLLER_FEATURE_Common_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_Common_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_Common_RemoveCallback")]
-  public static extern int ARCONTROLLER_FEATURE_Common_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_Common_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_DICTIONARY_KEY_COMMON_NETWORKEVENT_DISCONNECTION_CAUSE_set")]
   public static extern void ARCONTROLLER_DICTIONARY_KEY_COMMON_NETWORKEVENT_DISCONNECTION_CAUSE_set(string jarg1);
@@ -2144,10 +2144,10 @@ class ARDroneSDK3PINVOKE {
   public static extern global::System.IntPtr ARCONTROLLER_FEATURE_CommonDebug_GetDictionary(global::System.Runtime.InteropServices.HandleRef jarg1, ref eARCONTROLLER_ERROR jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_CommonDebug_AddCallback")]
-  public static extern int ARCONTROLLER_FEATURE_CommonDebug_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_CommonDebug_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_CommonDebug_RemoveCallback")]
-  public static extern int ARCONTROLLER_FEATURE_CommonDebug_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_CommonDebug_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_DICTIONARY_KEY_COMMONDEBUG_STATSEVENT_SENDPACKET_PACKET_set")]
   public static extern void ARCONTROLLER_DICTIONARY_KEY_COMMONDEBUG_STATSEVENT_SENDPACKET_PACKET_set(string jarg1);
@@ -2201,10 +2201,10 @@ class ARDroneSDK3PINVOKE {
   public static extern global::System.IntPtr ARCONTROLLER_FEATURE_JumpingSumo_GetDictionary(global::System.Runtime.InteropServices.HandleRef jarg1, ref eARCONTROLLER_ERROR jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_JumpingSumo_AddCallback")]
-  public static extern int ARCONTROLLER_FEATURE_JumpingSumo_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_JumpingSumo_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_JumpingSumo_RemoveCallback")]
-  public static extern int ARCONTROLLER_FEATURE_JumpingSumo_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_JumpingSumo_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_JumpingSumo_SendPilotingPCMDStruct")]
   public static extern int ARCONTROLLER_JumpingSumo_SendPilotingPCMDStruct(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -2651,10 +2651,10 @@ class ARDroneSDK3PINVOKE {
   public static extern global::System.IntPtr ARCONTROLLER_FEATURE_JumpingSumoDebug_GetDictionary(global::System.Runtime.InteropServices.HandleRef jarg1, ref eARCONTROLLER_ERROR jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_AddCallback")]
-  public static extern int ARCONTROLLER_FEATURE_JumpingSumoDebug_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_JumpingSumoDebug_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_JumpingSumoDebug_RemoveCallback")]
-  public static extern int ARCONTROLLER_FEATURE_JumpingSumoDebug_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_JumpingSumoDebug_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_DICTIONARY_KEY_JUMPINGSUMODEBUG_USERSCRIPTSTATE_USERSCRIPTPARSED_SUCCESS_set")]
   public static extern void ARCONTROLLER_DICTIONARY_KEY_JUMPINGSUMODEBUG_USERSCRIPTSTATE_USERSCRIPTPARSED_SUCCESS_set(string jarg1);
@@ -2738,10 +2738,10 @@ class ARDroneSDK3PINVOKE {
   public static extern global::System.IntPtr ARCONTROLLER_FEATURE_MiniDrone_GetDictionary(global::System.Runtime.InteropServices.HandleRef jarg1, ref eARCONTROLLER_ERROR jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_MiniDrone_AddCallback")]
-  public static extern int ARCONTROLLER_FEATURE_MiniDrone_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_MiniDrone_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_MiniDrone_RemoveCallback")]
-  public static extern int ARCONTROLLER_FEATURE_MiniDrone_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_MiniDrone_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_MiniDrone_SendPilotingPCMDStruct")]
   public static extern int ARCONTROLLER_MiniDrone_SendPilotingPCMDStruct(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -3104,10 +3104,10 @@ class ARDroneSDK3PINVOKE {
   public static extern global::System.IntPtr ARCONTROLLER_FEATURE_MiniDroneDebug_GetDictionary(global::System.Runtime.InteropServices.HandleRef jarg1, ref eARCONTROLLER_ERROR jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_AddCallback")]
-  public static extern int ARCONTROLLER_FEATURE_MiniDroneDebug_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_MiniDroneDebug_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_RemoveCallback")]
-  public static extern int ARCONTROLLER_FEATURE_MiniDroneDebug_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_MiniDroneDebug_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_MiniDroneDebug_t_sendDebugTest1_set")]
   public static extern void ARCONTROLLER_FEATURE_MiniDroneDebug_t_sendDebugTest1_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -3155,10 +3155,10 @@ class ARDroneSDK3PINVOKE {
   public static extern global::System.IntPtr ARCONTROLLER_FEATURE_SkyController_GetDictionary(global::System.Runtime.InteropServices.HandleRef jarg1, ref eARCONTROLLER_ERROR jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_SkyController_AddCallback")]
-  public static extern int ARCONTROLLER_FEATURE_SkyController_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_SkyController_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_SkyController_RemoveCallback")]
-  public static extern int ARCONTROLLER_FEATURE_SkyController_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_SkyController_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_DICTIONARY_KEY_SKYCONTROLLER_WIFISTATE_WIFILIST_BSSID_set")]
   public static extern void ARCONTROLLER_DICTIONARY_KEY_SKYCONTROLLER_WIFISTATE_WIFILIST_BSSID_set(string jarg1);
@@ -3662,10 +3662,10 @@ class ARDroneSDK3PINVOKE {
   public static extern global::System.IntPtr ARCONTROLLER_FEATURE_SkyControllerDebug_GetDictionary(global::System.Runtime.InteropServices.HandleRef jarg1, ref eARCONTROLLER_ERROR jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_AddCallback")]
-  public static extern int ARCONTROLLER_FEATURE_SkyControllerDebug_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_SkyControllerDebug_AddCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_RemoveCallback")]
-  public static extern int ARCONTROLLER_FEATURE_SkyControllerDebug_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.Delegate jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_FEATURE_SkyControllerDebug_RemoveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_SkyControllerDebug_t_sendDebugTest1_set")]
   public static extern void ARCONTROLLER_FEATURE_SkyControllerDebug_t_sendDebugTest1_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -3776,19 +3776,19 @@ class ARDroneSDK3PINVOKE {
   public static extern int ARCONTROLLER_Device_Stop(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Device_SetVideoReceiveCallback")]
-  public static extern int ARCONTROLLER_Device_SetVideoReceiveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.Delegate jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int ARCONTROLLER_Device_SetVideoReceiveCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.IntPtr jarg2, System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Device_AddCommandReceivedCallback")]
-  public static extern int ARCONTROLLER_Device_AddCommandReceivedCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.Delegate jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern int ARCONTROLLER_Device_AddCommandReceivedCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Device_RemoveCommandReceivedCallback")]
-  public static extern int ARCONTROLLER_Device_RemoveCommandReceivedCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.Delegate jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern int ARCONTROLLER_Device_RemoveCommandReceivedCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Device_AddStateChangedCallback")]
-  public static extern int ARCONTROLLER_Device_AddStateChangedCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.Delegate jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern int ARCONTROLLER_Device_AddStateChangedCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Device_RemoveStateChangedCallback")]
-  public static extern int ARCONTROLLER_Device_RemoveStateChangedCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.Delegate jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern int ARCONTROLLER_Device_RemoveStateChangedCallback(global::System.Runtime.InteropServices.HandleRef jarg1, System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Device_GetCommandElements")]
   public static extern global::System.IntPtr ARCONTROLLER_Device_GetCommandElements(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, ref eARCONTROLLER_ERROR jarg3);

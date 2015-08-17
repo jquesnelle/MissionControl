@@ -54,6 +54,7 @@ int ARSAL_Socket_Create(int domain, int type, int protocol)
 			return -1;
 		winsock_inited = 1;
 	}
+	return WSASocket(domain, type, protocol, NULL, 0, WSA_FLAG_OVERLAPPED);
 #endif
     return socket(domain, type, protocol);
 }

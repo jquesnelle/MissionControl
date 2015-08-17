@@ -479,7 +479,7 @@ eARNETWORKAL_ERROR ARNETWORKAL_WifiNetwork_Connect (ARNETWORKAL_Manager_t *manag
     /** Create sender Object */
     if(error == ARNETWORKAL_OK)
     {
-        ((ARNETWORKAL_WifiNetworkObject *)manager->senderObject)->socket = ARSAL_Socket_Create (AF_INET, SOCK_DGRAM, 0);
+        ((ARNETWORKAL_WifiNetworkObject *)manager->senderObject)->socket = ARSAL_Socket_Create (AF_INET, SOCK_DGRAM, IPPROTO_UDP);
         if(((ARNETWORKAL_WifiNetworkObject *)manager->senderObject)->socket < 0)
         {
             error = ARNETWORKAL_ERROR_WIFI_SOCKET_CREATION;
@@ -511,8 +511,8 @@ eARNETWORKAL_ERROR ARNETWORKAL_WifiNetwork_Connect (ARNETWORKAL_Manager_t *manag
         int flags = fcntl(((ARNETWORKAL_WifiNetworkObject *)manager->senderObject)->socket, F_GETFL, 0);
         fcntl(((ARNETWORKAL_WifiNetworkObject *)manager->senderObject)->socket, F_SETFL, flags | O_NONBLOCK);
 #else
-		unsigned long enable = 1;
-		ioctlsocket(((ARNETWORKAL_WifiNetworkObject *)manager->senderObject)->socket, FIONBIO, &enable);
+		//unsigned long enable = 1;
+		//ioctlsocket(((ARNETWORKAL_WifiNetworkObject *)manager->senderObject)->socket, FIONBIO, &enable);
 #endif
 
         connectError = ARSAL_Socket_Connect (((ARNETWORKAL_WifiNetworkObject *)manager->senderObject)->socket, (struct sockaddr*) &sendSin, sizeof (sendSin));
@@ -559,7 +559,7 @@ eARNETWORKAL_ERROR ARNETWORKAL_WifiNetwork_Bind (ARNETWORKAL_Manager_t *manager,
     {
         wifiReceiver = (ARNETWORKAL_WifiNetworkObject *)manager->receiverObject;
 
-        wifiReceiver->socket = ARSAL_Socket_Create (AF_INET, SOCK_DGRAM, 0);
+        wifiReceiver->socket = ARSAL_Socket_Create (AF_INET, SOCK_DGRAM, IPPROTO_UDP);
         if (manager->receiverObject < 0)
         {
             error = ARNETWORKAL_ERROR_WIFI_SOCKET_CREATION;
@@ -598,8 +598,8 @@ eARNETWORKAL_ERROR ARNETWORKAL_WifiNetwork_Bind (ARNETWORKAL_Manager_t *manager,
         flags = fcntl(wifiReceiver->socket, F_GETFL, 0);
         fcntl(wifiReceiver->socket, F_SETFL, flags | O_NONBLOCK);
 #else
-		unsigned long enable = 1;
-		ioctlsocket(wifiReceiver->socket, FIONBIO, &enable);
+		//unsigned long enable = 1;
+		//ioctlsocket(wifiReceiver->socket, FIONBIO, &enable);
 #endif
 
         errorBind = ARSAL_Socket_Bind (wifiReceiver->socket, (struct sockaddr*)&recvSin, sizeof (recvSin));
@@ -917,14 +917,15 @@ eARNETWORKAL_MANAGER_RETURN ARNETWORKAL_WifiNetwork_Receive(ARNETWORKAL_Manager_
 	ARNETWORKAL_WifiNetworkObject *receiverObject = (ARNETWORKAL_WifiNetworkObject *)manager->receiverObject;
 	ARNETWORKAL_WifiNetworkObject *senderObject = (ARNETWORKAL_WifiNetworkObject *)manager->senderObject;
 
-	DWORD recvBytes, flags;
+	int wsaError;
+	int recvBytes = 0, flags = MSG_PARTIAL;
 	WSABUF dataBuf;
 
 	dataBuf.buf = receiverObject->buffer;
 	dataBuf.len = ARNETWORKAL_WIFINETWORK_RECEIVING_BUFFER_SIZE;
 
-	int res = WSARecv(receiverObject->socket, &dataBuf, 1, &recvBytes, &flags, &receiverObject->overlapped, NULL);
-	if((res == SOCKET_ERROR) && (WSA_IO_PENDING != GetLastError()))
+	int res = WSARecvFrom(receiverObject->socket, &dataBuf, 1, NULL, &flags, NULL, NULL, &receiverObject->overlapped, NULL);
+	if((res == SOCKET_ERROR) && (WSA_IO_PENDING != (wsaError = WSAGetLastError())))
 	{
 		result = ARNETWORKAL_MANAGER_RETURN_NETWORK_ERROR;
 		receiverObject->size = 0;
@@ -1092,6 +1093,7 @@ uint8_t ARNETWORKAL_WifiNetwork_IsTooLongWithoutReceive (ARNETWORKAL_WifiNetwork
     struct timespec currentDate = {0, 0};
     int32_t timeWithoutReception = 0; /* time in millisecond */
 
+#ifndef _DEBUG
     /* check parameters */
     if(receiverObject == NULL)
     {
@@ -1118,7 +1120,7 @@ uint8_t ARNETWORKAL_WifiNetwork_IsTooLongWithoutReceive (ARNETWORKAL_WifiNetwork
         ARSAL_PRINT (ARSAL_PRINT_ERROR, ARNETWORKAL_WIFINETWORK_TAG, "Error occurred : %s", ARNETWORKAL_Error_ToString (error));
     }
     /* No else: no error to print */
-
+#endif
     return isTooLongWithoutReceive;
 }
 

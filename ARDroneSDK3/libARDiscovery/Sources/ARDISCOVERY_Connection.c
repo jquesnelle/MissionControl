@@ -1,6 +1,5 @@
 /*
     Copyright (C) 2014 Parrot SA
-	Copyright (C) 2015 Jeffrey Quesnelle
 
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions
@@ -156,8 +155,6 @@ ARDISCOVERY_Connection_ConnectionData_t* ARDISCOVERY_Connection_New (ARDISCOVERY
 #ifndef _WIN32
             connectionData->abortPipe[0] = -1;
             connectionData->abortPipe[1] = -1;
-#else
-			connectionData->abortEvent = NULL;
 #endif
         }
         else
@@ -201,12 +198,10 @@ ARDISCOVERY_Connection_ConnectionData_t* ARDISCOVERY_Connection_New (ARDISCOVERY
     {
 #ifndef _WIN32
         if (pipe(connectionData->abortPipe) != 0)
-#else
-		if ((connectionData->abortEvent = CreateEvent(NULL, FALSE, FALSE, NULL)) == NULL)
-#endif
         {
             localError = ARDISCOVERY_ERROR_PIPE_INIT;
         }
+#endif
     }
     
     /* Delete connection data if an error occurred */
@@ -262,8 +257,8 @@ eARDISCOVERY_ERROR ARDISCOVERY_Connection_Delete (ARDISCOVERY_Connection_Connect
                     (*connectionData)->rxData.capacity = 0;
                 }
                 
-#ifndef _WIN32
                 /* close the abortPipe */
+#ifndef _WIN32
                 if((*connectionData)->abortPipe[0] != -1)
                 {
                     close ((*connectionData)->abortPipe[0]);
@@ -275,12 +270,6 @@ eARDISCOVERY_ERROR ARDISCOVERY_Connection_Delete (ARDISCOVERY_Connection_Connect
                     close ((*connectionData)->abortPipe[1]);
                     (*connectionData)->abortPipe[1] = -1;
                 }
-#else
-				if ((*connectionData)->abortEvent != NULL)
-				{
-					CloseHandle((*connectionData)->abortEvent);
-					(*connectionData)->abortEvent = NULL;
-				}
 #endif
                 
                 free (*connectionData);
@@ -467,7 +456,7 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_CreateSocket (int *socket)
     eARDISCOVERY_ERROR error = ARDISCOVERY_OK;
     int optval = 1;
     
-    *socket = ARSAL_Socket_Create(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    *socket = ARSAL_Socket_Create(AF_INET, SOCK_STREAM, 0);
     if (*socket < 0)
     {
         error = ARDISCOVERY_ERROR_SOCKET_CREATION;
@@ -579,13 +568,10 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_ControllerInitSocket (ARDISCOVE
         connectionData->address.sin_family = AF_INET;
         connectionData->address.sin_port = htons (port);
         
-        /* set the socket non blocking */
+        /* set the socket non blocking -- win32 for now is blocking for discovery */
 #ifndef _WIN32
         flags = fcntl(connectionData->socket, F_GETFL, 0);
         fcntl(connectionData->socket, F_SETFL, flags | O_NONBLOCK);
-#else
-		unsigned long enable = 1;
-		ioctlsocket(connectionData->socket, FIONBIO, &enable);
 #endif
         
         ARSAL_PRINT(ARSAL_PRINT_DEBUG, ARDISCOVERY_CONNECTION_TAG, "contoller try to connect ip:%s port:%d", ip, port);
@@ -600,7 +586,7 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_ControllerInitSocket (ARDISCOVE
 #ifndef _WIN32
                 sleep(ARDISCOVERY_RECONNECTION_TIME_SEC);
 #else
-				Sleep(ARDISCOVERY_RECONNECTION_TIME_SEC * 1000ul);
+				Sleep(SEC_TO_MSEC(ARDISCOVERY_RECONNECTION_TIME_SEC));
 #endif
             }
             error = ARDISCOVERY_Socket_Connect(connectionData->socket, (struct sockaddr*) &(connectionData->address), sizeof (connectionData->address));
@@ -659,23 +645,24 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_ControllerInitSocket (ARDISCOVE
 #ifndef _WIN32
         flags = fcntl(connectionData->socket, F_GETFL, 0);
         fcntl(connectionData->socket, F_SETFL, flags & (~O_NONBLOCK));
-#else
-		enable = 0;
-		ioctlsocket(connectionData->socket, FIONBIO, &enable);
 #endif
-      
-		/* this seems to be checking if the socket connected() successfully but we don't have permissions? must be iOS/Android thing */
-#ifndef _WIN32 
+        
         /* Initialize set */
         FD_ZERO(&readSet);
         FD_ZERO(&writeSet);
         FD_ZERO(&errorSet);
         FD_SET(connectionData->socket, &writeSet);
+#ifndef _WIN32
         FD_SET(connectionData->abortPipe[0], &readSet);
+#endif
         FD_SET(connectionData->socket, &errorSet);
         
         /* Get the max fd +1 for select call */
+#ifndef _WIN32
         maxFd = (connectionData->socket > connectionData->abortPipe[0]) ? connectionData->socket +1 : connectionData->abortPipe[0] +1;
+#else
+		maxFd = connectionData->socket + 1;
+#endif
         
         /* Wait for either file to be reading for a read */
         selectErr = select (maxFd, &readSet, &writeSet, &errorSet, &tv);
@@ -721,21 +708,20 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_ControllerInitSocket (ARDISCOVE
             }
             /* No else: socket not ready */
             
+#ifndef _WIN32
             if (FD_ISSET(connectionData->abortPipe[0], &readSet))
             {
                 /* If the abortPipe is ready for a read, dump bytes from it (so it won't be ready next time) */
                 read (connectionData->abortPipe[0], &dump, 10);
                 error = ARDISCOVERY_ERROR_ABORT;
             }
+#endif
             /* No else: no timeout */
         }
-#endif
     }
     
     return error;
 }
-
-
 
 static eARDISCOVERY_ERROR ARDISCOVERY_Socket_Connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen)
 {
@@ -773,7 +759,6 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Socket_Connect(int sockfd, const struct so
     return error;
 }
 
-#ifndef _WIN32
 static eARDISCOVERY_ERROR ARDISCOVERY_Connection_DeviceAccept (ARDISCOVERY_Connection_ConnectionData_t *connectionData, int deviceSocket)
 {
     /* - Accept connection - */
@@ -781,7 +766,7 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_DeviceAccept (ARDISCOVERY_Conne
     eARDISCOVERY_ERROR error = ARDISCOVERY_OK;
     
     socklen_t clientLen = sizeof (connectionData->address);
-  
+    
     fd_set set;
     int maxFd = 0;
     int selectErr =0;
@@ -790,10 +775,14 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_DeviceAccept (ARDISCOVERY_Conne
     /* Initialize set */
     FD_ZERO(&set);
     FD_SET(deviceSocket, &set);
+#ifndef _WIN32
     FD_SET(connectionData->abortPipe[0], &set);
     
     /* Get the max fd +1 for select call */
     maxFd = (deviceSocket > connectionData->abortPipe[0]) ? deviceSocket +1 : connectionData->abortPipe[0] +1;
+#else
+	maxFd = deviceSocket + 1;
+#endif
     
     ARSAL_PRINT(ARSAL_PRINT_DEBUG, ARDISCOVERY_CONNECTION_TAG, "Device waits to accept a socket");
             
@@ -818,42 +807,19 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_DeviceAccept (ARDISCOVERY_Conne
             }
         }
         
+#ifndef _WIN32
         if (FD_ISSET(connectionData->abortPipe[0], &set))
         {
             /* If the abortPipe is ready for a read, dump bytes from it (so it won't be ready next time) */
             read (connectionData->abortPipe[0], &dump, 10);
             error = ARDISCOVERY_ERROR_ABORT;
         }
+#endif
     }
     
     return error;
 }
 
-#else
-
-/* I don't feel like messing around with AcceptEx -- for now you just accept and if it fails/takes forever well too bad */
-static eARDISCOVERY_ERROR ARDISCOVERY_Connection_DeviceAccept(ARDISCOVERY_Connection_ConnectionData_t *connectionData, int deviceSocket)
-{
-	/* - Accept connection - */
-	eARDISCOVERY_ERROR error = ARDISCOVERY_OK;
-
-	socklen_t clientLen = sizeof(connectionData->address);
-
-	/* Wait for any incoming connection from controller */
-	connectionData->socket = ARSAL_Socket_Accept(deviceSocket, (struct sockaddr*) &(connectionData->address), &clientLen);
-	if (connectionData->socket < 0)
-	{
-		ARSAL_PRINT(ARSAL_PRINT_ERROR, ARDISCOVERY_CONNECTION_TAG, "accept() failed: %s", strerror(errno));
-		error = ARDISCOVERY_ERROR_ACCEPT;
-	}
-
-	return error;
-}
-
-#endif
-
-
-#ifndef _WIN32
 static eARDISCOVERY_ERROR ARDISCOVERY_Connection_RxPending (ARDISCOVERY_Connection_ConnectionData_t *connectionData)
 {
     /* - read connection data - */
@@ -868,10 +834,14 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_RxPending (ARDISCOVERY_Connecti
     /* Initialize set */
     FD_ZERO(&set);
     FD_SET(connectionData->socket, &set);
+#ifndef _WIN32
     FD_SET(connectionData->abortPipe[0], &set);
     
     /* Get the max fd +1 for select call */
     maxFd = (connectionData->socket > connectionData->abortPipe[0]) ? connectionData->socket +1 : connectionData->abortPipe[0] +1;
+#else
+	maxFd = connectionData->socket + 1;
+#endif
     
     /* Wait for either file to be reading for a read */
     selectErr = select (maxFd, &set, NULL, NULL, &tv);
@@ -937,117 +907,19 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_RxPending (ARDISCOVERY_Connecti
             }
         }
         
+#ifndef _WIN32
         if (FD_ISSET(connectionData->abortPipe[0], &set))
         {
             /* If the abortPipe is ready for a read, dump bytes from it (so it won't be ready next time) */
             read (connectionData->abortPipe[0], &dump, 10);
             error = ARDISCOVERY_ERROR_ABORT;
         }
+#endif
     }
     
     return error;
 }
 
-#else
-
-static eARDISCOVERY_ERROR ARDISCOVERY_Connection_RxPending(ARDISCOVERY_Connection_ConnectionData_t *connectionData)
-{
-	/* - read connection data - */
-
-	eARDISCOVERY_ERROR error = ARDISCOVERY_OK;
-
-	OVERLAPPED overlapped;
-	ZeroMemory(&overlapped, sizeof(overlapped));
-
-	overlapped.hEvent = WSACreateEvent();
-
-	DWORD recvBytes, flags;
-	WSABUF dataBuf;
-
-	dataBuf.buf = connectionData->rxData.buffer;
-	dataBuf.len = ARDISCOVERY_CONNECTION_RX_BUFFER_SIZE;
-
-	int res = WSARecv(connectionData->socket, &dataBuf, 1, &recvBytes, &flags, &overlapped, NULL);
-	if ((res == SOCKET_ERROR) && (WSA_IO_PENDING != WSAGetLastError()))
-	{
-		error = ARDISCOVERY_ERROR_READ;
-	}
-	else
-	{
-		BOOL wait_result;
-		HANDLE waits[2] = { overlapped.hEvent, connectionData->abortEvent };
-		res = WaitForMultipleObjects(2, waits, FALSE, ARDISCOVERY_CONNECTION_TIMEOUT_SEC * 1000ul);
-		switch (res)
-		{
-		case WAIT_OBJECT_0:
-			wait_result = WSAGetOverlappedResult(connectionData->socket, &overlapped, &recvBytes, FALSE, &flags);
-			if (wait_result == FALSE)
-			{
-				error = ARDISCOVERY_ERROR_READ;
-			}
-			else
-			{
-				connectionData->rxData.size += recvBytes;
-				while ((error == ARDISCOVERY_OK) && (recvBytes == ARDISCOVERY_CONNECTION_RX_BUFFER_SIZE))
-				{
-					ARSAL_PRINT(ARSAL_PRINT_DEBUG, ARDISCOVERY_CONNECTION_TAG, "realloc size: %d", (connectionData->rxData.capacity + ARDISCOVERY_CONNECTION_RX_BUFFER_SIZE));
-
-					//increase the capacity of the buffer and read the following data from the socket
-					uint8_t *newBuffer = realloc(connectionData->rxData.buffer, connectionData->rxData.capacity + ARDISCOVERY_CONNECTION_RX_BUFFER_SIZE);
-					if (newBuffer != NULL)
-					{
-						// update rxData
-						connectionData->rxData.buffer = newBuffer;
-						connectionData->rxData.capacity += ARDISCOVERY_CONNECTION_RX_BUFFER_SIZE;
-
-						//read socket
-						recvBytes = ARSAL_Socket_Recv(connectionData->socket, (connectionData->rxData.buffer + connectionData->rxData.size), ARDISCOVERY_CONNECTION_RX_BUFFER_SIZE, 0);
-
-						/* update the rxdata size */
-						connectionData->rxData.size += recvBytes;
-					}
-					else
-					{
-						error = ARDISCOVERY_ERROR_ALLOC;
-					}
-				}
-				if (error == ARDISCOVERY_OK)
-				{
-					ARSAL_PRINT(ARSAL_PRINT_DEBUG, ARDISCOVERY_CONNECTION_TAG, "data read size: %d", connectionData->rxData.size);
-
-					if (connectionData->rxData.size > 0)
-					{
-						ARSAL_PRINT(ARSAL_PRINT_DEBUG, ARDISCOVERY_CONNECTION_TAG, "data read: %s", connectionData->rxData.buffer);
-
-						/* receive callback */
-						error = connectionData->receiveJsoncallback(connectionData->rxData.buffer, connectionData->rxData.size, inet_ntoa(connectionData->address.sin_addr), connectionData->customData);
-					}
-					else
-					{
-						error = ARDISCOVERY_ERROR_READ;
-					}
-				}
-			}
-			WSAResetEvent(overlapped.hEvent);
-			break;
-		case WAIT_OBJECT_0 + 1:
-			error = ARDISCOVERY_ERROR_ABORT;
-			/* auto reset event, no need to reset */
-			break;
-		default:
-			error = ARDISCOVERY_ERROR_TIMEOUT;
-			break;
-		}
-	}
-
-	CloseHandle(overlapped.hEvent);
-
-	return error;
-}
-
-#endif
-
-#ifndef _WIN32
 static eARDISCOVERY_ERROR ARDISCOVERY_Connection_TxPending (ARDISCOVERY_Connection_ConnectionData_t *connectionData)
 {
     /* - send connection data - */
@@ -1065,10 +937,14 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_TxPending (ARDISCOVERY_Connecti
     FD_ZERO(&readSet);
     FD_ZERO(&writeSet);
     FD_SET(connectionData->socket, &writeSet);
+#ifndef _WIN32
     FD_SET(connectionData->abortPipe[0], &readSet);
     
     /* Get the max fd +1 for select call */
     maxFd = (connectionData->socket > connectionData->abortPipe[0]) ? connectionData->socket +1 : connectionData->abortPipe[0] +1;
+#else
+	maxFd = connectionData->socket + 1;
+#endif
     
     /* sending callback */
     error = connectionData->sendJsoncallback (connectionData->txData.buffer, &(connectionData->txData.size), connectionData->customData);
@@ -1105,99 +981,31 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_TxPending (ARDISCOVERY_Connecti
                 }
             }
             
+#ifndef _WIN32
             if (FD_ISSET(connectionData->abortPipe[0], &readSet))
             {
                 /* If the abortPipe is ready for a read, dump bytes from it (so it won't be ready next time) */
                 read (connectionData->abortPipe[0], &dump, 10);
                 error = ARDISCOVERY_ERROR_ABORT;
             }
+#endif
         }
     }
     
     return error;
 }
 
-#else
-
-static eARDISCOVERY_ERROR ARDISCOVERY_Connection_TxPending(ARDISCOVERY_Connection_ConnectionData_t *connectionData)
-{
-	/* - send connection data - */
-	eARDISCOVERY_ERROR error = ARDISCOVERY_OK;
-
-	/* sending callback */
-	error = connectionData->sendJsoncallback(connectionData->txData.buffer, &(connectionData->txData.size), connectionData->customData);
-
-	ARSAL_PRINT(ARSAL_PRINT_DEBUG, ARDISCOVERY_CONNECTION_TAG, "data send size: %d", connectionData->txData.size);
-
-	if ((error == ARDISCOVERY_OK) && (connectionData->txData.size > 0) && (connectionData->txData.size <= ARDISCOVERY_CONNECTION_TX_BUFFER_SIZE))
-	{
-		ARSAL_PRINT(ARSAL_PRINT_DEBUG, ARDISCOVERY_CONNECTION_TAG, "data send: %s", connectionData->txData.buffer);
-
-		OVERLAPPED overlapped;
-		ZeroMemory(&overlapped, sizeof(overlapped));
-		overlapped.hEvent = WSACreateEvent();
-
-		int wsaError;
-		DWORD sentBytes, flags;
-		WSABUF dataBuf;
-
-		dataBuf.buf = connectionData->txData.buffer;
-		dataBuf.len = connectionData->txData.size;
-
-		int res = WSASend(connectionData->socket, &dataBuf, 1, &sentBytes, &flags, &overlapped, NULL);
-		if ((res == SOCKET_ERROR) && (WSA_IO_PENDING != (wsaError = WSAGetLastError())))
-		{
-			error = ARDISCOVERY_ERROR_SEND;
-		}
-		else
-		{
-			BOOL wait_result;
-			HANDLE waits[2] = { overlapped.hEvent, connectionData->abortEvent };
-			res = WaitForMultipleObjects(2, waits, FALSE, ARDISCOVERY_CONNECTION_TIMEOUT_SEC * 1000ul);
-			switch (res)
-			{
-			case WAIT_OBJECT_0:
-				wait_result = WSAGetOverlappedResult(connectionData->socket, &overlapped, &sentBytes, FALSE, &flags);
-				if (wait_result == FALSE || sentBytes < 0)
-				{
-					error = ARDISCOVERY_ERROR_SEND;
-				}
-				WSAResetEvent(overlapped.hEvent);
-				break;
-			case WAIT_OBJECT_0 + 1:
-				error = ARDISCOVERY_ERROR_ABORT;
-				/* auto reset event, no need to reset */
-				break;
-			default:
-				error = ARDISCOVERY_ERROR_TIMEOUT;
-				break;
-			}
-		}
-
-		CloseHandle(overlapped.hEvent);
-	}
-
-	return error;
-}
-
-#endif
-
 void ARDISCOVERY_Connection_Unlock (ARDISCOVERY_Connection_ConnectionData_t *connectionData)
 {
-#ifndef _WIN32
     /* - signal - */
     
     char *buff = "x";
     
+#ifndef _WIN32
     if (connectionData->abortPipe[1] != -1)
     {
         write (connectionData->abortPipe[1], buff, 1);
     }
-#else
-	if (connectionData->abortEvent != NULL)
-	{
-		SetEvent(connectionData->abortEvent);
-	}
 #endif
 }
 

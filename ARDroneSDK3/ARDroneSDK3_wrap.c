@@ -1470,23 +1470,17 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Network_Resume(void * jarg1) {
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Network_SetVideoReceiveCallback(void * jarg1, void* jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Network_SetVideoReceiveCallback(void * jarg1, void* jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_Network_t *arg1 = (ARCONTROLLER_Network_t *) 0 ;
   ARNETWORKAL_Stream_DidReceiveFrameCallback_t arg2 ;
   ARNETWORKAL_Stream_TimeoutFrameCallback_t arg3 ;
   void *arg4 = (void *) 0 ;
-  ARNETWORKAL_Stream_TimeoutFrameCallback_t *argp3 ;
   eARCONTROLLER_ERROR result;
   
   arg1 = (ARCONTROLLER_Network_t *)jarg1; 
   arg2 = (ARNETWORKAL_Stream_DidReceiveFrameCallback_t)jarg2; 
-  argp3 = (ARNETWORKAL_Stream_TimeoutFrameCallback_t *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ARNETWORKAL_Stream_TimeoutFrameCallback_t", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
+  arg3 = (ARNETWORKAL_Stream_TimeoutFrameCallback_t)jarg3; 
   arg4 = (void *)jarg4; 
   result = (eARCONTROLLER_ERROR)ARCONTROLLER_Network_SetVideoReceiveCallback(arg1,arg2,arg3,arg4);
   jresult = (int)result; 
@@ -14777,23 +14771,17 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_Stop(void * jarg1) {
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_SetVideoReceiveCallback(void * jarg1, void* jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_SetVideoReceiveCallback(void * jarg1, void* jarg2, void* jarg3, void * jarg4) {
   int jresult ;
   ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
   ARNETWORKAL_Stream_DidReceiveFrameCallback_t arg2 ;
   ARNETWORKAL_Stream_TimeoutFrameCallback_t arg3 ;
   void *arg4 = (void *) 0 ;
-  ARNETWORKAL_Stream_TimeoutFrameCallback_t *argp3 ;
   eARCONTROLLER_ERROR result;
   
   arg1 = (ARCONTROLLER_Device_t *)jarg1; 
   arg2 = (ARNETWORKAL_Stream_DidReceiveFrameCallback_t)jarg2; 
-  argp3 = (ARNETWORKAL_Stream_TimeoutFrameCallback_t *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ARNETWORKAL_Stream_TimeoutFrameCallback_t", 0);
-    return 0;
-  }
-  arg3 = *argp3; 
+  arg3 = (ARNETWORKAL_Stream_TimeoutFrameCallback_t)jarg3; 
   arg4 = (void *)jarg4; 
   result = (eARCONTROLLER_ERROR)ARCONTROLLER_Device_SetVideoReceiveCallback(arg1,arg2,arg3,arg4);
   jresult = (int)result; 
