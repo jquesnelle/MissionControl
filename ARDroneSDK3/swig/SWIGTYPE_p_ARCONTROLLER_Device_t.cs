@@ -9,18 +9,18 @@
 //------------------------------------------------------------------------------
 
 
-public class SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDrone_t_int16_t__eARCONTROLLER_ERROR {
-  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+public class SWIGTYPE_p_ARCONTROLLER_Device_t {
+  public global::System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDrone_t_int16_t__eARCONTROLLER_ERROR(global::System.IntPtr cPtr, bool futureUse) {
+  internal SWIGTYPE_p_ARCONTROLLER_Device_t(global::System.IntPtr cPtr, bool futureUse) {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  protected SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDrone_t_int16_t__eARCONTROLLER_ERROR() {
+  protected SWIGTYPE_p_ARCONTROLLER_Device_t() {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_f_p_struct_ARCONTROLLER_FEATURE_MiniDrone_t_int16_t__eARCONTROLLER_ERROR obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_ARCONTROLLER_Device_t obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 }
