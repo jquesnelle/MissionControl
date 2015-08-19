@@ -5,6 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MissionControl", "MissionControl\MissionControl.csproj", "{3827BA94-2090-40E0-9802-DAE52888F3C6}"
 	ProjectSection(ProjectDependencies) = postProject
+		{980E8996-7DA7-497A-8EB8-253220715F4B} = {980E8996-7DA7-497A-8EB8-253220715F4B}
 		{B881C8D8-41C6-4706-9441-E20DA08E4F42} = {B881C8D8-41C6-4706-9441-E20DA08E4F42}
 	EndProjectSection
 EndProject

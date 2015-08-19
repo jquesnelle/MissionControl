@@ -271,6 +271,9 @@ class ARDroneSDK3PINVOKE {
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARDISCOVERY_Device_New")]
   public static extern global::System.IntPtr ARDISCOVERY_Device_New(ref eARDISCOVERY_ERROR jarg1);
 
+  [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARDISCOVERY_Device_Delete")]
+  public static extern void ARDISCOVERY_Device_Delete(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARDISCOVERY_Device_InitWifi")]
   public static extern int ARDISCOVERY_Device_InitWifi(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, string jarg3, string jarg4, int jarg5);
 
@@ -288,4 +291,10 @@ class ARDroneSDK3PINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Device_Start")]
   public static extern int ARCONTROLLER_Device_Start(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Device_Stop")]
+  public static extern int ARCONTROLLER_Device_Stop(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_Device_Delete")]
+  public static extern void ARCONTROLLER_Device_Delete(global::System.Runtime.InteropServices.HandleRef jarg1);
 }

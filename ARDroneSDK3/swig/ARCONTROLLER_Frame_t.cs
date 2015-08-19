@@ -18,7 +18,7 @@ public class ARCONTROLLER_Frame_t : global::System.IDisposable {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ARCONTROLLER_Frame_t obj) {
+  public static global::System.Runtime.InteropServices.HandleRef getCPtr(ARCONTROLLER_Frame_t obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 

@@ -73,6 +73,9 @@ typedef unsigned long long int  uint64_t;
 typedef long int _time_t;
 %}
 
+SWIG_CSBODY_PROXY(public, public, SWIGTYPE)
+SWIG_CSBODY_TYPEWRAPPER(public, public, public, SWIGTYPE)
+
 %include <libARController/ARCONTROLLER_Error.h>
 %include <libARDiscovery/ARDISCOVERY_Error.h>
 %include <libARController/ARCONTROLLER_DICTIONARY_Key.h>
@@ -103,11 +106,13 @@ typedef enum
 }eARCONTROLLER_DEVICE_STATE;
 
 ARDISCOVERY_Device_t *ARDISCOVERY_Device_New (eARDISCOVERY_ERROR *error);
+void ARDISCOVERY_Device_Delete (ARDISCOVERY_Device_t **device);
 eARDISCOVERY_ERROR ARDISCOVERY_Device_InitWifi (ARDISCOVERY_Device_t *device, eARDISCOVERY_PRODUCT product, const char *name, const char *address, int port);
 ARCONTROLLER_Device_t *ARCONTROLLER_Device_New (ARDISCOVERY_Device_t *discoveryDevice, eARCONTROLLER_ERROR *error);
 eARCONTROLLER_ERROR ARCONTROLLER_Device_AddStateChangedCallback (ARCONTROLLER_Device_t *deviceController, ARCONTROLLER_Device_StateChangedCallback_t stateChangedCallback, void *customData);
 eARCONTROLLER_ERROR ARCONTROLLER_Device_AddCommandReceivedCallback (ARCONTROLLER_Device_t *deviceController, ARCONTROLLER_DICTIONARY_CALLBACK_t commandReceivedCallback, void *customData);
 eARCONTROLLER_ERROR ARCONTROLLER_Device_SetVideoReceiveCallback (ARCONTROLLER_Device_t *deviceController, ARNETWORKAL_Stream_DidReceiveFrameCallback_t receiveFrameCallback, ARNETWORKAL_Stream_TimeoutFrameCallback_t timeoutFrameCallback, void *customData);
 eARCONTROLLER_ERROR ARCONTROLLER_Device_Start (ARCONTROLLER_Device_t *deviceController);
-
+eARCONTROLLER_ERROR ARCONTROLLER_Device_Stop (ARCONTROLLER_Device_t *deviceController);
+void ARCONTROLLER_Device_Delete (ARCONTROLLER_Device_t **deviceController);
 

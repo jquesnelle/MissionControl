@@ -57,6 +57,10 @@ public class ARDroneSDK3 {
     return ret;
   }
 
+  public static void ARDISCOVERY_Device_Delete(SWIGTYPE_p_p_ARDISCOVERY_Device_t device) {
+    ARDroneSDK3PINVOKE.ARDISCOVERY_Device_Delete(SWIGTYPE_p_p_ARDISCOVERY_Device_t.getCPtr(device));
+  }
+
   public static eARDISCOVERY_ERROR ARDISCOVERY_Device_InitWifi(SWIGTYPE_p_ARDISCOVERY_Device_t device, eARDISCOVERY_PRODUCT product, string name, string address, int port) {
     eARDISCOVERY_ERROR ret = (eARDISCOVERY_ERROR)ARDroneSDK3PINVOKE.ARDISCOVERY_Device_InitWifi(SWIGTYPE_p_ARDISCOVERY_Device_t.getCPtr(device), (int)product, name, address, port);
     return ret;
@@ -86,6 +90,15 @@ public class ARDroneSDK3 {
   public static eARCONTROLLER_ERROR ARCONTROLLER_Device_Start(SWIGTYPE_p_ARCONTROLLER_Device_t deviceController) {
     eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_Start(SWIGTYPE_p_ARCONTROLLER_Device_t.getCPtr(deviceController));
     return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_Stop(SWIGTYPE_p_ARCONTROLLER_Device_t deviceController) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_Stop(SWIGTYPE_p_ARCONTROLLER_Device_t.getCPtr(deviceController));
+    return ret;
+  }
+
+  public static void ARCONTROLLER_Device_Delete(SWIGTYPE_p_p_ARCONTROLLER_Device_t deviceController) {
+    ARDroneSDK3PINVOKE.ARCONTROLLER_Device_Delete(SWIGTYPE_p_p_ARCONTROLLER_Device_t.getCPtr(deviceController));
   }
 
   public static readonly int ARCONTROLLER_FRAME_DEFAULT_CAPACITY = ARDroneSDK3PINVOKE.ARCONTROLLER_FRAME_DEFAULT_CAPACITY_get();

@@ -55,7 +55,6 @@ namespace MissionControl
             base.OnResize(e);
         }
 
-        public delegate void EventHandler(object sender, EventArgs e);
         public delegate void RenderEventHandler(object sender, EventArgs e, RenderTarget target);
 
         public event EventHandler RendererCreated;

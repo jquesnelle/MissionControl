@@ -616,6 +616,14 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARDISCOVERY_Device_New(eARDISCOVERY_ERROR *
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_ARDISCOVERY_Device_Delete(void * jarg1) {
+  ARDISCOVERY_Device_t **arg1 = (ARDISCOVERY_Device_t **) 0 ;
+  
+  arg1 = (ARDISCOVERY_Device_t **)jarg1; 
+  ARDISCOVERY_Device_Delete(arg1);
+}
+
+
 SWIGEXPORT int SWIGSTDCALL CSharp_ARDISCOVERY_Device_InitWifi(void * jarg1, int jarg2, char * jarg3, char * jarg4, int jarg5) {
   int jresult ;
   ARDISCOVERY_Device_t *arg1 = (ARDISCOVERY_Device_t *) 0 ;
@@ -709,6 +717,26 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_Start(void * jarg1) {
   result = (eARCONTROLLER_ERROR)ARCONTROLLER_Device_Start(arg1);
   jresult = (int)result; 
   return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_Stop(void * jarg1) {
+  int jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Device_Stop(arg1);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_Delete(void * jarg1) {
+  ARCONTROLLER_Device_t **arg1 = (ARCONTROLLER_Device_t **) 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t **)jarg1; 
+  ARCONTROLLER_Device_Delete(arg1);
 }
 
 

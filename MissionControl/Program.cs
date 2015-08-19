@@ -17,7 +17,6 @@ namespace MissionControl
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 frm = new Form1();
-            GC.KeepAlive(frm.OnStateChanged);
             Application.Run(frm);
         }
     }
