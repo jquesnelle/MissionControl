@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARDroneSDK3.Net", "ARDroneS
 		{040CCCBD-7D36-4A2F-9BD7-FA5939BF79CB} = {040CCCBD-7D36-4A2F-9BD7-FA5939BF79CB}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libyuv", "libyuv\libyuv.vcxproj", "{980E8996-7DA7-497A-8EB8-253220715F4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,6 +169,16 @@ Global
 		{B881C8D8-41C6-4706-9441-E20DA08E4F42}.Release|x64.Build.0 = Release|Any CPU
 		{B881C8D8-41C6-4706-9441-E20DA08E4F42}.Release|x86.ActiveCfg = Release|Any CPU
 		{B881C8D8-41C6-4706-9441-E20DA08E4F42}.Release|x86.Build.0 = Release|Any CPU
+		{980E8996-7DA7-497A-8EB8-253220715F4B}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{980E8996-7DA7-497A-8EB8-253220715F4B}.Debug|x64.ActiveCfg = Debug|x64
+		{980E8996-7DA7-497A-8EB8-253220715F4B}.Debug|x64.Build.0 = Debug|x64
+		{980E8996-7DA7-497A-8EB8-253220715F4B}.Debug|x86.ActiveCfg = Debug|Win32
+		{980E8996-7DA7-497A-8EB8-253220715F4B}.Debug|x86.Build.0 = Debug|Win32
+		{980E8996-7DA7-497A-8EB8-253220715F4B}.Release|Any CPU.ActiveCfg = Release|Win32
+		{980E8996-7DA7-497A-8EB8-253220715F4B}.Release|x64.ActiveCfg = Release|x64
+		{980E8996-7DA7-497A-8EB8-253220715F4B}.Release|x64.Build.0 = Release|x64
+		{980E8996-7DA7-497A-8EB8-253220715F4B}.Release|x86.ActiveCfg = Release|Win32
+		{980E8996-7DA7-497A-8EB8-253220715F4B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

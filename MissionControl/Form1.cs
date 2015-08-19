@@ -180,7 +180,17 @@ namespace MissionControl
             mediaBuffer.Dispose();
             outputMediaBuffer.Dispose();
 
+            if(decodedLen > 0)
+                window.Invoke(refreshDelegate);
+
         }
+
+        private void RefreshVideo()
+        {
+            window.Refresh();
+        }
+
+        private MethodInvoker refreshDelegate;
 
         static Guid CLSID_CMSH264DecoderMFT = Guid.Parse("62CE7E72-4C71-4D20-B15D-452831A87D9D");
         static Guid CODECAPI_AVDecVideoAcceleration_H264 = Guid.Parse("f7db8a2f-4f48-4ee8-ae31-8b6ebe558ae2");
@@ -199,6 +209,7 @@ namespace MissionControl
         private void Form1_Shown(object sender, EventArgs e)
         {
             lastShown = this;
+            refreshDelegate = (MethodInvoker)delegate { RefreshVideo(); };
 
             eARDISCOVERY_ERROR errorDiscovery = eARDISCOVERY_ERROR.ARDISCOVERY_OK;
             eARCONTROLLER_ERROR error = eARCONTROLLER_ERROR.ARCONTROLLER_OK;
@@ -255,7 +266,7 @@ namespace MissionControl
 
             MediaType outputType = new MediaType();
             outputType.Set(MediaTypeAttributeKeys.MajorType.Guid, MediaTypeGuids.Video);
-            outputType.Set(MediaTypeAttributeKeys.Subtype.Guid, VideoFormatGuids.Iyuv);
+            outputType.Set(MediaTypeAttributeKeys.Subtype.Guid, VideoFormatGuids.I420);
             outputType.Set(MediaTypeAttributeKeys.FrameSize.Guid, PackLong(640, 368));
             outputType.Set(MediaTypeAttributeKeys.FrameRate.Guid, PackLong(30, 1));
             outputType.Set(MediaTypeAttributeKeys.PixelAspectRatio.Guid, PackLong(1, 1));
@@ -279,6 +290,12 @@ namespace MissionControl
 
 
         Bitmap videoBitmap;
+        byte[] rgbPixels;
+        Rectangle dest = new Rectangle(0, 0, 640, 368);
+
+        [DllImport("libyuv.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern int ConvertToARGB(IntPtr sample, int sample_size, IntPtr crop_argb, int argb_stride,
+                  int crop_x, int crop_y, int src_width, int src_height, int crop_width, int crop_height, int rotation, uint fourcc);
 
         private void window_Render_1(object sender, EventArgs e, RenderTarget target)
         {
@@ -288,9 +305,29 @@ namespace MissionControl
             if(videoBitmap == null)
             {
                 videoBitmap = new Bitmap(target, new Size2(640, 368), new BitmapProperties(new PixelFormat(SharpDX.DXGI.Format.B8G8R8A8_UNorm, AlphaMode.Ignore)));
+                rgbPixels = new byte[640 * 368 * 4];
             }
 
-            videoBitmap.set
+            if (latestYuvFrameLen > 0)
+            { 
+                lock (yuvFrameLock)
+                {
+                    unsafe
+                    {
+                        fixed (byte* sample = latestYuvFrame)
+                        {
+                            fixed (byte* crop_argb = rgbPixels)
+                            {
+                                ConvertToARGB((IntPtr)sample, latestYuvFrameLen, (IntPtr)crop_argb, 640 * 4, 0, 0, 640, 368, 640, 368, 0, 0x30323449);
+                                videoBitmap.CopyFromMemory((IntPtr)crop_argb, 640 * 4);
+                            }
+
+                        }
+                    }
+
+                    target.DrawBitmap(videoBitmap, 1.0f, BitmapInterpolationMode.Linear);
+                }
+            }
 
         }
     }
