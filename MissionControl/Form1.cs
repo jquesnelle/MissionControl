@@ -1,8 +1,25 @@
-﻿using System;
+﻿/*
+    Copyright (c) 2015 Jeffrey Quesnelle
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 using SharpDX.Direct2D1;
-using SharpDX.DirectInput;
+
 
 /*
 If using Windows 7:
@@ -23,6 +40,7 @@ namespace MissionControl
         }
 
         private IDrone drone;
+        private InputManager input;
 
         private MethodInvoker refreshDelegate;
 
@@ -30,7 +48,7 @@ namespace MissionControl
         {
             refreshDelegate = (MethodInvoker)delegate { RefreshVideo(); };
 
-            SetupInput();
+            input = new InputManager();
         }
 
         private void SetupDrone()
@@ -61,41 +79,14 @@ namespace MissionControl
            
         }
 
-        private static void PrintConnectedDevices(DirectInput directInput)
-        {
-            for (int i = 17; i <= 28; ++i)
-            {
-                DeviceType type = (DeviceType)i;
-                Debug.Print("--- {0} ---", type.ToString());
-                foreach (var deviceInstance in directInput.GetDevices(type, DeviceEnumerationFlags.AttachedOnly))
-                    Debug.Print("{0}: {1} (subtype {2})", deviceInstance.InstanceGuid, deviceInstance.InstanceName, Convert.ToString(deviceInstance.Subtype));
-            }
-        }
+        
 
-        private DirectInput directInput;
-        private Joystick stick;
-        private Joystick throttle;
+
 
         private void SetupInput()
         {
-            directInput = new DirectInput();
 
-            Guid stickGuid = Guid.Empty;
-            Guid throttleGuid = Guid.Empty;
-
-            PrintConnectedDevices(directInput);
-          
-            foreach (var deviceInstance in directInput.GetDevices(DeviceType.Joystick, DeviceEnumerationFlags.AttachedOnly))
-            {
-                if (deviceInstance.ProductName.Equals("Saitek Pro Flight X-55 Rhino Stick"))
-                    stickGuid = deviceInstance.InstanceGuid;
-            }
-
-            foreach (var deviceInstance in directInput.GetDevices(DeviceType.FirstPerson, DeviceEnumerationFlags.AttachedOnly))
-            {
-                if (deviceInstance.ProductName.Equals("Saitek Pro Flight X-55 Rhino Throttle"))
-                    throttleGuid = deviceInstance.InstanceGuid;
-            }
+/*
 
             stick = new Joystick(directInput, stickGuid);
             stick.Properties.BufferSize = 128;
@@ -111,6 +102,7 @@ namespace MissionControl
             lastStickStates[(int)JoystickOffset.X] = BEPOP_AXIS_OFFSET;
             lastStickStates[(int)JoystickOffset.Y] = BEPOP_AXIS_OFFSET;
             lastStickStates[(int)JoystickOffset.RotationZ] = BEPOP_AXIS_OFFSET;
+*/
 
 
         }
@@ -128,7 +120,7 @@ namespace MissionControl
 
         private void mainLoop_Tick(object sender, EventArgs e)
         {
-
+            /*
             bool takeOffPressed = false, landPressed = false, resetCommands = false;
 
             if(stick != null)
@@ -230,6 +222,7 @@ namespace MissionControl
                 }
 
             }
+            */
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
