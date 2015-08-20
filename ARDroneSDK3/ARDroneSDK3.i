@@ -76,11 +76,6 @@ typedef long int _time_t;
 SWIG_CSBODY_PROXY(public, public, SWIGTYPE)
 SWIG_CSBODY_TYPEWRAPPER(public, public, public, SWIGTYPE)
 
-%include <libARController/ARCONTROLLER_Error.h>
-%include <libARDiscovery/ARDISCOVERY_Error.h>
-%include <libARController/ARCONTROLLER_DICTIONARY_Key.h>
-%include <libARController/ARCONTROLLER_Frame.h>
-
 typedef enum
 {
     ARDISCOVERY_PRODUCT_NSNETSERVICE = 0,                               ///< WiFi products category
@@ -94,25 +89,15 @@ typedef enum
     ARDISCOVERY_PRODUCT_MAX                                             ///< Max of products
 } eARDISCOVERY_PRODUCT;
 
-typedef enum
-{
-    ARCONTROLLER_DEVICE_STATE_STOPPED = 0, /**< device controller is stopped */
-    ARCONTROLLER_DEVICE_STATE_STARTING, /**< device controller is starting */
-    ARCONTROLLER_DEVICE_STATE_RUNNING, /**< device controller is running */
-    ARCONTROLLER_DEVICE_STATE_PAUSED, /**< device controller is paused */
-    ARCONTROLLER_DEVICE_STATE_STOPPING, /**< device controller is stopping */
-    
-    ARCONTROLLER_DEVICE_STATE_MAX /**< Max of the enumeration */
-}eARCONTROLLER_DEVICE_STATE;
+%include <libARDiscovery/ARDISCOVERY_Error.h>
+%include <libARDiscovery/ARDISCOVERY_Device.h>
 
-ARDISCOVERY_Device_t *ARDISCOVERY_Device_New (eARDISCOVERY_ERROR *error);
-void ARDISCOVERY_Device_Delete (ARDISCOVERY_Device_t **device);
-eARDISCOVERY_ERROR ARDISCOVERY_Device_InitWifi (ARDISCOVERY_Device_t *device, eARDISCOVERY_PRODUCT product, const char *name, const char *address, int port);
-ARCONTROLLER_Device_t *ARCONTROLLER_Device_New (ARDISCOVERY_Device_t *discoveryDevice, eARCONTROLLER_ERROR *error);
-eARCONTROLLER_ERROR ARCONTROLLER_Device_AddStateChangedCallback (ARCONTROLLER_Device_t *deviceController, ARCONTROLLER_Device_StateChangedCallback_t stateChangedCallback, void *customData);
-eARCONTROLLER_ERROR ARCONTROLLER_Device_AddCommandReceivedCallback (ARCONTROLLER_Device_t *deviceController, ARCONTROLLER_DICTIONARY_CALLBACK_t commandReceivedCallback, void *customData);
-eARCONTROLLER_ERROR ARCONTROLLER_Device_SetVideoReceiveCallback (ARCONTROLLER_Device_t *deviceController, ARNETWORKAL_Stream_DidReceiveFrameCallback_t receiveFrameCallback, ARNETWORKAL_Stream_TimeoutFrameCallback_t timeoutFrameCallback, void *customData);
-eARCONTROLLER_ERROR ARCONTROLLER_Device_Start (ARCONTROLLER_Device_t *deviceController);
-eARCONTROLLER_ERROR ARCONTROLLER_Device_Stop (ARCONTROLLER_Device_t *deviceController);
-void ARCONTROLLER_Device_Delete (ARCONTROLLER_Device_t **deviceController);
+%include <libARController/ARCONTROLLER_Error.h>
+%include <libARController/ARCONTROLLER_DICTIONARY_Key.h>
+%include <libARController/ARCONTROLLER_Frame.h>
+%include <libARController/ARController_Device.h>
+%include <libARController/ARCONTROLLER_Dictionary.h>
 
+eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff (ARCONTROLLER_FEATURE_ARDrone3_t *feature);
+eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SendPilotingLanding (ARCONTROLLER_FEATURE_ARDrone3_t *feature);
+eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD (ARCONTROLLER_FEATURE_ARDrone3_t *feature, uint8_t flag, int8_t roll, int8_t pitch, int8_t yaw, int8_t gaz, float psi);

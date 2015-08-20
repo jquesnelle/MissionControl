@@ -16,7 +16,7 @@ namespace MissionControl
     {
         public Direct2DControl()
         {
-            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.Opaque | ControlStyles.ResizeRedraw | ControlStyles.Selectable | ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.Opaque | ControlStyles.ResizeRedraw  | ControlStyles.UserPaint, true);
 
         }
 

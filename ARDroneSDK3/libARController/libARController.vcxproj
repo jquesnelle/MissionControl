@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\libARController\ARController.h" />
+    <ClInclude Include="Includes\libARController\ARCONTROLLER_Device.h" />
     <ClInclude Include="Includes\libARController\ARCONTROLLER_Dictionary.h" />
     <ClInclude Include="Includes\libARController\ARCONTROLLER_Error.h" />
     <ClInclude Include="Includes\libARController\ARCONTROLLER_Feature.h" />

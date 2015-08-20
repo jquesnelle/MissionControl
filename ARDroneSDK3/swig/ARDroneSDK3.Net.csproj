@@ -40,20 +40,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ARCONTROLLER_Device_t.cs" />
+    <Compile Include="ARCONTROLLER_DICTIONARY_ARG_t.cs" />
+    <Compile Include="ARCONTROLLER_DICTIONARY_COMMANDS_t.cs" />
+    <Compile Include="ARCONTROLLER_DICTIONARY_ELEMENT_t.cs" />
+    <Compile Include="ARCONTROLLER_DICTIONARY_VALUE_t.cs" />
     <Compile Include="ARCONTROLLER_Frame_t.cs" />
+    <Compile Include="ARDISCOVERY_Device_t.cs" />
     <Compile Include="ARDroneSDK3.cs" />
     <Compile Include="ARDroneSDK3PINVOKE.cs" />
     <Compile Include="eARCONTROLLER_DEVICE_STATE.cs" />
     <Compile Include="eARCONTROLLER_DICTIONARY_KEY.cs" />
+    <Compile Include="eARCONTROLLER_DICTIONARY_VALUE_TYPE.cs" />
     <Compile Include="eARCONTROLLER_ERROR.cs" />
     <Compile Include="eARDISCOVERY_ERROR.cs" />
     <Compile Include="eARDISCOVERY_PRODUCT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SWIGTYPE_p_ARCONTROLLER_Device_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_Device_Private_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_DICTIONARY_ELEMENT_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_Dictionary_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3Debug_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_CommonDebug_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_Common_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_JumpingSumoDebug_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_JumpingSumo_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_MiniDroneDebug_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_MiniDrone_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_SkyControllerDebug_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARCONTROLLER_FEATURE_SkyController_t.cs" />
     <Compile Include="SWIGTYPE_p_ARDISCOVERY_Device_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARDISCOVERY_NetworkConfiguration_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARNETWORKAL_BLEDeviceManager_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARNETWORKAL_BLEDevice_t.cs" />
+    <Compile Include="SWIGTYPE_p_ARNETWORKAL_Manager_t.cs" />
+    <Compile Include="SWIGTYPE_p_eARNETWORKAL_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_json_object_p_void__eARDISCOVERY_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARDISCOVERY_Device_t_p_ARDISCOVERY_NetworkConfiguration_t__eARDISCOVERY_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARDISCOVERY_Device_t_p_enum_eARDISCOVERY_ERROR_p_eARNETWORKAL_ERROR__p_ARNETWORKAL_Manager_t.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARDISCOVERY_Device_t_p_enum_eARDISCOVERY_ERROR__p_void.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARDISCOVERY_Device_t_p_p_ARNETWORKAL_Manager_t__eARDISCOVERY_ERROR.cs" />
+    <Compile Include="SWIGTYPE_p_f_p_struct_ARDISCOVERY_Device_t__eARDISCOVERY_ERROR.cs" />
     <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_Device_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_Dictionary_t.cs" />
     <Compile Include="SWIGTYPE_p_p_ARCONTROLLER_Frame_t.cs" />
     <Compile Include="SWIGTYPE_p_p_ARDISCOVERY_Device_t.cs" />
+    <Compile Include="SWIGTYPE_p_p_ARNETWORKAL_Manager_t.cs" />
+    <Compile Include="SWIGTYPE_p_UT_hash_handle.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

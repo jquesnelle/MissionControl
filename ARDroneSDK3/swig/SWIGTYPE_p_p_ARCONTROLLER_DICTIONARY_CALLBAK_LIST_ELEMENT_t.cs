@@ -9,18 +9,18 @@
 //------------------------------------------------------------------------------
 
 
-public class SWIGTYPE_p_ARCONTROLLER_Device_t {
+public class SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  public SWIGTYPE_p_ARCONTROLLER_Device_t(global::System.IntPtr cPtr, bool futureUse) {
+  public SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t(global::System.IntPtr cPtr, bool futureUse) {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  public SWIGTYPE_p_ARCONTROLLER_Device_t() {
+  public SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t() {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
   }
 
-  public static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_ARCONTROLLER_Device_t obj) {
+  public static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 }

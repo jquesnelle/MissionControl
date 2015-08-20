@@ -16,8 +16,11 @@ namespace MissionControl
 
         void Disconnect();
 
-
         event EventHandler VideoFrameReady;
+
+        bool IsConnected { get; }
+
+        int BatteryPercent { get; }
 
     }
 }

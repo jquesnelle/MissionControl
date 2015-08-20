@@ -10,13 +10,61 @@
 
 
 public class ARDroneSDK3 {
-  public static string ARCONTROLLER_Error_ToString(eARCONTROLLER_ERROR error) {
-    string ret = ARDroneSDK3PINVOKE.ARCONTROLLER_Error_ToString((int)error);
+  public static string ARDISCOVERY_Error_ToString(eARDISCOVERY_ERROR error) {
+    string ret = ARDroneSDK3PINVOKE.ARDISCOVERY_Error_ToString((int)error);
     return ret;
   }
 
-  public static string ARDISCOVERY_Error_ToString(eARDISCOVERY_ERROR error) {
-    string ret = ARDroneSDK3PINVOKE.ARDISCOVERY_Error_ToString((int)error);
+  public static SWIGTYPE_p_ARDISCOVERY_Device_t ARDISCOVERY_Device_New(ref eARDISCOVERY_ERROR error) {
+    global::System.IntPtr cPtr = ARDroneSDK3PINVOKE.ARDISCOVERY_Device_New(ref error);
+    SWIGTYPE_p_ARDISCOVERY_Device_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_ARDISCOVERY_Device_t(cPtr, false);
+    return ret;
+  }
+
+  public static SWIGTYPE_p_ARDISCOVERY_Device_t ARDISCOVERY_Device_NewByCopy(SWIGTYPE_p_ARDISCOVERY_Device_t deviceToCopy, ref eARDISCOVERY_ERROR error) {
+    global::System.IntPtr cPtr = ARDroneSDK3PINVOKE.ARDISCOVERY_Device_NewByCopy(SWIGTYPE_p_ARDISCOVERY_Device_t.getCPtr(deviceToCopy), ref error);
+    SWIGTYPE_p_ARDISCOVERY_Device_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_ARDISCOVERY_Device_t(cPtr, false);
+    return ret;
+  }
+
+  public static void ARDISCOVERY_Device_Delete(SWIGTYPE_p_p_ARDISCOVERY_Device_t device) {
+    ARDroneSDK3PINVOKE.ARDISCOVERY_Device_Delete(SWIGTYPE_p_p_ARDISCOVERY_Device_t.getCPtr(device));
+  }
+
+  public static SWIGTYPE_p_ARNETWORKAL_Manager_t ARDISCOVERY_Device_NewARNetworkAL(SWIGTYPE_p_ARDISCOVERY_Device_t discoveryDevice, ref eARDISCOVERY_ERROR error, SWIGTYPE_p_eARNETWORKAL_ERROR errorAL) {
+    global::System.IntPtr cPtr = ARDroneSDK3PINVOKE.ARDISCOVERY_Device_NewARNetworkAL(SWIGTYPE_p_ARDISCOVERY_Device_t.getCPtr(discoveryDevice), ref error, SWIGTYPE_p_eARNETWORKAL_ERROR.getCPtr(errorAL));
+    SWIGTYPE_p_ARNETWORKAL_Manager_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_ARNETWORKAL_Manager_t(cPtr, false);
+    return ret;
+  }
+
+  public static eARDISCOVERY_ERROR ARDISCOVERY_Device_DeleteARNetworkAL(SWIGTYPE_p_ARDISCOVERY_Device_t discoveryDevice, SWIGTYPE_p_p_ARNETWORKAL_Manager_t networkALManager) {
+    eARDISCOVERY_ERROR ret = (eARDISCOVERY_ERROR)ARDroneSDK3PINVOKE.ARDISCOVERY_Device_DeleteARNetworkAL(SWIGTYPE_p_ARDISCOVERY_Device_t.getCPtr(discoveryDevice), SWIGTYPE_p_p_ARNETWORKAL_Manager_t.getCPtr(networkALManager));
+    return ret;
+  }
+
+  public static eARDISCOVERY_ERROR ARDISCOVERY_Device_InitNetworkCongifuration(SWIGTYPE_p_ARDISCOVERY_Device_t discoveryDevice, SWIGTYPE_p_ARDISCOVERY_NetworkConfiguration_t networkConfiguration) {
+    eARDISCOVERY_ERROR ret = (eARDISCOVERY_ERROR)ARDroneSDK3PINVOKE.ARDISCOVERY_Device_InitNetworkCongifuration(SWIGTYPE_p_ARDISCOVERY_Device_t.getCPtr(discoveryDevice), SWIGTYPE_p_ARDISCOVERY_NetworkConfiguration_t.getCPtr(networkConfiguration));
+    return ret;
+  }
+
+  public static eARDISCOVERY_ERROR ARDISCOVERY_Device_InitWifi(SWIGTYPE_p_ARDISCOVERY_Device_t device, eARDISCOVERY_PRODUCT product, string name, string address, int port) {
+    eARDISCOVERY_ERROR ret = (eARDISCOVERY_ERROR)ARDroneSDK3PINVOKE.ARDISCOVERY_Device_InitWifi(SWIGTYPE_p_ARDISCOVERY_Device_t.getCPtr(device), (int)product, name, address, port);
+    return ret;
+  }
+
+  public static eARDISCOVERY_ERROR ARDISCOVERY_Device_WifiAddConnectionCallbacks(SWIGTYPE_p_ARDISCOVERY_Device_t device, SWIGTYPE_p_f_p_json_object_p_void__eARDISCOVERY_ERROR sendJsonCallback, SWIGTYPE_p_f_p_json_object_p_void__eARDISCOVERY_ERROR receiveJsonCallback, System.IntPtr customData) {
+    eARDISCOVERY_ERROR ret = (eARDISCOVERY_ERROR)ARDroneSDK3PINVOKE.ARDISCOVERY_Device_WifiAddConnectionCallbacks(SWIGTYPE_p_ARDISCOVERY_Device_t.getCPtr(device), SWIGTYPE_p_f_p_json_object_p_void__eARDISCOVERY_ERROR.getCPtr(sendJsonCallback), SWIGTYPE_p_f_p_json_object_p_void__eARDISCOVERY_ERROR.getCPtr(receiveJsonCallback), new global::System.Runtime.InteropServices.HandleRef(null, customData));
+    return ret;
+  }
+
+  public static eARDISCOVERY_ERROR ARDISCOVERY_Device_InitBLE(SWIGTYPE_p_ARDISCOVERY_Device_t device, eARDISCOVERY_PRODUCT product, SWIGTYPE_p_ARNETWORKAL_BLEDeviceManager_t bleDeviceManager, SWIGTYPE_p_ARNETWORKAL_BLEDevice_t bleDevice) {
+    eARDISCOVERY_ERROR ret = (eARDISCOVERY_ERROR)ARDroneSDK3PINVOKE.ARDISCOVERY_Device_InitBLE(SWIGTYPE_p_ARDISCOVERY_Device_t.getCPtr(device), (int)product, SWIGTYPE_p_ARNETWORKAL_BLEDeviceManager_t.getCPtr(bleDeviceManager), SWIGTYPE_p_ARNETWORKAL_BLEDevice_t.getCPtr(bleDevice));
+    if (ARDroneSDK3PINVOKE.SWIGPendingException.Pending) throw ARDroneSDK3PINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public static string ARCONTROLLER_Error_ToString(eARCONTROLLER_ERROR error) {
+    string ret = ARDroneSDK3PINVOKE.ARCONTROLLER_Error_ToString((int)error);
     return ret;
   }
 
@@ -51,49 +99,9 @@ public class ARDroneSDK3 {
     return ret;
   }
 
-  public static SWIGTYPE_p_ARDISCOVERY_Device_t ARDISCOVERY_Device_New(ref eARDISCOVERY_ERROR error) {
-    global::System.IntPtr cPtr = ARDroneSDK3PINVOKE.ARDISCOVERY_Device_New(ref error);
-    SWIGTYPE_p_ARDISCOVERY_Device_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_ARDISCOVERY_Device_t(cPtr, false);
-    return ret;
-  }
-
-  public static void ARDISCOVERY_Device_Delete(SWIGTYPE_p_p_ARDISCOVERY_Device_t device) {
-    ARDroneSDK3PINVOKE.ARDISCOVERY_Device_Delete(SWIGTYPE_p_p_ARDISCOVERY_Device_t.getCPtr(device));
-  }
-
-  public static eARDISCOVERY_ERROR ARDISCOVERY_Device_InitWifi(SWIGTYPE_p_ARDISCOVERY_Device_t device, eARDISCOVERY_PRODUCT product, string name, string address, int port) {
-    eARDISCOVERY_ERROR ret = (eARDISCOVERY_ERROR)ARDroneSDK3PINVOKE.ARDISCOVERY_Device_InitWifi(SWIGTYPE_p_ARDISCOVERY_Device_t.getCPtr(device), (int)product, name, address, port);
-    return ret;
-  }
-
-  public static SWIGTYPE_p_ARCONTROLLER_Device_t ARCONTROLLER_Device_New(SWIGTYPE_p_ARDISCOVERY_Device_t discoveryDevice, ref eARCONTROLLER_ERROR error) {
+  public static ARCONTROLLER_Device_t ARCONTROLLER_Device_New(SWIGTYPE_p_ARDISCOVERY_Device_t discoveryDevice, ref eARCONTROLLER_ERROR error) {
     global::System.IntPtr cPtr = ARDroneSDK3PINVOKE.ARCONTROLLER_Device_New(SWIGTYPE_p_ARDISCOVERY_Device_t.getCPtr(discoveryDevice), ref error);
-    SWIGTYPE_p_ARCONTROLLER_Device_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_ARCONTROLLER_Device_t(cPtr, false);
-    return ret;
-  }
-
-  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_AddStateChangedCallback(SWIGTYPE_p_ARCONTROLLER_Device_t deviceController, System.IntPtr stateChangedCallback, System.IntPtr customData) {
-    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_AddStateChangedCallback(SWIGTYPE_p_ARCONTROLLER_Device_t.getCPtr(deviceController), stateChangedCallback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
-    return ret;
-  }
-
-  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_AddCommandReceivedCallback(SWIGTYPE_p_ARCONTROLLER_Device_t deviceController, System.IntPtr commandReceivedCallback, System.IntPtr customData) {
-    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_AddCommandReceivedCallback(SWIGTYPE_p_ARCONTROLLER_Device_t.getCPtr(deviceController), commandReceivedCallback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
-    return ret;
-  }
-
-  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_SetVideoReceiveCallback(SWIGTYPE_p_ARCONTROLLER_Device_t deviceController, System.IntPtr receiveFrameCallback, System.IntPtr timeoutFrameCallback, System.IntPtr customData) {
-    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_SetVideoReceiveCallback(SWIGTYPE_p_ARCONTROLLER_Device_t.getCPtr(deviceController), receiveFrameCallback, timeoutFrameCallback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
-    return ret;
-  }
-
-  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_Start(SWIGTYPE_p_ARCONTROLLER_Device_t deviceController) {
-    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_Start(SWIGTYPE_p_ARCONTROLLER_Device_t.getCPtr(deviceController));
-    return ret;
-  }
-
-  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_Stop(SWIGTYPE_p_ARCONTROLLER_Device_t deviceController) {
-    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_Stop(SWIGTYPE_p_ARCONTROLLER_Device_t.getCPtr(deviceController));
+    ARCONTROLLER_Device_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new ARCONTROLLER_Device_t(cPtr, false);
     return ret;
   }
 
@@ -101,5 +109,124 @@ public class ARDroneSDK3 {
     ARDroneSDK3PINVOKE.ARCONTROLLER_Device_Delete(SWIGTYPE_p_p_ARCONTROLLER_Device_t.getCPtr(deviceController));
   }
 
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_Start(ARCONTROLLER_Device_t deviceController) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_Start(ARCONTROLLER_Device_t.getCPtr(deviceController));
+    return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_Stop(ARCONTROLLER_Device_t deviceController) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_Stop(ARCONTROLLER_Device_t.getCPtr(deviceController));
+    return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_SetVideoReceiveCallback(ARCONTROLLER_Device_t deviceController, System.IntPtr receiveFrameCallback, System.IntPtr timeoutFrameCallback, System.IntPtr customData) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_SetVideoReceiveCallback(ARCONTROLLER_Device_t.getCPtr(deviceController), receiveFrameCallback, timeoutFrameCallback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
+    return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_AddCommandReceivedCallback(ARCONTROLLER_Device_t deviceController, System.IntPtr commandReceivedCallback, System.IntPtr customData) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_AddCommandReceivedCallback(ARCONTROLLER_Device_t.getCPtr(deviceController), commandReceivedCallback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
+    return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_RemoveCommandReceivedCallback(ARCONTROLLER_Device_t deviceController, System.IntPtr commandReceivedCallback, System.IntPtr customData) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_RemoveCommandReceivedCallback(ARCONTROLLER_Device_t.getCPtr(deviceController), commandReceivedCallback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
+    return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_AddStateChangedCallback(ARCONTROLLER_Device_t deviceController, System.IntPtr stateChangedCallback, System.IntPtr customData) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_AddStateChangedCallback(ARCONTROLLER_Device_t.getCPtr(deviceController), stateChangedCallback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
+    return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Device_RemoveStateChangedCallback(ARCONTROLLER_Device_t deviceController, System.IntPtr stateChangedCallback, System.IntPtr customData) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_RemoveStateChangedCallback(ARCONTROLLER_Device_t.getCPtr(deviceController), stateChangedCallback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
+    return ret;
+  }
+
+  public static ARCONTROLLER_DICTIONARY_ELEMENT_t ARCONTROLLER_Device_GetCommandElements(ARCONTROLLER_Device_t deviceController, eARCONTROLLER_DICTIONARY_KEY commandKey, ref eARCONTROLLER_ERROR error) {
+    global::System.IntPtr cPtr = ARDroneSDK3PINVOKE.ARCONTROLLER_Device_GetCommandElements(ARCONTROLLER_Device_t.getCPtr(deviceController), (int)commandKey, ref error);
+    ARCONTROLLER_DICTIONARY_ELEMENT_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new ARCONTROLLER_DICTIONARY_ELEMENT_t(cPtr, false);
+    return ret;
+  }
+
+  public static eARCONTROLLER_DEVICE_STATE ARCONTROLLER_Device_GetState(ARCONTROLLER_Device_t deviceController, ref eARCONTROLLER_ERROR error) {
+    eARCONTROLLER_DEVICE_STATE ret = (eARCONTROLLER_DEVICE_STATE)ARDroneSDK3PINVOKE.ARCONTROLLER_Device_GetState(ARCONTROLLER_Device_t.getCPtr(deviceController), ref error);
+    return ret;
+  }
+
+  public static SWIGTYPE_p_ARCONTROLLER_Dictionary_t ARCONTROLLER_Dictionary_New(eARCONTROLLER_DICTIONARY_KEY commandKey, ref eARCONTROLLER_ERROR error) {
+    global::System.IntPtr cPtr = ARDroneSDK3PINVOKE.ARCONTROLLER_Dictionary_New((int)commandKey, ref error);
+    SWIGTYPE_p_ARCONTROLLER_Dictionary_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_ARCONTROLLER_Dictionary_t(cPtr, false);
+    return ret;
+  }
+
+  public static void ARCONTROLLER_Dictionary_Delete(SWIGTYPE_p_p_ARCONTROLLER_Dictionary_t dictionary) {
+    ARDroneSDK3PINVOKE.ARCONTROLLER_Dictionary_Delete(SWIGTYPE_p_p_ARCONTROLLER_Dictionary_t.getCPtr(dictionary));
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Dictionary_AddCallback(SWIGTYPE_p_ARCONTROLLER_Dictionary_t element, System.IntPtr callback, System.IntPtr customData) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Dictionary_AddCallback(SWIGTYPE_p_ARCONTROLLER_Dictionary_t.getCPtr(element), callback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
+    return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Dictionary_RemoveCallback(SWIGTYPE_p_ARCONTROLLER_Dictionary_t element, System.IntPtr callback, System.IntPtr customData) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Dictionary_RemoveCallback(SWIGTYPE_p_ARCONTROLLER_Dictionary_t.getCPtr(element), callback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
+    return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Dictionary_AddDictionaryElement(SWIGTYPE_p_p_ARCONTROLLER_Dictionary_t dictionary, eARCONTROLLER_DICTIONARY_KEY commandKey, System.IntPtr callback, System.IntPtr customData) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Dictionary_AddDictionaryElement(SWIGTYPE_p_p_ARCONTROLLER_Dictionary_t.getCPtr(dictionary), (int)commandKey, callback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
+    return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Dictionary_RemoveDictionaryElement(SWIGTYPE_p_ARCONTROLLER_Dictionary_t dictionary, eARCONTROLLER_DICTIONARY_KEY commandKey, System.IntPtr callback, System.IntPtr customData) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Dictionary_RemoveDictionaryElement(SWIGTYPE_p_ARCONTROLLER_Dictionary_t.getCPtr(dictionary), (int)commandKey, callback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
+    return ret;
+  }
+
+  public static void ARCONTROLLER_Dictionary_DeleteDictionary(SWIGTYPE_p_p_ARCONTROLLER_Dictionary_t dictionary) {
+    ARDroneSDK3PINVOKE.ARCONTROLLER_Dictionary_DeleteDictionary(SWIGTYPE_p_p_ARCONTROLLER_Dictionary_t.getCPtr(dictionary));
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Dictionary_Notify(SWIGTYPE_p_ARCONTROLLER_Dictionary_t dictionary, eARCONTROLLER_DICTIONARY_KEY commandKey, ARCONTROLLER_DICTIONARY_ELEMENT_t elementDictionary) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Dictionary_Notify(SWIGTYPE_p_ARCONTROLLER_Dictionary_t.getCPtr(dictionary), (int)commandKey, ARCONTROLLER_DICTIONARY_ELEMENT_t.getCPtr(elementDictionary));
+    return ret;
+  }
+
+  public static void ARCONTROLLER_Dictionary_DeleteCallbackList(SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t callbackList) {
+    ARDroneSDK3PINVOKE.ARCONTROLLER_Dictionary_DeleteCallbackList(SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t.getCPtr(callbackList));
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Dictionary_AddCallbackInList(SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t callbackList, System.IntPtr callback, System.IntPtr customData) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Dictionary_AddCallbackInList(SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t.getCPtr(callbackList), callback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
+    return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_Dictionary_RemoveCallbackFromList(SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t callbackList, System.IntPtr callback, System.IntPtr customData) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_Dictionary_RemoveCallbackFromList(SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t.getCPtr(callbackList), callback, new global::System.Runtime.InteropServices.HandleRef(null, customData));
+    return ret;
+  }
+
+  public static void ARCONTROLLER_DICTIONARY_NotifyAllCallbackInList(SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t callbackList, eARCONTROLLER_DICTIONARY_KEY commandKey, ARCONTROLLER_DICTIONARY_ELEMENT_t elementDictionary) {
+    ARDroneSDK3PINVOKE.ARCONTROLLER_DICTIONARY_NotifyAllCallbackInList(SWIGTYPE_p_p_ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t.getCPtr(callbackList), (int)commandKey, ARCONTROLLER_DICTIONARY_ELEMENT_t.getCPtr(elementDictionary));
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff(SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3_t feature) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff(SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3_t.getCPtr(feature));
+    return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SendPilotingLanding(SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3_t feature) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_FEATURE_ARDrone3_SendPilotingLanding(SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3_t.getCPtr(feature));
+    return ret;
+  }
+
+  public static eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD(SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3_t feature, byte flag, sbyte roll, sbyte pitch, sbyte yaw, sbyte gaz, float psi) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD(SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3_t.getCPtr(feature), flag, roll, pitch, yaw, gaz, psi);
+    return ret;
+  }
+
   public static readonly int ARCONTROLLER_FRAME_DEFAULT_CAPACITY = ARDroneSDK3PINVOKE.ARCONTROLLER_FRAME_DEFAULT_CAPACITY_get();
+  public static readonly string ARCONTROLLER_DICTIONARY_SINGLE_KEY = ARDroneSDK3PINVOKE.ARCONTROLLER_DICTIONARY_SINGLE_KEY_get();
 }

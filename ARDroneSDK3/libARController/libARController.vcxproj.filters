@@ -66,6 +66,9 @@
     <ClInclude Include="Sources\ARCONTROLLER_StreamQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Includes\libARController\ARCONTROLLER_Device.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\ARCONTROLLER_Dictionary.c">

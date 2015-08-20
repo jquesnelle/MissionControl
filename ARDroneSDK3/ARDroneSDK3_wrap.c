@@ -302,18 +302,6 @@ typedef long int _time_t;
 extern "C" {
 #endif
 
-SWIGEXPORT char * SWIGSTDCALL CSharp_ARCONTROLLER_Error_ToString(int jarg1) {
-  char * jresult ;
-  eARCONTROLLER_ERROR arg1 ;
-  char *result = 0 ;
-  
-  arg1 = (eARCONTROLLER_ERROR)jarg1; 
-  result = (char *)ARCONTROLLER_Error_ToString(arg1);
-  jresult = SWIG_csharp_string_callback((const char *)result); 
-  return jresult;
-}
-
-
 SWIGEXPORT char * SWIGSTDCALL CSharp_ARDISCOVERY_Error_ToString(int jarg1) {
   char * jresult ;
   eARDISCOVERY_ERROR arg1 ;
@@ -321,6 +309,366 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_ARDISCOVERY_Error_ToString(int jarg1) {
   
   arg1 = (eARDISCOVERY_ERROR)jarg1; 
   result = (char *)ARDISCOVERY_Error_ToString(arg1);
+  jresult = SWIG_csharp_string_callback((const char *)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_name_set(void * jarg1, char * jarg2) {
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (char *)jarg2; 
+  {
+    free(arg1->name);
+    if (arg2) {
+      arg1->name = (char *) malloc(strlen((const char *)arg2)+1);
+      strcpy((char *)arg1->name, (const char *)arg2);
+    } else {
+      arg1->name = 0;
+    }
+  }
+}
+
+
+SWIGEXPORT char * SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_name_get(void * jarg1) {
+  char * jresult ;
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  char *result = 0 ;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  result = (char *) ((arg1)->name);
+  jresult = SWIG_csharp_string_callback((const char *)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_productID_set(void * jarg1, int jarg2) {
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  eARDISCOVERY_PRODUCT arg2 ;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (eARDISCOVERY_PRODUCT)jarg2; 
+  if (arg1) (arg1)->productID = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_productID_get(void * jarg1) {
+  int jresult ;
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  eARDISCOVERY_PRODUCT result;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  result = (eARDISCOVERY_PRODUCT) ((arg1)->productID);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_newNetworkAL_set(void * jarg1, void * jarg2) {
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  ARDISCOVERY_DEVICE_NewARNetworkAL_t arg2 = (ARDISCOVERY_DEVICE_NewARNetworkAL_t) 0 ;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (ARDISCOVERY_DEVICE_NewARNetworkAL_t)jarg2; 
+  if (arg1) (arg1)->newNetworkAL = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_newNetworkAL_get(void * jarg1) {
+  void * jresult ;
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  ARDISCOVERY_DEVICE_NewARNetworkAL_t result;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  result = (ARDISCOVERY_DEVICE_NewARNetworkAL_t) ((arg1)->newNetworkAL);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_deleteNetworkAL_set(void * jarg1, void * jarg2) {
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  ARDISCOVERY_DEVICE_DeleteARNetworkAL_t arg2 = (ARDISCOVERY_DEVICE_DeleteARNetworkAL_t) 0 ;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (ARDISCOVERY_DEVICE_DeleteARNetworkAL_t)jarg2; 
+  if (arg1) (arg1)->deleteNetworkAL = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_deleteNetworkAL_get(void * jarg1) {
+  void * jresult ;
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  ARDISCOVERY_DEVICE_DeleteARNetworkAL_t result;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  result = (ARDISCOVERY_DEVICE_DeleteARNetworkAL_t) ((arg1)->deleteNetworkAL);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_initNetworkCongifuration_set(void * jarg1, void * jarg2) {
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  ARDISCOVERY_DEVICE_InitNetworkCongifuration_t arg2 = (ARDISCOVERY_DEVICE_InitNetworkCongifuration_t) 0 ;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (ARDISCOVERY_DEVICE_InitNetworkCongifuration_t)jarg2; 
+  if (arg1) (arg1)->initNetworkCongifuration = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_initNetworkCongifuration_get(void * jarg1) {
+  void * jresult ;
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  ARDISCOVERY_DEVICE_InitNetworkCongifuration_t result;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  result = (ARDISCOVERY_DEVICE_InitNetworkCongifuration_t) ((arg1)->initNetworkCongifuration);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_specificParameters_set(void * jarg1, void * jarg2) {
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  void *arg2 = (void *) 0 ;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (void *)jarg2; 
+  if (arg1) (arg1)->specificParameters = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_specificParameters_get(void * jarg1) {
+  void * jresult ;
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  void *result = 0 ;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  result = (void *) ((arg1)->specificParameters);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_getCopyOfSpecificParameters_set(void * jarg1, void * jarg2) {
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  ARDISCOVERY_DEVICE_GetCopyOfSpecificParameters_t arg2 = (ARDISCOVERY_DEVICE_GetCopyOfSpecificParameters_t) 0 ;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (ARDISCOVERY_DEVICE_GetCopyOfSpecificParameters_t)jarg2; 
+  if (arg1) (arg1)->getCopyOfSpecificParameters = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_getCopyOfSpecificParameters_get(void * jarg1) {
+  void * jresult ;
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  ARDISCOVERY_DEVICE_GetCopyOfSpecificParameters_t result;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  result = (ARDISCOVERY_DEVICE_GetCopyOfSpecificParameters_t) ((arg1)->getCopyOfSpecificParameters);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_deleteSpecificParameters_set(void * jarg1, void * jarg2) {
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  ARDISCOVERY_DEVICE_DelecteSpecificParameters_t arg2 = (ARDISCOVERY_DEVICE_DelecteSpecificParameters_t) 0 ;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (ARDISCOVERY_DEVICE_DelecteSpecificParameters_t)jarg2; 
+  if (arg1) (arg1)->deleteSpecificParameters = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARDISCOVERY_Device_t_deleteSpecificParameters_get(void * jarg1) {
+  void * jresult ;
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  ARDISCOVERY_DEVICE_DelecteSpecificParameters_t result;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  result = (ARDISCOVERY_DEVICE_DelecteSpecificParameters_t) ((arg1)->deleteSpecificParameters);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ARDISCOVERY_Device_t() {
+  void * jresult ;
+  struct ARDISCOVERY_Device_t *result = 0 ;
+  
+  result = (struct ARDISCOVERY_Device_t *)calloc(1, sizeof(struct ARDISCOVERY_Device_t));
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ARDISCOVERY_Device_t(void * jarg1) {
+  struct ARDISCOVERY_Device_t *arg1 = (struct ARDISCOVERY_Device_t *) 0 ;
+  
+  arg1 = (struct ARDISCOVERY_Device_t *)jarg1; 
+  free((char *) arg1);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARDISCOVERY_Device_New(eARDISCOVERY_ERROR * jarg1) {
+  void * jresult ;
+  eARDISCOVERY_ERROR *arg1 = (eARDISCOVERY_ERROR *) 0 ;
+  ARDISCOVERY_Device_t *result = 0 ;
+  
+  arg1 = (eARDISCOVERY_ERROR *)jarg1; 
+  result = (ARDISCOVERY_Device_t *)ARDISCOVERY_Device_New(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARDISCOVERY_Device_NewByCopy(void * jarg1, eARDISCOVERY_ERROR * jarg2) {
+  void * jresult ;
+  ARDISCOVERY_Device_t *arg1 = (ARDISCOVERY_Device_t *) 0 ;
+  eARDISCOVERY_ERROR *arg2 = (eARDISCOVERY_ERROR *) 0 ;
+  ARDISCOVERY_Device_t *result = 0 ;
+  
+  arg1 = (ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (eARDISCOVERY_ERROR *)jarg2; 
+  result = (ARDISCOVERY_Device_t *)ARDISCOVERY_Device_NewByCopy(arg1,arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARDISCOVERY_Device_Delete(void * jarg1) {
+  ARDISCOVERY_Device_t **arg1 = (ARDISCOVERY_Device_t **) 0 ;
+  
+  arg1 = (ARDISCOVERY_Device_t **)jarg1; 
+  ARDISCOVERY_Device_Delete(arg1);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARDISCOVERY_Device_NewARNetworkAL(void * jarg1, eARDISCOVERY_ERROR * jarg2, void * jarg3) {
+  void * jresult ;
+  ARDISCOVERY_Device_t *arg1 = (ARDISCOVERY_Device_t *) 0 ;
+  eARDISCOVERY_ERROR *arg2 = (eARDISCOVERY_ERROR *) 0 ;
+  eARNETWORKAL_ERROR *arg3 = (eARNETWORKAL_ERROR *) 0 ;
+  ARNETWORKAL_Manager_t *result = 0 ;
+  
+  arg1 = (ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (eARDISCOVERY_ERROR *)jarg2; 
+  arg3 = (eARNETWORKAL_ERROR *)jarg3; 
+  result = (ARNETWORKAL_Manager_t *)ARDISCOVERY_Device_NewARNetworkAL(arg1,arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARDISCOVERY_Device_DeleteARNetworkAL(void * jarg1, void * jarg2) {
+  int jresult ;
+  ARDISCOVERY_Device_t *arg1 = (ARDISCOVERY_Device_t *) 0 ;
+  ARNETWORKAL_Manager_t **arg2 = (ARNETWORKAL_Manager_t **) 0 ;
+  eARDISCOVERY_ERROR result;
+  
+  arg1 = (ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (ARNETWORKAL_Manager_t **)jarg2; 
+  result = (eARDISCOVERY_ERROR)ARDISCOVERY_Device_DeleteARNetworkAL(arg1,arg2);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARDISCOVERY_Device_InitNetworkCongifuration(void * jarg1, void * jarg2) {
+  int jresult ;
+  ARDISCOVERY_Device_t *arg1 = (ARDISCOVERY_Device_t *) 0 ;
+  ARDISCOVERY_NetworkConfiguration_t *arg2 = (ARDISCOVERY_NetworkConfiguration_t *) 0 ;
+  eARDISCOVERY_ERROR result;
+  
+  arg1 = (ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (ARDISCOVERY_NetworkConfiguration_t *)jarg2; 
+  result = (eARDISCOVERY_ERROR)ARDISCOVERY_Device_InitNetworkCongifuration(arg1,arg2);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARDISCOVERY_Device_InitWifi(void * jarg1, int jarg2, char * jarg3, char * jarg4, int jarg5) {
+  int jresult ;
+  ARDISCOVERY_Device_t *arg1 = (ARDISCOVERY_Device_t *) 0 ;
+  eARDISCOVERY_PRODUCT arg2 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  int arg5 ;
+  eARDISCOVERY_ERROR result;
+  
+  arg1 = (ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (eARDISCOVERY_PRODUCT)jarg2; 
+  arg3 = (char *)jarg3; 
+  arg4 = (char *)jarg4; 
+  arg5 = (int)jarg5; 
+  result = (eARDISCOVERY_ERROR)ARDISCOVERY_Device_InitWifi(arg1,arg2,(char const *)arg3,(char const *)arg4,arg5);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARDISCOVERY_Device_WifiAddConnectionCallbacks(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  int jresult ;
+  ARDISCOVERY_Device_t *arg1 = (ARDISCOVERY_Device_t *) 0 ;
+  ARDISCOVERY_Device_ConnectionJsonCallback_t arg2 = (ARDISCOVERY_Device_ConnectionJsonCallback_t) 0 ;
+  ARDISCOVERY_Device_ConnectionJsonCallback_t arg3 = (ARDISCOVERY_Device_ConnectionJsonCallback_t) 0 ;
+  void *arg4 = (void *) 0 ;
+  eARDISCOVERY_ERROR result;
+  
+  arg1 = (ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (ARDISCOVERY_Device_ConnectionJsonCallback_t)jarg2; 
+  arg3 = (ARDISCOVERY_Device_ConnectionJsonCallback_t)jarg3; 
+  arg4 = (void *)jarg4; 
+  result = (eARDISCOVERY_ERROR)ARDISCOVERY_Device_WifiAddConnectionCallbacks(arg1,arg2,arg3,arg4);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARDISCOVERY_Device_InitBLE(void * jarg1, int jarg2, void * jarg3, void * jarg4) {
+  int jresult ;
+  ARDISCOVERY_Device_t *arg1 = (ARDISCOVERY_Device_t *) 0 ;
+  eARDISCOVERY_PRODUCT arg2 ;
+  ARNETWORKAL_BLEDeviceManager_t arg3 ;
+  ARNETWORKAL_BLEDevice_t arg4 ;
+  ARNETWORKAL_BLEDeviceManager_t *argp3 ;
+  ARNETWORKAL_BLEDevice_t *argp4 ;
+  eARDISCOVERY_ERROR result;
+  
+  arg1 = (ARDISCOVERY_Device_t *)jarg1; 
+  arg2 = (eARDISCOVERY_PRODUCT)jarg2; 
+  argp3 = (ARNETWORKAL_BLEDeviceManager_t *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ARNETWORKAL_BLEDeviceManager_t", 0);
+    return 0;
+  }
+  arg3 = *argp3; 
+  argp4 = (ARNETWORKAL_BLEDevice_t *)jarg4; 
+  if (!argp4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null ARNETWORKAL_BLEDevice_t", 0);
+    return 0;
+  }
+  arg4 = *argp4; 
+  result = (eARDISCOVERY_ERROR)ARDISCOVERY_Device_InitBLE(arg1,arg2,arg3,arg4);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT char * SWIGSTDCALL CSharp_ARCONTROLLER_Error_ToString(int jarg1) {
+  char * jresult ;
+  eARCONTROLLER_ERROR arg1 ;
+  char *result = 0 ;
+  
+  arg1 = (eARCONTROLLER_ERROR)jarg1; 
+  result = (char *)ARCONTROLLER_Error_ToString(arg1);
   jresult = SWIG_csharp_string_callback((const char *)result); 
   return jresult;
 }
@@ -604,43 +952,263 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Frame_SetFree(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_ARDISCOVERY_Device_New(eARDISCOVERY_ERROR * jarg1) {
-  void * jresult ;
-  eARDISCOVERY_ERROR *arg1 = (eARDISCOVERY_ERROR *) 0 ;
-  ARDISCOVERY_Device_t *result = 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_aRDrone3_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_ARDrone3_t *arg2 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
   
-  arg1 = (eARDISCOVERY_ERROR *)jarg1; 
-  result = (ARDISCOVERY_Device_t *)ARDISCOVERY_Device_New(arg1);
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_FEATURE_ARDrone3_t *)jarg2; 
+  if (arg1) (arg1)->aRDrone3 = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_aRDrone3_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_ARDrone3_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  result = (ARCONTROLLER_FEATURE_ARDrone3_t *) ((arg1)->aRDrone3);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ARDISCOVERY_Device_Delete(void * jarg1) {
-  ARDISCOVERY_Device_t **arg1 = (ARDISCOVERY_Device_t **) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_aRDrone3Debug_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_ARDrone3Debug_t *arg2 = (ARCONTROLLER_FEATURE_ARDrone3Debug_t *) 0 ;
   
-  arg1 = (ARDISCOVERY_Device_t **)jarg1; 
-  ARDISCOVERY_Device_Delete(arg1);
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_FEATURE_ARDrone3Debug_t *)jarg2; 
+  if (arg1) (arg1)->aRDrone3Debug = arg2;
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARDISCOVERY_Device_InitWifi(void * jarg1, int jarg2, char * jarg3, char * jarg4, int jarg5) {
-  int jresult ;
-  ARDISCOVERY_Device_t *arg1 = (ARDISCOVERY_Device_t *) 0 ;
-  eARDISCOVERY_PRODUCT arg2 ;
-  char *arg3 = (char *) 0 ;
-  char *arg4 = (char *) 0 ;
-  int arg5 ;
-  eARDISCOVERY_ERROR result;
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_aRDrone3Debug_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_ARDrone3Debug_t *result = 0 ;
   
-  arg1 = (ARDISCOVERY_Device_t *)jarg1; 
-  arg2 = (eARDISCOVERY_PRODUCT)jarg2; 
-  arg3 = (char *)jarg3; 
-  arg4 = (char *)jarg4; 
-  arg5 = (int)jarg5; 
-  result = (eARDISCOVERY_ERROR)ARDISCOVERY_Device_InitWifi(arg1,arg2,(char const *)arg3,(char const *)arg4,arg5);
-  jresult = (int)result; 
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  result = (ARCONTROLLER_FEATURE_ARDrone3Debug_t *) ((arg1)->aRDrone3Debug);
+  jresult = (void *)result; 
   return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_common_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_Common_t *arg2 = (ARCONTROLLER_FEATURE_Common_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_FEATURE_Common_t *)jarg2; 
+  if (arg1) (arg1)->common = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_common_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_Common_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  result = (ARCONTROLLER_FEATURE_Common_t *) ((arg1)->common);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_commonDebug_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_CommonDebug_t *arg2 = (ARCONTROLLER_FEATURE_CommonDebug_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_FEATURE_CommonDebug_t *)jarg2; 
+  if (arg1) (arg1)->commonDebug = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_commonDebug_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_CommonDebug_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  result = (ARCONTROLLER_FEATURE_CommonDebug_t *) ((arg1)->commonDebug);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_jumpingSumo_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_JumpingSumo_t *arg2 = (ARCONTROLLER_FEATURE_JumpingSumo_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_FEATURE_JumpingSumo_t *)jarg2; 
+  if (arg1) (arg1)->jumpingSumo = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_jumpingSumo_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_JumpingSumo_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  result = (ARCONTROLLER_FEATURE_JumpingSumo_t *) ((arg1)->jumpingSumo);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_jumpingSumoDebug_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_JumpingSumoDebug_t *arg2 = (ARCONTROLLER_FEATURE_JumpingSumoDebug_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_FEATURE_JumpingSumoDebug_t *)jarg2; 
+  if (arg1) (arg1)->jumpingSumoDebug = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_jumpingSumoDebug_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_JumpingSumoDebug_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  result = (ARCONTROLLER_FEATURE_JumpingSumoDebug_t *) ((arg1)->jumpingSumoDebug);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_miniDrone_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_MiniDrone_t *arg2 = (ARCONTROLLER_FEATURE_MiniDrone_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_FEATURE_MiniDrone_t *)jarg2; 
+  if (arg1) (arg1)->miniDrone = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_miniDrone_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_MiniDrone_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  result = (ARCONTROLLER_FEATURE_MiniDrone_t *) ((arg1)->miniDrone);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_miniDroneDebug_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_MiniDroneDebug_t *arg2 = (ARCONTROLLER_FEATURE_MiniDroneDebug_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_FEATURE_MiniDroneDebug_t *)jarg2; 
+  if (arg1) (arg1)->miniDroneDebug = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_miniDroneDebug_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_MiniDroneDebug_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  result = (ARCONTROLLER_FEATURE_MiniDroneDebug_t *) ((arg1)->miniDroneDebug);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_skyController_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_SkyController_t *arg2 = (ARCONTROLLER_FEATURE_SkyController_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_FEATURE_SkyController_t *)jarg2; 
+  if (arg1) (arg1)->skyController = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_skyController_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_SkyController_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  result = (ARCONTROLLER_FEATURE_SkyController_t *) ((arg1)->skyController);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_skyControllerDebug_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_SkyControllerDebug_t *arg2 = (ARCONTROLLER_FEATURE_SkyControllerDebug_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_FEATURE_SkyControllerDebug_t *)jarg2; 
+  if (arg1) (arg1)->skyControllerDebug = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_skyControllerDebug_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_FEATURE_SkyControllerDebug_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  result = (ARCONTROLLER_FEATURE_SkyControllerDebug_t *) ((arg1)->skyControllerDebug);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_privatePart_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_Device_Private_t *arg2 = (ARCONTROLLER_Device_Private_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_Device_Private_t *)jarg2; 
+  if (arg1) (arg1)->privatePart = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_t_privatePart_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_Device_Private_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  result = (ARCONTROLLER_Device_Private_t *) ((arg1)->privatePart);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ARCONTROLLER_Device_t() {
+  void * jresult ;
+  ARCONTROLLER_Device_t *result = 0 ;
+  
+  result = (ARCONTROLLER_Device_t *)calloc(1, sizeof(ARCONTROLLER_Device_t));
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ARCONTROLLER_Device_t(void * jarg1) {
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  free((char *) arg1);
 }
 
 
@@ -658,53 +1226,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_New(void * jarg1, eARCO
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_AddStateChangedCallback(void * jarg1, void* jarg2, void * jarg3) {
-  int jresult ;
-  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
-  ARCONTROLLER_Device_StateChangedCallback_t arg2 ;
-  void *arg3 = (void *) 0 ;
-  eARCONTROLLER_ERROR result;
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_Delete(void * jarg1) {
+  ARCONTROLLER_Device_t **arg1 = (ARCONTROLLER_Device_t **) 0 ;
   
-  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
-  arg2 = (ARCONTROLLER_Device_StateChangedCallback_t)jarg2; 
-  arg3 = (void *)jarg3; 
-  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Device_AddStateChangedCallback(arg1,arg2,arg3);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_AddCommandReceivedCallback(void * jarg1, void* jarg2, void * jarg3) {
-  int jresult ;
-  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
-  ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 ;
-  void *arg3 = (void *) 0 ;
-  eARCONTROLLER_ERROR result;
-  
-  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
-  arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t)jarg2; 
-  arg3 = (void *)jarg3; 
-  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Device_AddCommandReceivedCallback(arg1,arg2,arg3);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_SetVideoReceiveCallback(void * jarg1, void* jarg2, void* jarg3, void * jarg4) {
-  int jresult ;
-  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
-  ARNETWORKAL_Stream_DidReceiveFrameCallback_t arg2 ;
-  ARNETWORKAL_Stream_TimeoutFrameCallback_t arg3 ;
-  void *arg4 = (void *) 0 ;
-  eARCONTROLLER_ERROR result;
-  
-  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
-  arg2 = (ARNETWORKAL_Stream_DidReceiveFrameCallback_t)jarg2; 
-  arg3 = (ARNETWORKAL_Stream_TimeoutFrameCallback_t)jarg3; 
-  arg4 = (void *)jarg4; 
-  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Device_SetVideoReceiveCallback(arg1,arg2,arg3,arg4);
-  jresult = (int)result; 
-  return jresult;
+  arg1 = (ARCONTROLLER_Device_t **)jarg1; 
+  ARCONTROLLER_Device_Delete(arg1);
 }
 
 
@@ -732,11 +1258,926 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_Stop(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Device_Delete(void * jarg1) {
-  ARCONTROLLER_Device_t **arg1 = (ARCONTROLLER_Device_t **) 0 ;
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_SetVideoReceiveCallback(void * jarg1, void* jarg2, void* jarg3, void * jarg4) {
+  int jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARNETWORKAL_Stream_DidReceiveFrameCallback_t arg2 ;
+  ARNETWORKAL_Stream_TimeoutFrameCallback_t arg3 ;
+  void *arg4 = (void *) 0 ;
+  eARCONTROLLER_ERROR result;
   
-  arg1 = (ARCONTROLLER_Device_t **)jarg1; 
-  ARCONTROLLER_Device_Delete(arg1);
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARNETWORKAL_Stream_DidReceiveFrameCallback_t)jarg2; 
+  arg3 = (ARNETWORKAL_Stream_TimeoutFrameCallback_t)jarg3; 
+  arg4 = (void *)jarg4; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Device_SetVideoReceiveCallback(arg1,arg2,arg3,arg4);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_AddCommandReceivedCallback(void * jarg1, void* jarg2, void * jarg3) {
+  int jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
+  void *arg3 = (void *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t)jarg2; 
+  arg3 = (void *)jarg3; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Device_AddCommandReceivedCallback(arg1,arg2,arg3);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_RemoveCommandReceivedCallback(void * jarg1, void* jarg2, void * jarg3) {
+  int jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
+  void *arg3 = (void *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t)jarg2; 
+  arg3 = (void *)jarg3; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Device_RemoveCommandReceivedCallback(arg1,arg2,arg3);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_AddStateChangedCallback(void * jarg1, void* jarg2, void * jarg3) {
+  int jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_Device_StateChangedCallback_t arg2 = (ARCONTROLLER_Device_StateChangedCallback_t) 0 ;
+  void *arg3 = (void *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_Device_StateChangedCallback_t)jarg2; 
+  arg3 = (void *)jarg3; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Device_AddStateChangedCallback(arg1,arg2,arg3);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_RemoveStateChangedCallback(void * jarg1, void* jarg2, void * jarg3) {
+  int jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  ARCONTROLLER_Device_StateChangedCallback_t arg2 = (ARCONTROLLER_Device_StateChangedCallback_t) 0 ;
+  void *arg3 = (void *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (ARCONTROLLER_Device_StateChangedCallback_t)jarg2; 
+  arg3 = (void *)jarg3; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Device_RemoveStateChangedCallback(arg1,arg2,arg3);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Device_GetCommandElements(void * jarg1, int jarg2, eARCONTROLLER_ERROR * jarg3) {
+  void * jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  eARCONTROLLER_DICTIONARY_KEY arg2 ;
+  eARCONTROLLER_ERROR *arg3 = (eARCONTROLLER_ERROR *) 0 ;
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (eARCONTROLLER_DICTIONARY_KEY)jarg2; 
+  arg3 = (eARCONTROLLER_ERROR *)jarg3; 
+  result = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)ARCONTROLLER_Device_GetCommandElements(arg1,arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Device_GetState(void * jarg1, eARCONTROLLER_ERROR * jarg2) {
+  int jresult ;
+  ARCONTROLLER_Device_t *arg1 = (ARCONTROLLER_Device_t *) 0 ;
+  eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
+  eARCONTROLLER_DEVICE_STATE result;
+  
+  arg1 = (ARCONTROLLER_Device_t *)jarg1; 
+  arg2 = (eARCONTROLLER_ERROR *)jarg2; 
+  result = (eARCONTROLLER_DEVICE_STATE)ARCONTROLLER_Device_GetState(arg1,arg2);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT char * SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_SINGLE_KEY_get() {
+  char * jresult ;
+  char *result = 0 ;
+  
+  result = (char *)("ARCONTROLLER_DICTIONARY_SINGLE_KEY");
+  jresult = SWIG_csharp_string_callback((const char *)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_U8_set(void * jarg1, unsigned char jarg2) {
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  uint8_t arg2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  arg2 = (uint8_t)jarg2; 
+  if (arg1) (arg1)->U8 = arg2;
+}
+
+
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_U8_get(void * jarg1) {
+  unsigned char jresult ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  uint8_t result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  result = (uint8_t) ((arg1)->U8);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_I8_set(void * jarg1, signed char jarg2) {
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  int8_t arg2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  arg2 = (int8_t)jarg2; 
+  if (arg1) (arg1)->I8 = arg2;
+}
+
+
+SWIGEXPORT signed char SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_I8_get(void * jarg1) {
+  signed char jresult ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  int8_t result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  result = (int8_t) ((arg1)->I8);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_U16_set(void * jarg1, unsigned short jarg2) {
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  uint16_t arg2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  arg2 = (uint16_t)jarg2; 
+  if (arg1) (arg1)->U16 = arg2;
+}
+
+
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_U16_get(void * jarg1) {
+  unsigned short jresult ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  uint16_t result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  result = (uint16_t) ((arg1)->U16);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_I16_set(void * jarg1, short jarg2) {
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  int16_t arg2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  arg2 = (int16_t)jarg2; 
+  if (arg1) (arg1)->I16 = arg2;
+}
+
+
+SWIGEXPORT short SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_I16_get(void * jarg1) {
+  short jresult ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  int16_t result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  result = (int16_t) ((arg1)->I16);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_U32_set(void * jarg1, unsigned int jarg2) {
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  uint32_t arg2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  arg2 = (uint32_t)jarg2; 
+  if (arg1) (arg1)->U32 = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_U32_get(void * jarg1) {
+  unsigned int jresult ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  uint32_t result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  result = (uint32_t) ((arg1)->U32);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_I32_set(void * jarg1, int jarg2) {
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  int32_t arg2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  arg2 = (int32_t)jarg2; 
+  if (arg1) (arg1)->I32 = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_I32_get(void * jarg1) {
+  int jresult ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  int32_t result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  result = (int32_t) ((arg1)->I32);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_U64_set(void * jarg1, unsigned long long jarg2) {
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  uint64_t arg2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  arg2 = (uint64_t)jarg2; 
+  if (arg1) (arg1)->U64 = arg2;
+}
+
+
+SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_U64_get(void * jarg1) {
+  unsigned long long jresult ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  uint64_t result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  result = (uint64_t) ((arg1)->U64);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_I64_set(void * jarg1, long long jarg2) {
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  int64_t arg2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  arg2 = (int64_t)jarg2; 
+  if (arg1) (arg1)->I64 = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_I64_get(void * jarg1) {
+  long long jresult ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  int64_t result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  result = (int64_t) ((arg1)->I64);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_Float_set(void * jarg1, float jarg2) {
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  float arg2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->Float = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_Float_get(void * jarg1) {
+  float jresult ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  float result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  result = (float) ((arg1)->Float);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_Double_set(void * jarg1, double jarg2) {
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  double arg2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  arg2 = (double)jarg2; 
+  if (arg1) (arg1)->Double = arg2;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_Double_get(void * jarg1) {
+  double jresult ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  double result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  result = (double) ((arg1)->Double);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_String_set(void * jarg1, char * jarg2) {
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  arg2 = (char *)jarg2; 
+  {
+    free(arg1->String);
+    if (arg2) {
+      arg1->String = (char *) malloc(strlen((const char *)arg2)+1);
+      strcpy((char *)arg1->String, (const char *)arg2);
+    } else {
+      arg1->String = 0;
+    }
+  }
+}
+
+
+SWIGEXPORT char * SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_VALUE_t_String_get(void * jarg1) {
+  char * jresult ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  char *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  result = (char *) ((arg1)->String);
+  jresult = SWIG_csharp_string_callback((const char *)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ARCONTROLLER_DICTIONARY_VALUE_t() {
+  void * jresult ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *result = 0 ;
+  
+  result = (ARCONTROLLER_DICTIONARY_VALUE_t *)calloc(1, sizeof(ARCONTROLLER_DICTIONARY_VALUE_t));
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ARCONTROLLER_DICTIONARY_VALUE_t(void * jarg1) {
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg1; 
+  free((char *) arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ARG_t_argument_set(void * jarg1, char * jarg2) {
+  ARCONTROLLER_DICTIONARY_ARG_t *arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *)jarg1; 
+  arg2 = (char *)jarg2; 
+  {
+    if (arg2) {
+      arg1->argument = (char const *) malloc(strlen((const char *)arg2)+1);
+      strcpy((char *)arg1->argument, (const char *)arg2);
+    } else {
+      arg1->argument = 0;
+    }
+  }
+}
+
+
+SWIGEXPORT char * SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ARG_t_argument_get(void * jarg1) {
+  char * jresult ;
+  ARCONTROLLER_DICTIONARY_ARG_t *arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *) 0 ;
+  char *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *)jarg1; 
+  result = (char *) ((arg1)->argument);
+  jresult = SWIG_csharp_string_callback((const char *)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ARG_t_value_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_DICTIONARY_ARG_t *arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *) 0 ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *arg2 = (ARCONTROLLER_DICTIONARY_VALUE_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *)jarg1; 
+  arg2 = (ARCONTROLLER_DICTIONARY_VALUE_t *)jarg2; 
+  if (arg1) (arg1)->value = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ARG_t_value_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_DICTIONARY_ARG_t *arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *) 0 ;
+  ARCONTROLLER_DICTIONARY_VALUE_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *)jarg1; 
+  result = (ARCONTROLLER_DICTIONARY_VALUE_t *)& ((arg1)->value);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ARG_t_valueType_set(void * jarg1, int jarg2) {
+  ARCONTROLLER_DICTIONARY_ARG_t *arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *) 0 ;
+  eARCONTROLLER_DICTIONARY_VALUE_TYPE arg2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *)jarg1; 
+  arg2 = (eARCONTROLLER_DICTIONARY_VALUE_TYPE)jarg2; 
+  if (arg1) (arg1)->valueType = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ARG_t_valueType_get(void * jarg1) {
+  int jresult ;
+  ARCONTROLLER_DICTIONARY_ARG_t *arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *) 0 ;
+  eARCONTROLLER_DICTIONARY_VALUE_TYPE result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *)jarg1; 
+  result = (eARCONTROLLER_DICTIONARY_VALUE_TYPE) ((arg1)->valueType);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ARG_t_hh_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_DICTIONARY_ARG_t *arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *) 0 ;
+  UT_hash_handle arg2 ;
+  UT_hash_handle *argp2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *)jarg1; 
+  argp2 = (UT_hash_handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null UT_hash_handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->hh = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ARG_t_hh_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_DICTIONARY_ARG_t *arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *) 0 ;
+  UT_hash_handle result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *)jarg1; 
+  result =  ((arg1)->hh);
+  {
+    UT_hash_handle * resultptr = (UT_hash_handle *) malloc(sizeof(UT_hash_handle));
+    memmove(resultptr, &result, sizeof(UT_hash_handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ARCONTROLLER_DICTIONARY_ARG_t() {
+  void * jresult ;
+  ARCONTROLLER_DICTIONARY_ARG_t *result = 0 ;
+  
+  result = (ARCONTROLLER_DICTIONARY_ARG_t *)calloc(1, sizeof(ARCONTROLLER_DICTIONARY_ARG_t));
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ARCONTROLLER_DICTIONARY_ARG_t(void * jarg1) {
+  ARCONTROLLER_DICTIONARY_ARG_t *arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ARG_t *)jarg1; 
+  free((char *) arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ELEMENT_t_key_set(void * jarg1, char * jarg2) {
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)jarg1; 
+  arg2 = (char *)jarg2; 
+  {
+    free(arg1->key);
+    if (arg2) {
+      arg1->key = (char *) malloc(strlen((const char *)arg2)+1);
+      strcpy((char *)arg1->key, (const char *)arg2);
+    } else {
+      arg1->key = 0;
+    }
+  }
+}
+
+
+SWIGEXPORT char * SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ELEMENT_t_key_get(void * jarg1) {
+  char * jresult ;
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;
+  char *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)jarg1; 
+  result = (char *) ((arg1)->key);
+  jresult = SWIG_csharp_string_callback((const char *)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ELEMENT_t_arguments_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;
+  ARCONTROLLER_DICTIONARY_ARG_t *arg2 = (ARCONTROLLER_DICTIONARY_ARG_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)jarg1; 
+  arg2 = (ARCONTROLLER_DICTIONARY_ARG_t *)jarg2; 
+  if (arg1) (arg1)->arguments = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ELEMENT_t_arguments_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;
+  ARCONTROLLER_DICTIONARY_ARG_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)jarg1; 
+  result = (ARCONTROLLER_DICTIONARY_ARG_t *) ((arg1)->arguments);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ELEMENT_t_hh_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;
+  UT_hash_handle arg2 ;
+  UT_hash_handle *argp2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)jarg1; 
+  argp2 = (UT_hash_handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null UT_hash_handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->hh = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_ELEMENT_t_hh_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;
+  UT_hash_handle result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)jarg1; 
+  result =  ((arg1)->hh);
+  {
+    UT_hash_handle * resultptr = (UT_hash_handle *) malloc(sizeof(UT_hash_handle));
+    memmove(resultptr, &result, sizeof(UT_hash_handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ARCONTROLLER_DICTIONARY_ELEMENT_t() {
+  void * jresult ;
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *result = 0 ;
+  
+  result = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)calloc(1, sizeof(ARCONTROLLER_DICTIONARY_ELEMENT_t));
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ARCONTROLLER_DICTIONARY_ELEMENT_t(void * jarg1) {
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)jarg1; 
+  free((char *) arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_COMMANDS_t_command_set(void * jarg1, int jarg2) {
+  ARCONTROLLER_DICTIONARY_COMMANDS_t *arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *) 0 ;
+  eARCONTROLLER_DICTIONARY_KEY arg2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *)jarg1; 
+  arg2 = (eARCONTROLLER_DICTIONARY_KEY)jarg2; 
+  if (arg1) (arg1)->command = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_COMMANDS_t_command_get(void * jarg1) {
+  int jresult ;
+  ARCONTROLLER_DICTIONARY_COMMANDS_t *arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *) 0 ;
+  eARCONTROLLER_DICTIONARY_KEY result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *)jarg1; 
+  result = (eARCONTROLLER_DICTIONARY_KEY) ((arg1)->command);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_COMMANDS_t_elements_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_DICTIONARY_COMMANDS_t *arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *) 0 ;
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *arg2 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *)jarg1; 
+  arg2 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)jarg2; 
+  if (arg1) (arg1)->elements = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_COMMANDS_t_elements_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_DICTIONARY_COMMANDS_t *arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *) 0 ;
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *)jarg1; 
+  result = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) ((arg1)->elements);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_COMMANDS_t_hh_set(void * jarg1, void * jarg2) {
+  ARCONTROLLER_DICTIONARY_COMMANDS_t *arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *) 0 ;
+  UT_hash_handle arg2 ;
+  UT_hash_handle *argp2 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *)jarg1; 
+  argp2 = (UT_hash_handle *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null UT_hash_handle", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->hh = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_COMMANDS_t_hh_get(void * jarg1) {
+  void * jresult ;
+  ARCONTROLLER_DICTIONARY_COMMANDS_t *arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *) 0 ;
+  UT_hash_handle result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *)jarg1; 
+  result =  ((arg1)->hh);
+  {
+    UT_hash_handle * resultptr = (UT_hash_handle *) malloc(sizeof(UT_hash_handle));
+    memmove(resultptr, &result, sizeof(UT_hash_handle));
+    jresult = resultptr;
+  }
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ARCONTROLLER_DICTIONARY_COMMANDS_t() {
+  void * jresult ;
+  ARCONTROLLER_DICTIONARY_COMMANDS_t *result = 0 ;
+  
+  result = (ARCONTROLLER_DICTIONARY_COMMANDS_t *)calloc(1, sizeof(ARCONTROLLER_DICTIONARY_COMMANDS_t));
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ARCONTROLLER_DICTIONARY_COMMANDS_t(void * jarg1) {
+  ARCONTROLLER_DICTIONARY_COMMANDS_t *arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_COMMANDS_t *)jarg1; 
+  free((char *) arg1);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_New(int jarg1, eARCONTROLLER_ERROR * jarg2) {
+  void * jresult ;
+  eARCONTROLLER_DICTIONARY_KEY arg1 ;
+  eARCONTROLLER_ERROR *arg2 = (eARCONTROLLER_ERROR *) 0 ;
+  ARCONTROLLER_Dictionary_t *result = 0 ;
+  
+  arg1 = (eARCONTROLLER_DICTIONARY_KEY)jarg1; 
+  arg2 = (eARCONTROLLER_ERROR *)jarg2; 
+  result = (ARCONTROLLER_Dictionary_t *)ARCONTROLLER_Dictionary_New(arg1,arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_Delete(void * jarg1) {
+  ARCONTROLLER_Dictionary_t **arg1 = (ARCONTROLLER_Dictionary_t **) 0 ;
+  
+  arg1 = (ARCONTROLLER_Dictionary_t **)jarg1; 
+  ARCONTROLLER_Dictionary_Delete(arg1);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_AddCallback(void * jarg1, void* jarg2, void * jarg3) {
+  int jresult ;
+  ARCONTROLLER_Dictionary_t *arg1 = (ARCONTROLLER_Dictionary_t *) 0 ;
+  ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
+  void *arg3 = (void *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_Dictionary_t *)jarg1; 
+  arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t)jarg2; 
+  arg3 = (void *)jarg3; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Dictionary_AddCallback(arg1,arg2,arg3);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_RemoveCallback(void * jarg1, void* jarg2, void * jarg3) {
+  int jresult ;
+  ARCONTROLLER_Dictionary_t *arg1 = (ARCONTROLLER_Dictionary_t *) 0 ;
+  ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
+  void *arg3 = (void *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_Dictionary_t *)jarg1; 
+  arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t)jarg2; 
+  arg3 = (void *)jarg3; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Dictionary_RemoveCallback(arg1,arg2,arg3);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_AddDictionaryElement(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
+  int jresult ;
+  ARCONTROLLER_Dictionary_t **arg1 = (ARCONTROLLER_Dictionary_t **) 0 ;
+  eARCONTROLLER_DICTIONARY_KEY arg2 ;
+  ARCONTROLLER_DICTIONARY_CALLBACK_t arg3 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
+  void *arg4 = (void *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_Dictionary_t **)jarg1; 
+  arg2 = (eARCONTROLLER_DICTIONARY_KEY)jarg2; 
+  arg3 = (ARCONTROLLER_DICTIONARY_CALLBACK_t)jarg3; 
+  arg4 = (void *)jarg4; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Dictionary_AddDictionaryElement(arg1,arg2,arg3,arg4);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_RemoveDictionaryElement(void * jarg1, int jarg2, void* jarg3, void * jarg4) {
+  int jresult ;
+  ARCONTROLLER_Dictionary_t *arg1 = (ARCONTROLLER_Dictionary_t *) 0 ;
+  eARCONTROLLER_DICTIONARY_KEY arg2 ;
+  ARCONTROLLER_DICTIONARY_CALLBACK_t arg3 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
+  void *arg4 = (void *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_Dictionary_t *)jarg1; 
+  arg2 = (eARCONTROLLER_DICTIONARY_KEY)jarg2; 
+  arg3 = (ARCONTROLLER_DICTIONARY_CALLBACK_t)jarg3; 
+  arg4 = (void *)jarg4; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Dictionary_RemoveDictionaryElement(arg1,arg2,arg3,arg4);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_DeleteDictionary(void * jarg1) {
+  ARCONTROLLER_Dictionary_t **arg1 = (ARCONTROLLER_Dictionary_t **) 0 ;
+  
+  arg1 = (ARCONTROLLER_Dictionary_t **)jarg1; 
+  ARCONTROLLER_Dictionary_DeleteDictionary(arg1);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_Notify(void * jarg1, int jarg2, void * jarg3) {
+  int jresult ;
+  ARCONTROLLER_Dictionary_t *arg1 = (ARCONTROLLER_Dictionary_t *) 0 ;
+  eARCONTROLLER_DICTIONARY_KEY arg2 ;
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *arg3 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_Dictionary_t *)jarg1; 
+  arg2 = (eARCONTROLLER_DICTIONARY_KEY)jarg2; 
+  arg3 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)jarg3; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Dictionary_Notify(arg1,arg2,arg3);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_DeleteCallbackList(void * jarg1) {
+  ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **arg1 = (ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **) 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **)jarg1; 
+  ARCONTROLLER_Dictionary_DeleteCallbackList(arg1);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_AddCallbackInList(void * jarg1, void* jarg2, void * jarg3) {
+  int jresult ;
+  ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **arg1 = (ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **) 0 ;
+  ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
+  void *arg3 = (void *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **)jarg1; 
+  arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t)jarg2; 
+  arg3 = (void *)jarg3; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Dictionary_AddCallbackInList(arg1,arg2,arg3);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_Dictionary_RemoveCallbackFromList(void * jarg1, void* jarg2, void * jarg3) {
+  int jresult ;
+  ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **arg1 = (ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **) 0 ;
+  ARCONTROLLER_DICTIONARY_CALLBACK_t arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t) 0 ;
+  void *arg3 = (void *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **)jarg1; 
+  arg2 = (ARCONTROLLER_DICTIONARY_CALLBACK_t)jarg2; 
+  arg3 = (void *)jarg3; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_Dictionary_RemoveCallbackFromList(arg1,arg2,arg3);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_NotifyAllCallbackInList(void * jarg1, int jarg2, void * jarg3) {
+  ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **arg1 = (ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **) 0 ;
+  eARCONTROLLER_DICTIONARY_KEY arg2 ;
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *arg3 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_CALLBAK_LIST_ELEMENT_t **)jarg1; 
+  arg2 = (eARCONTROLLER_DICTIONARY_KEY)jarg2; 
+  arg3 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)jarg3; 
+  ARCONTROLLER_DICTIONARY_NotifyAllCallbackInList(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff(void * jarg1) {
+  int jresult ;
+  ARCONTROLLER_FEATURE_ARDrone3_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *)jarg1; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff(arg1);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendPilotingLanding(void * jarg1) {
+  int jresult ;
+  ARCONTROLLER_FEATURE_ARDrone3_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *)jarg1; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_FEATURE_ARDrone3_SendPilotingLanding(arg1);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD(void * jarg1, unsigned char jarg2, signed char jarg3, signed char jarg4, signed char jarg5, signed char jarg6, float jarg7) {
+  int jresult ;
+  ARCONTROLLER_FEATURE_ARDrone3_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
+  uint8_t arg2 ;
+  int8_t arg3 ;
+  int8_t arg4 ;
+  int8_t arg5 ;
+  int8_t arg6 ;
+  float arg7 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *)jarg1; 
+  arg2 = (uint8_t)jarg2; 
+  arg3 = (int8_t)jarg3; 
+  arg4 = (int8_t)jarg4; 
+  arg5 = (int8_t)jarg5; 
+  arg6 = (int8_t)jarg6; 
+  arg7 = (float)jarg7; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  jresult = (int)result; 
+  return jresult;
 }
 
 

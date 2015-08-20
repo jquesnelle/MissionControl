@@ -48,23 +48,38 @@ namespace MissionControl
 
         private bool decoderCreated = false;
         private bool waitForIFrame = true;
+        private bool isConnected = false;
 
         private byte[] latestYuvFrame;
         private byte[] rgbPixels;
 
         private int latestYuvFrameLen = 0;
+        private int batteryPercent;
 
+        private ARCONTROLLER_Device_t deviceController;
         private Transform h264;
-
         private DateTime start;
-
         private Bitmap videoBitmap;
-        
         private Rectangle sourceRect = new Rectangle(0, 0, 640, 368);
-
         private Object yuvFrameLock = new Object();
 
-       
+        public event EventHandler VideoFrameReady;
+
+
+        public bool IsConnected
+        {
+            get { return isConnected;  }
+        }
+
+        public int BatteryPercent
+        {
+            get { return batteryPercent; }
+        }
+
+        public ARCONTROLLER_Device_t DeviceController
+        {
+            get { return deviceController; }
+        }
 
         public void Connect()
         {
@@ -78,19 +93,19 @@ namespace MissionControl
             if (errorDiscovery != eARDISCOVERY_ERROR.ARDISCOVERY_OK)
                 return;
 
-            var deviceController = ARDroneSDK3.ARCONTROLLER_Device_New(device, ref error);
+            deviceController = ARDroneSDK3.ARCONTROLLER_Device_New(device, ref error);
             if (error != eARCONTROLLER_ERROR.ARCONTROLLER_OK)
                 return;
 
             OnStateChanged = new StateChangedCallbackDelegate(StateChangedCallback);
 
-            error = ARDroneSDK3.ARCONTROLLER_Device_AddStateChangedCallback(deviceController, Marshal.GetFunctionPointerForDelegate(OnStateChanged), SWIGTYPE_p_ARCONTROLLER_Device_t.getCPtr(deviceController).Handle);
+            error = ARDroneSDK3.ARCONTROLLER_Device_AddStateChangedCallback(deviceController, Marshal.GetFunctionPointerForDelegate(OnStateChanged), ARCONTROLLER_Device_t.getCPtr(deviceController).Handle);
             if (error != eARCONTROLLER_ERROR.ARCONTROLLER_OK)
                 return;
 
             OnCommandReceived = new CommandReceivedCallbackDelegate(CommandReceivedCallback);
 
-            error = ARDroneSDK3.ARCONTROLLER_Device_AddCommandReceivedCallback(deviceController, Marshal.GetFunctionPointerForDelegate(OnCommandReceived), SWIGTYPE_p_ARCONTROLLER_Device_t.getCPtr(deviceController).Handle);
+            error = ARDroneSDK3.ARCONTROLLER_Device_AddCommandReceivedCallback(deviceController, Marshal.GetFunctionPointerForDelegate(OnCommandReceived), ARCONTROLLER_Device_t.getCPtr(deviceController).Handle);
             if (error != eARCONTROLLER_ERROR.ARCONTROLLER_OK)
                 return;
 
@@ -150,6 +165,11 @@ namespace MissionControl
             switch (newState)
             {
                 case eARCONTROLLER_DEVICE_STATE.ARCONTROLLER_DEVICE_STATE_RUNNING:
+                    isConnected = true;
+                    break;
+                case eARCONTROLLER_DEVICE_STATE.ARCONTROLLER_DEVICE_STATE_STOPPING:
+                case eARCONTROLLER_DEVICE_STATE.ARCONTROLLER_DEVICE_STATE_STOPPED:
+                    isConnected = false;
                     break;
 
             }
@@ -157,6 +177,14 @@ namespace MissionControl
 
         private void CommandReceivedCallback(eARCONTROLLER_DICTIONARY_KEY commandKey, System.IntPtr elementDictionary, System.IntPtr customData)
         {
+            if (elementDictionary.Equals(IntPtr.Zero))
+                return;
+
+            switch(commandKey)
+            {
+                case eARCONTROLLER_DICTIONARY_KEY.ARCONTROLLER_DICTIONARY_KEY_COMMON_COMMONSTATE_BATTERYSTATECHANGED:
+                    break;
+            }
 
         }
 
@@ -321,6 +349,5 @@ namespace MissionControl
             decoderCreated = true;
         }
 
-        public event EventHandler VideoFrameReady;
     }
 }
