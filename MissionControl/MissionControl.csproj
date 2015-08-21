@@ -57,6 +57,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Experimental.Collections, Version=1.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Experimental.Collections.1.0.3-alpha\lib\portable-net45+win8+wp8\Microsoft.Experimental.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SharpDX">
       <HintPath>$(SharpDXPackageBinDir)\SharpDX.dll</HintPath>
     </Reference>
@@ -102,7 +106,18 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="IDrone.cs" />
-    <Compile Include="InputManager.cs" />
+    <Compile Include="Input\AxisTwoButtonInput.cs" />
+    <Compile Include="Input\BaseInput.cs" />
+    <Compile Include="Input\BaseObjectInput.cs" />
+    <Compile Include="Input\ButtonInput.cs" />
+    <Compile Include="Input\ConnectedDevice.cs" />
+    <Compile Include="Input\IButtonInput.cs" />
+    <Compile Include="Input\IConnectedDevice.cs" />
+    <Compile Include="Input\InputProperties.cs" />
+    <Compile Include="Input\IInput.cs" />
+    <Compile Include="Input\InputManager.cs" />
+    <Compile Include="Input\NormalizedAxisInput.cs" />
+    <Compile Include="Input\NullInput.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
