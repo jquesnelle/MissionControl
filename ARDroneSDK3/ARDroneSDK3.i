@@ -101,3 +101,6 @@ typedef enum
 eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff (ARCONTROLLER_FEATURE_ARDrone3_t *feature);
 eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SendPilotingLanding (ARCONTROLLER_FEATURE_ARDrone3_t *feature);
 eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD (ARCONTROLLER_FEATURE_ARDrone3_t *feature, uint8_t flag, int8_t roll, int8_t pitch, int8_t yaw, int8_t gaz, float psi);
+
+ARCONTROLLER_DICTIONARY_ELEMENT_t* GetDictionaryElement(ARCONTROLLER_DICTIONARY_ELEMENT_t *nativeDictionary, const char* key);
+ARCONTROLLER_DICTIONARY_ARG_t* GetDictionaryArg(ARCONTROLLER_DICTIONARY_ELEMENT_t *nativeDictionary, const char* key);

@@ -22,7 +22,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SharpDX.Direct2D1;
 
-namespace MissionControl
+namespace MissionControl.Drone
 {
     interface IDrone
     {

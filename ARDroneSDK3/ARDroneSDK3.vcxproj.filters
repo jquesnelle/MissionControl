@@ -21,5 +21,8 @@
     <ClCompile Include="ARDroneSDK3_wrap.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="dictionary.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

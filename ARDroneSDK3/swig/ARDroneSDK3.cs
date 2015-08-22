@@ -227,6 +227,18 @@ public class ARDroneSDK3 {
     return ret;
   }
 
+  public static ARCONTROLLER_DICTIONARY_ELEMENT_t GetDictionaryElement(ARCONTROLLER_DICTIONARY_ELEMENT_t nativeDictionary, string key) {
+    global::System.IntPtr cPtr = ARDroneSDK3PINVOKE.GetDictionaryElement(ARCONTROLLER_DICTIONARY_ELEMENT_t.getCPtr(nativeDictionary), key);
+    ARCONTROLLER_DICTIONARY_ELEMENT_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new ARCONTROLLER_DICTIONARY_ELEMENT_t(cPtr, false);
+    return ret;
+  }
+
+  public static ARCONTROLLER_DICTIONARY_ARG_t GetDictionaryArg(ARCONTROLLER_DICTIONARY_ELEMENT_t nativeDictionary, string key) {
+    global::System.IntPtr cPtr = ARDroneSDK3PINVOKE.GetDictionaryArg(ARCONTROLLER_DICTIONARY_ELEMENT_t.getCPtr(nativeDictionary), key);
+    ARCONTROLLER_DICTIONARY_ARG_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new ARCONTROLLER_DICTIONARY_ARG_t(cPtr, false);
+    return ret;
+  }
+
   public static readonly int ARCONTROLLER_FRAME_DEFAULT_CAPACITY = ARDroneSDK3PINVOKE.ARCONTROLLER_FRAME_DEFAULT_CAPACITY_get();
   public static readonly string ARCONTROLLER_DICTIONARY_SINGLE_KEY = ARDroneSDK3PINVOKE.ARCONTROLLER_DICTIONARY_SINGLE_KEY_get();
 }

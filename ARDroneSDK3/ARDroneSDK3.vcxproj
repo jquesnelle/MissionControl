@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ARDroneSDK3_wrap.c" />
+    <ClCompile Include="dictionary.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

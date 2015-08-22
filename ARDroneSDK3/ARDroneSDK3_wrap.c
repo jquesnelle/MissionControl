@@ -2181,6 +2181,34 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD(
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_GetDictionaryElement(void * jarg1, char * jarg2) {
+  void * jresult ;
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;
+  char *arg2 = (char *) 0 ;
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)jarg1; 
+  arg2 = (char *)jarg2; 
+  result = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)GetDictionaryElement(arg1,(char const *)arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_GetDictionaryArg(void * jarg1, char * jarg2) {
+  void * jresult ;
+  ARCONTROLLER_DICTIONARY_ELEMENT_t *arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;
+  char *arg2 = (char *) 0 ;
+  ARCONTROLLER_DICTIONARY_ARG_t *result = 0 ;
+  
+  arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *)jarg1; 
+  arg2 = (char *)jarg2; 
+  result = (ARCONTROLLER_DICTIONARY_ARG_t *)GetDictionaryArg(arg1,(char const *)arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
 #ifdef __cplusplus
 }
 #endif

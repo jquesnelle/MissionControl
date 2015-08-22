@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using SharpDX.MediaFoundation;
 using SharpDX;
 
-namespace MissionControl
+namespace MissionControl.Drone
 {
     class BepopDrone : IDrone
     {
@@ -175,14 +175,57 @@ namespace MissionControl
             }
         }
 
+        private bool TryGetSingleIntElement(System.IntPtr elementDictionary, string key, out int val)
+        {
+            var nativeDictionary = new ARCONTROLLER_DICTIONARY_ELEMENT_t(elementDictionary, false);
+            var nativeElement = ARDroneSDK3.GetDictionaryElement(nativeDictionary, ARCONTROLLER_DICTIONARY_SINGLE_KEY);
+            var arg = ARDroneSDK3.GetDictionaryArg(nativeElement, key); 
+
+            switch(arg.valueType)
+            {
+                case eARCONTROLLER_DICTIONARY_VALUE_TYPE.ARCONTROLLER_DICTIONARY_VALUE_TYPE_U8:
+                    val = arg.value.U8;
+                    break;
+                case eARCONTROLLER_DICTIONARY_VALUE_TYPE.ARCONTROLLER_DICTIONARY_VALUE_TYPE_I8:
+                    val = arg.value.I8;
+                    break;
+                case eARCONTROLLER_DICTIONARY_VALUE_TYPE.ARCONTROLLER_DICTIONARY_VALUE_TYPE_U16:
+                    val = arg.value.U16;
+                    break;
+                case eARCONTROLLER_DICTIONARY_VALUE_TYPE.ARCONTROLLER_DICTIONARY_VALUE_TYPE_I16:
+                    val = arg.value.I16;
+                    break;
+                case eARCONTROLLER_DICTIONARY_VALUE_TYPE.ARCONTROLLER_DICTIONARY_VALUE_TYPE_U32:
+                    val = (int)arg.value.U32;
+                    break;
+                case eARCONTROLLER_DICTIONARY_VALUE_TYPE.ARCONTROLLER_DICTIONARY_VALUE_TYPE_ENUM:
+                case eARCONTROLLER_DICTIONARY_VALUE_TYPE.ARCONTROLLER_DICTIONARY_VALUE_TYPE_I32:
+                    val = arg.value.I32;
+                    break;
+                default:
+                    val = 0;
+                    return false;
+            }
+
+            return true;
+        }
+
+        static string ARCONTROLLER_DICTIONARY_SINGLE_KEY = ARDroneSDK3.ARCONTROLLER_DICTIONARY_SINGLE_KEY;
+        static string BATTERY_DICT_KEY = "arcontroller_dictionary_key_common_commonstate_batterystatechanged_percent";
+
         private void CommandReceivedCallback(eARCONTROLLER_DICTIONARY_KEY commandKey, System.IntPtr elementDictionary, System.IntPtr customData)
         {
             if (elementDictionary.Equals(IntPtr.Zero))
                 return;
 
-            switch(commandKey)
+            switch (commandKey)
             {
                 case eARCONTROLLER_DICTIONARY_KEY.ARCONTROLLER_DICTIONARY_KEY_COMMON_COMMONSTATE_BATTERYSTATECHANGED:
+                    int batteryLevel;
+                    if(TryGetSingleIntElement(elementDictionary, BATTERY_DICT_KEY, out batteryLevel))
+                    {
+
+                    }
                     break;
             }
 
