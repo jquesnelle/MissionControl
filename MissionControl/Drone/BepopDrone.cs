@@ -48,15 +48,12 @@ namespace MissionControl.Drone
 
         private bool decoderCreated = false;
         private bool waitForIFrame = true;
-        private bool isConnected = false;
 
         private byte[] latestYuvFrame;
         private byte[] rgbPixels;
 
         private int latestYuvFrameLen = 0;
-        private int batteryPercent;
 
-        private ARCONTROLLER_Device_t deviceController;
         private Transform h264;
         private DateTime start;
         private Bitmap videoBitmap;
@@ -66,20 +63,17 @@ namespace MissionControl.Drone
         public event EventHandler VideoFrameReady;
 
 
-        public bool IsConnected
-        {
-            get { return isConnected;  }
-        }
+        public bool IsConnected { get; private set; } = false;
 
-        public int BatteryPercent
-        {
-            get { return batteryPercent; }
-        }
+        public int BatteryPercent { get; private set; } = 0;
 
-        public ARCONTROLLER_Device_t DeviceController
-        {
-            get { return deviceController; }
-        }
+        public float Altitude { get; private set; } = 0;
+
+        public float Latitude { get; private set; } = 0;
+
+        public float Longitude { get; private set; } = 0;
+
+        public ARCONTROLLER_Device_t DeviceController { get; private set; } = null;
 
         public void Connect()
         {
@@ -93,29 +87,29 @@ namespace MissionControl.Drone
             if (errorDiscovery != eARDISCOVERY_ERROR.ARDISCOVERY_OK)
                 return;
 
-            deviceController = ARDroneSDK3.ARCONTROLLER_Device_New(device, ref error);
+            DeviceController = ARDroneSDK3.ARCONTROLLER_Device_New(device, ref error);
             if (error != eARCONTROLLER_ERROR.ARCONTROLLER_OK)
                 return;
 
             OnStateChanged = new StateChangedCallbackDelegate(StateChangedCallback);
 
-            error = ARDroneSDK3.ARCONTROLLER_Device_AddStateChangedCallback(deviceController, Marshal.GetFunctionPointerForDelegate(OnStateChanged), ARCONTROLLER_Device_t.getCPtr(deviceController).Handle);
+            error = ARDroneSDK3.ARCONTROLLER_Device_AddStateChangedCallback(DeviceController, Marshal.GetFunctionPointerForDelegate(OnStateChanged), ARCONTROLLER_Device_t.getCPtr(DeviceController).Handle);
             if (error != eARCONTROLLER_ERROR.ARCONTROLLER_OK)
                 return;
 
             OnCommandReceived = new CommandReceivedCallbackDelegate(CommandReceivedCallback);
 
-            error = ARDroneSDK3.ARCONTROLLER_Device_AddCommandReceivedCallback(deviceController, Marshal.GetFunctionPointerForDelegate(OnCommandReceived), ARCONTROLLER_Device_t.getCPtr(deviceController).Handle);
+            error = ARDroneSDK3.ARCONTROLLER_Device_AddCommandReceivedCallback(DeviceController, Marshal.GetFunctionPointerForDelegate(OnCommandReceived), ARCONTROLLER_Device_t.getCPtr(DeviceController).Handle);
             if (error != eARCONTROLLER_ERROR.ARCONTROLLER_OK)
                 return;
 
             OnFrameReceived = new DidReceiveFrameCallbackDelegate(DidReceiveFrameCallback);
 
-            error = ARDroneSDK3.ARCONTROLLER_Device_SetVideoReceiveCallback(deviceController, Marshal.GetFunctionPointerForDelegate(OnFrameReceived), System.IntPtr.Zero, IntPtr.Zero);
+            error = ARDroneSDK3.ARCONTROLLER_Device_SetVideoReceiveCallback(DeviceController, Marshal.GetFunctionPointerForDelegate(OnFrameReceived), System.IntPtr.Zero, IntPtr.Zero);
             if (error != eARCONTROLLER_ERROR.ARCONTROLLER_OK)
                 return;
 
-            error = ARDroneSDK3.ARCONTROLLER_Device_Start(deviceController);
+            error = ARDroneSDK3.ARCONTROLLER_Device_Start(DeviceController);
             if (error != eARCONTROLLER_ERROR.ARCONTROLLER_OK)
                 return;
 
@@ -165,11 +159,11 @@ namespace MissionControl.Drone
             switch (newState)
             {
                 case eARCONTROLLER_DEVICE_STATE.ARCONTROLLER_DEVICE_STATE_RUNNING:
-                    isConnected = true;
+                    IsConnected = true;
                     break;
                 case eARCONTROLLER_DEVICE_STATE.ARCONTROLLER_DEVICE_STATE_STOPPING:
                 case eARCONTROLLER_DEVICE_STATE.ARCONTROLLER_DEVICE_STATE_STOPPED:
-                    isConnected = false;
+                    IsConnected = false;
                     break;
 
             }
@@ -210,22 +204,61 @@ namespace MissionControl.Drone
             return true;
         }
 
+        private bool TryGetSingleFloatElement(System.IntPtr elementDictionary, string key, out float val)
+        {
+            var nativeDictionary = new ARCONTROLLER_DICTIONARY_ELEMENT_t(elementDictionary, false);
+            var nativeElement = ARDroneSDK3.GetDictionaryElement(nativeDictionary, ARCONTROLLER_DICTIONARY_SINGLE_KEY);
+            var arg = ARDroneSDK3.GetDictionaryArg(nativeElement, key);
+
+            switch (arg.valueType)
+            {
+                case eARCONTROLLER_DICTIONARY_VALUE_TYPE.ARCONTROLLER_DICTIONARY_VALUE_TYPE_FLOAT:
+                    val = arg.value.Float;
+                    break;
+                case eARCONTROLLER_DICTIONARY_VALUE_TYPE.ARCONTROLLER_DICTIONARY_VALUE_TYPE_DOUBLE:
+                    val = (float)arg.value.Double;
+                    break;
+                default:
+                    val = 0;
+                    return false;
+            }
+
+            return true;
+        }
+
         static string ARCONTROLLER_DICTIONARY_SINGLE_KEY = ARDroneSDK3.ARCONTROLLER_DICTIONARY_SINGLE_KEY;
         static string BATTERY_DICT_KEY = "arcontroller_dictionary_key_common_commonstate_batterystatechanged_percent";
+        static string ALTITUDE_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_altitudechanged_altitude";
+        static string LATITUDE_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_positionchanged_latitude";
+        static string LONGITUDE_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_positionchanged_longitude";
+        static string POS_ALTITUDE_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_positionchanged_altitude";
 
         private void CommandReceivedCallback(eARCONTROLLER_DICTIONARY_KEY commandKey, System.IntPtr elementDictionary, System.IntPtr customData)
         {
             if (elementDictionary.Equals(IntPtr.Zero))
                 return;
 
+            int val;
+            float fval;
+
             switch (commandKey)
             {
                 case eARCONTROLLER_DICTIONARY_KEY.ARCONTROLLER_DICTIONARY_KEY_COMMON_COMMONSTATE_BATTERYSTATECHANGED:
-                    int batteryLevel;
-                    if(TryGetSingleIntElement(elementDictionary, BATTERY_DICT_KEY, out batteryLevel))
-                    {
+                    if(TryGetSingleIntElement(elementDictionary, BATTERY_DICT_KEY, out val))
+                        BatteryPercent = val;
+                    break;
+                case eARCONTROLLER_DICTIONARY_KEY.ARCONTROLLER_DICTIONARY_KEY_ARDRONE3_PILOTINGSTATE_ALTITUDECHANGED:
+                    if(TryGetSingleFloatElement(elementDictionary, ALTITUDE_DICT_KEY, out fval))
+                        Altitude = fval;
+                    break;
+                case eARCONTROLLER_DICTIONARY_KEY.ARCONTROLLER_DICTIONARY_KEY_ARDRONE3_PILOTINGSTATE_POSITIONCHANGED:
+                    if (TryGetSingleFloatElement(elementDictionary, LATITUDE_DICT_KEY, out fval))
+                        Latitude = fval;
+                    if (TryGetSingleFloatElement(elementDictionary, LONGITUDE_DICT_KEY, out fval))
+                        Longitude = fval;
+                    break;
 
-                    }
+                case eARCONTROLLER_DICTIONARY_KEY.ARCONTROLLER_DICTIONARY_KEY_ARDRONE3_PILOTINGSTATE_SPEEDCHANGED:
                     break;
             }
 
@@ -392,5 +425,23 @@ namespace MissionControl.Drone
             decoderCreated = true;
         }
 
+        public void TakeOff()
+        {
+            if(IsConnected && (DeviceController != null))
+                ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff(DeviceController.aRDrone3);
+        }
+
+        public void Land()
+        {
+            if (IsConnected && (DeviceController != null))
+                ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SendPilotingLanding(DeviceController.aRDrone3);
+        }
+
+        public void Pilot(int roll, int pitch, int yaw, int climbDescend)
+        {
+            if(IsConnected && (DeviceController != null))
+                ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD(DeviceController.aRDrone3, 1,
+                        (sbyte)roll, (sbyte)pitch, (sbyte)yaw, (sbyte)climbDescend, 0);
+        }
     }
 }

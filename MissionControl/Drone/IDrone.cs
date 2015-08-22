@@ -39,5 +39,17 @@ namespace MissionControl.Drone
 
         int BatteryPercent { get; }
 
+        float Altitude { get; }
+
+        float Latitude { get; }
+
+        float Longitude { get; }
+
+        void TakeOff();
+
+        void Land();
+
+        void Pilot(int roll, int pitch, int yaw, int climbDescend);
+
     }
 }

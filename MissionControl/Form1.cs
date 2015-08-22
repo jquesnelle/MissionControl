@@ -39,8 +39,7 @@ namespace MissionControl
             InitializeComponent();
         }
 
-        private IDrone drone;
-        private Input.InputManager input;
+        
 
         private MethodInvoker refreshDelegate;
 
@@ -48,18 +47,20 @@ namespace MissionControl
         {
             refreshDelegate = (MethodInvoker)delegate { RefreshVideo(); };
 
-            input = new Input.InputManager();
-            input.Take_off.ButtonPressed += OnTakeOffPressed;
-            input.Land.ButtonPressed += OnLandPressed;
-            input.Hover_Enable.ButtonPressed += OnHoverEnablePressed;
-            input.Hover_Disable.ButtonPressed += OnHoverDisablePressed;
+            new frmInputStatus().Show();
+            new frmDashboard().Show();
+
+            Program.Input.Take_off.ButtonPressed += OnTakeOffPressed;
+            Program.Input.Land.ButtonPressed += OnLandPressed;
+            Program.Input.Hover_Enable.ButtonPressed += OnHoverEnablePressed;
+            Program.Input.Hover_Disable.ButtonPressed += OnHoverDisablePressed;
         }
 
         private void SetupDrone()
         {
-            drone = new BepopDrone();
-            drone.VideoFrameReady += BepopDrone_VideoFrameReady;
-            drone.Connect();
+            Program.Drone = new Drone.BepopDrone();
+            Program.Drone.VideoFrameReady += BepopDrone_VideoFrameReady;
+            Program.Drone.Connect();
         }
 
         private void RefreshVideo()
@@ -78,35 +79,21 @@ namespace MissionControl
         private void window_Render_1(object sender, EventArgs e, RenderTarget target)
         {
             target.Clear(SharpDX.Color.Black);
-            if (drone != null)
-                drone.RenderVideo(target);
+            if (Program.Drone != null)
+                Program.Drone.RenderVideo(target);
            
         }
 
         private void OnTakeOffPressed(Input.IButtonInput input)
         {
-            if (drone != null && drone.IsConnected)
-            {
-                if (drone is BepopDrone)
-                {
-                    BepopDrone bepop = (BepopDrone)drone;
-
-                    ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff(bepop.DeviceController.aRDrone3);
-                }
-            }
+            if ((Program.Drone != null) && Program.Drone.IsConnected)
+                Program.Drone.TakeOff();
         }
 
         private void OnLandPressed(Input.IButtonInput input)
         {
-            if (drone != null && drone.IsConnected)
-            {
-                if (drone is BepopDrone)
-                {
-                    BepopDrone bepop = (BepopDrone)drone;
-
-                    ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SendPilotingLanding(bepop.DeviceController.aRDrone3);
-                }
-            }
+            if ((Program.Drone != null) && Program.Drone.IsConnected)
+                Program.Drone.Land();
         }
 
         private void OnHoverEnablePressed(Input.IButtonInput input)
@@ -127,39 +114,24 @@ namespace MissionControl
         private void mainLoop_Tick(object sender, EventArgs e)
         {
 
-            input.Process();
+            Program.Input.Process();
 
-            lblRoll.Text = Convert.ToString(input.Roll.Value);
-            lblPitch.Text = Convert.ToString(input.Pitch.Value);
-            lblYaw.Text = Convert.ToString(input.Yaw.Value);
-            lblClimbDescend.Text = Convert.ToString(input.Climb_Descend.Value);
-            lblTakeOff.Text = Convert.ToString(input.Take_off.Value);
-            lblLand.Text = Convert.ToString(input.Land.Value);
-            lblControlsEnable.Text = Convert.ToString(input.Hover_Enable.Value);
-            lblControlsDisable.Text = Convert.ToString(input.Hover_Disable.Value);
-
-            if (drone != null && drone.IsConnected)
+            if (Program.Drone != null && Program.Drone.IsConnected)
             {
-                if (drone is BepopDrone)
-                {
-                    BepopDrone bepop = (BepopDrone)drone;
 
+                int roll = hoverEnabled ? 0 : Program.Input.Roll.Value;
+                int pitch = hoverEnabled ? 0 : Program.Input.Pitch.Value;
+                int yaw = Program.Input.Yaw.Value;
+                int climbDescend = hoverEnabled ? 0 : Program.Input.Climb_Descend.Value;
 
-                    sbyte roll = (sbyte)(hoverEnabled ? 0 : input.Roll.Value);
-                    sbyte pitch = (sbyte)(hoverEnabled ? 0 : input.Pitch.Value);
-                    sbyte yaw = (sbyte)(input.Yaw.Value);
-                    sbyte gaz = (sbyte)(hoverEnabled ? 0 : input.Climb_Descend.Value);
-
-                    eARCONTROLLER_ERROR pilotResult =  ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD(bepop.DeviceController.aRDrone3, 1, 
-                        roll, pitch, yaw, gaz, 0);
-
-                }
+                Program.Drone.Pilot(roll, pitch, yaw, climbDescend);
+                    
             }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (drone == null && e.KeyCode == Keys.F5)
+            if (Program.Drone == null && e.KeyCode == Keys.F5)
                 SetupDrone();
         }
 

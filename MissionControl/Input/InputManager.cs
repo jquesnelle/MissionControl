@@ -42,17 +42,6 @@ namespace MissionControl.Input
         public delegate void InputChangedHandler(IInput input, int oldValue, int newValue);
         public delegate void InputButtonPressedHandler(IButtonInput input);
 
-        public enum INPUT_TYPE
-        {
-            PITCH_AXIS = 0,
-            ROLL_AXIS = 1,
-            YAW_AXIS = 2,
-            CLIMB_DESCEND_AXIS = 3,
-            TAKE_OFF = 4,
-            LAND = 5,
-            HOVER_ENABLE = 6,
-            HOVER_DISABLE = 7,
-        }
 
         void PrintConnectedDevices()
         {
@@ -190,6 +179,41 @@ namespace MissionControl.Input
                     return (T)input;
             }
             return default(T);
+        }
+
+        public static INPUT_CLASS GetClassOfInputType(INPUT_TYPE type)
+        {
+            switch(type)
+            {
+                case INPUT_TYPE.PITCH_AXIS:
+                case INPUT_TYPE.ROLL_AXIS:
+                case INPUT_TYPE.YAW_AXIS:
+                case INPUT_TYPE.CLIMB_DESCEND_AXIS:
+                    return INPUT_CLASS.AXIS;
+                case INPUT_TYPE.HOVER_DISABLE:
+                case INPUT_TYPE.HOVER_ENABLE:
+                case INPUT_TYPE.LAND:
+                case INPUT_TYPE.TAKE_OFF:
+                    return INPUT_CLASS.DIGITAL;
+                default:
+                    return INPUT_CLASS.NONE;
+            }
+        }
+
+        public static string GetInputTypeName(INPUT_TYPE type)
+        {
+            switch(type)
+            {
+                case INPUT_TYPE.PITCH_AXIS: return "Pitch";
+                case INPUT_TYPE.ROLL_AXIS: return "Roll";
+                case INPUT_TYPE.YAW_AXIS: return "Yaw";
+                case INPUT_TYPE.CLIMB_DESCEND_AXIS: return "Climb/descend";
+                case INPUT_TYPE.HOVER_DISABLE: return "Hover enable";
+                case INPUT_TYPE.HOVER_ENABLE: return "Hover disable";
+                case INPUT_TYPE.LAND: return "Land";
+                case INPUT_TYPE.TAKE_OFF: return "Take off";
+                default: return "";
+            }
         }
 
         public void Process()

@@ -27,7 +27,7 @@ using System.Windows.Forms;
 using SharpDX.Direct2D1;
 using SharpDX;
 
-namespace MissionControl
+namespace MissionControl.UI
 {
     public partial class Direct2DControl : Control
     {
