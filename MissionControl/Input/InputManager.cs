@@ -108,12 +108,12 @@ namespace MissionControl.Input
             return null;
         }
 
-        private void AddAxisMapping(INPUT_TYPE type, IConnectedDevice device, string name, bool inverted)
+        private void AddNormalizedAxisMapping(INPUT_TYPE type, IConnectedDevice device, string name, bool inverted, bool reset, int axisMax = AXIS_MAX)
         {
             InputProperties? p = device.DeviceInputPropsFromName(name);
             if(p.HasValue)
             {
-                NormalizedAxisInput nai = new NormalizedAxisInput(p.Value, AXIS_MAX, inverted);
+                NormalizedAxisInput nai = new NormalizedAxisInput(p.Value, (ushort)axisMax, (ushort)(axisMax / 10), inverted, reset);
                 device.AddInput(p.Value, nai);
                 mappings.Add(type, nai);
             }
@@ -144,22 +144,73 @@ namespace MissionControl.Input
             }
         }
 
+        private void AddDifferentialMapping(INPUT_TYPE type, IConnectedDevice device, string name, float sensitivity)
+        {
+            InputProperties? p = device.DeviceInputPropsFromName(name);
+            if (p.HasValue)
+            {
+                DifferentialCappedAxis nai = new DifferentialCappedAxis(p.Value, AXIS_MAX, sensitivity);
+                device.AddInput(p.Value, nai);
+                mappings.Add(type, nai);
+            }
+        }
+
+        private void AddAxisMapping(INPUT_TYPE type, IConnectedDevice device, string name, float sensitivity, bool reset, int axisMax = AXIS_MAX)
+        {
+            InputProperties? p = device.DeviceInputPropsFromName(name);
+            if (p.HasValue)
+            {
+                CappedAxisInput nai = new CappedAxisInput(p.Value, (ushort)axisMax, sensitivity, reset);
+                device.AddInput(p.Value, nai);
+                mappings.Add(type, nai);
+            }
+        }
+
         void LoadDefaultMappings()
         {
             ClearMappings();
 
+            var devices = directInput.GetDevices(DeviceClass.All, DeviceEnumerationFlags.AttachedOnly);
+
+            /*
             var stick = OpenDeviceByNameOrGuid("Saitek Pro Flight X-55 Rhino Stick", null);
             var throttle = OpenDeviceByNameOrGuid("Saitek Pro Flight X-55 Rhino Throttle", null);
 
-            AddAxisMapping(INPUT_TYPE.YAW_AXIS, stick, "X", false);
-            AddAxisMapping(INPUT_TYPE.ROLL_AXIS, stick, "RotationZ", false);
-            AddAxisMapping(INPUT_TYPE.CLIMB_DESCEND_AXIS, stick, "Y", false);
+            AddNormalizedAxisMapping(INPUT_TYPE.YAW_AXIS, stick, "X", false);
+            AddNormalizedAxisMapping(INPUT_TYPE.ROLL_AXIS, stick, "RotationZ", false);
+            AddNormalizedAxisMapping(INPUT_TYPE.CLIMB_DESCEND_AXIS, stick, "Y", false);
 
             AddAxisMapping(INPUT_TYPE.PITCH_AXIS, throttle, "X", true);
             AddButtonMapping(INPUT_TYPE.TAKE_OFF, throttle, "Buttons5", false);
             AddButtonMapping(INPUT_TYPE.LAND, throttle, "Buttons6", false);
             AddButtonMapping(INPUT_TYPE.HOVER_ENABLE, throttle, "Buttons34", false);
             AddButtonMapping(INPUT_TYPE.HOVER_DISABLE, throttle, "Buttons34", true);
+            */
+
+            /*
+            var mouse = OpenDeviceByNameOrGuid("Mouse", null);
+            var keyboard = OpenDeviceByNameOrGuid("Keyboard", null);
+
+            AddAxisMapping(INPUT_TYPE.YAW_AXIS, mouse, "X", 2.0f, true);
+
+            AddButtonMapping(INPUT_TYPE.TAKE_OFF, keyboard, "Key" + (int)Key.Up, false);
+            AddButtonMapping(INPUT_TYPE.LAND, keyboard, "Key" + (int)Key.Down, false);
+            AddButtonMapping(INPUT_TYPE.FLAT_TRIM, keyboard, "Key" + (int)Key.F12, false);
+            */
+
+            var xbox = OpenDeviceByNameOrGuid("Controller (Gamepad for Xbox 360)", null);
+            var objects = xbox.Device.GetObjects();
+
+            AddNormalizedAxisMapping(INPUT_TYPE.YAW_AXIS, xbox, "RotationX", false, false);
+            AddNormalizedAxisMapping(INPUT_TYPE.CLIMB_DESCEND_AXIS, xbox, "Z", true, false, 10);
+            AddNormalizedAxisMapping(INPUT_TYPE.PITCH_AXIS, xbox, "Y", true, false, 10);
+            AddNormalizedAxisMapping(INPUT_TYPE.ROLL_AXIS, xbox, "X", false, false, 10);
+            AddButtonMapping(INPUT_TYPE.TAKE_OFF, xbox, "Buttons7", false);
+            AddButtonMapping(INPUT_TYPE.LAND, xbox, "Buttons7", false);
+            AddButtonMapping(INPUT_TYPE.FLAT_TRIM, xbox, "Buttons6", false);
+            AddButtonMapping(INPUT_TYPE.TAKE_PHOTO, xbox, "Buttons2", false);
+            AddButtonMapping(INPUT_TYPE.START_VIDEO, xbox, "Buttons1", false);
+            AddButtonMapping(INPUT_TYPE.STOP_VIDEO, xbox, "Buttons1", false);
         }
 
         private void ClearMappings()
@@ -181,6 +232,14 @@ namespace MissionControl.Input
             return default(T);
         }
 
+        public bool HaveInput(INPUT_TYPE type)
+        {
+            IInput input;
+            if (mappings.TryGetValue(type, out input))
+                return input != NULL_INPUT;
+            return false;
+        }
+
         public static INPUT_CLASS GetClassOfInputType(INPUT_TYPE type)
         {
             switch(type)
@@ -194,6 +253,10 @@ namespace MissionControl.Input
                 case INPUT_TYPE.HOVER_ENABLE:
                 case INPUT_TYPE.LAND:
                 case INPUT_TYPE.TAKE_OFF:
+                case INPUT_TYPE.FLAT_TRIM:
+                case INPUT_TYPE.TAKE_PHOTO:
+                case INPUT_TYPE.START_VIDEO:
+                case INPUT_TYPE.STOP_VIDEO:
                     return INPUT_CLASS.DIGITAL;
                 default:
                     return INPUT_CLASS.NONE;
@@ -212,6 +275,10 @@ namespace MissionControl.Input
                 case INPUT_TYPE.HOVER_ENABLE: return "Hover disable";
                 case INPUT_TYPE.LAND: return "Land";
                 case INPUT_TYPE.TAKE_OFF: return "Take off";
+                case INPUT_TYPE.FLAT_TRIM: return "Flat trim";
+                case INPUT_TYPE.TAKE_PHOTO: return "Take photo";
+                case INPUT_TYPE.START_VIDEO: return "Start video";
+                case INPUT_TYPE.STOP_VIDEO: return "Stop video";
                 default: return "";
             }
         }
@@ -223,7 +290,7 @@ namespace MissionControl.Input
         }
 
 
-        #region PUBLIC INPUT GETTERS
+#region PUBLIC INPUT GETTERS
 
         public IInput Roll
         {
@@ -286,6 +353,37 @@ namespace MissionControl.Input
             get
             {
                 return GetInput<IButtonInput>(INPUT_TYPE.HOVER_DISABLE) ?? NULL_INPUT;
+            }
+        }
+
+        public IButtonInput Flat_Trim
+        {
+            get
+            {
+                return GetInput<IButtonInput>(INPUT_TYPE.FLAT_TRIM) ?? NULL_INPUT;
+            }
+        }
+
+        public IButtonInput Take_Photo
+        {
+            get
+            {
+                return GetInput<IButtonInput>(INPUT_TYPE.TAKE_PHOTO) ?? NULL_INPUT;
+            }
+        }
+
+        public IButtonInput Start_Video
+        {
+            get
+            {
+                return GetInput<IButtonInput>(INPUT_TYPE.START_VIDEO) ?? NULL_INPUT;
+            }
+        }
+        public IButtonInput Stop_Video
+        {
+            get
+            {
+                return GetInput<IButtonInput>(INPUT_TYPE.STOP_VIDEO) ?? NULL_INPUT;
             }
         }
 

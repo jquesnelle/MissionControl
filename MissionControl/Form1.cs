@@ -54,6 +54,10 @@ namespace MissionControl
             Program.Input.Land.ButtonPressed += OnLandPressed;
             Program.Input.Hover_Enable.ButtonPressed += OnHoverEnablePressed;
             Program.Input.Hover_Disable.ButtonPressed += OnHoverDisablePressed;
+            Program.Input.Flat_Trim.ButtonPressed += OnFlatTrimPressed;
+            Program.Input.Take_Photo.ButtonPressed += OnTakePhotoPressed;
+            Program.Input.Start_Video.ButtonPressed += OnStartVideoPressed;
+            Program.Input.Stop_Video.ButtonPressed += OnStopVideoPressed;
         }
 
         private void SetupDrone()
@@ -61,6 +65,7 @@ namespace MissionControl
             Program.Drone = new Drone.BepopDrone();
             Program.Drone.VideoFrameReady += BepopDrone_VideoFrameReady;
             Program.Drone.Connect();
+            sentZero = false;
         }
 
         private void RefreshVideo()
@@ -86,15 +91,18 @@ namespace MissionControl
 
         private void OnTakeOffPressed(Input.IButtonInput input)
         {
-            if ((Program.Drone != null) && Program.Drone.IsConnected)
+            if ((Program.Drone != null) && Program.Drone.IsConnected && !Program.Drone.IsFlying)
                 Program.Drone.TakeOff();
         }
 
         private void OnLandPressed(Input.IButtonInput input)
         {
-            if ((Program.Drone != null) && Program.Drone.IsConnected)
+            if ((Program.Drone != null) && Program.Drone.IsConnected && Program.Drone.IsFlying)
                 Program.Drone.Land();
         }
+
+
+        private bool hoverEnabled = false;
 
         private void OnHoverEnablePressed(Input.IButtonInput input)
         {
@@ -109,7 +117,31 @@ namespace MissionControl
 
         }
 
-        private bool hoverEnabled = false;
+        private void OnFlatTrimPressed(Input.IButtonInput input)
+        {
+            if ((Program.Drone != null) && Program.Drone.IsConnected && !Program.Drone.IsFlying)
+                Program.Drone.FlatTrim();
+        }
+
+        private void OnTakePhotoPressed(Input.IButtonInput input)
+        {
+            if ((Program.Drone != null) && Program.Drone.IsConnected)
+                Program.Drone.TakePhoto();
+        }
+
+        private void OnStartVideoPressed(Input.IButtonInput input)
+        {
+            if ((Program.Drone != null) && Program.Drone.IsConnected && !Program.Drone.IsRecordingVideo)
+                Program.Drone.StartRecordingVideo();
+        }
+
+        private void OnStopVideoPressed(Input.IButtonInput input)
+        {
+            if ((Program.Drone != null) && Program.Drone.IsConnected && Program.Drone.IsRecordingVideo)
+                Program.Drone.StopRecordingVideo();
+        }
+
+        private bool sentZero;
 
         private void mainLoop_Tick(object sender, EventArgs e)
         {
@@ -124,8 +156,26 @@ namespace MissionControl
                 int yaw = Program.Input.Yaw.Value;
                 int climbDescend = hoverEnabled ? 0 : Program.Input.Climb_Descend.Value;
 
-                Program.Drone.Pilot(roll, pitch, yaw, climbDescend);
+                bool send = false;
+                bool isZero = (roll == 0 && pitch == 0 && yaw == 0 && climbDescend == 0) || hoverEnabled;
+
+                if (isZero)
+                {
+                    if (!sentZero)
+                    {
+                        send = true;
+                        sentZero = true;
+                    }
+                }
+                else
+                {
+                    send = true;
+                    sentZero = false;
+                }
                     
+                if(send)
+                    Program.Drone.Pilot(roll, pitch, yaw, climbDescend);
+  
             }
         }
 

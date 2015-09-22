@@ -16,5 +16,9 @@ namespace MissionControl.Input
         LAND = 5,
         HOVER_ENABLE = 6,
         HOVER_DISABLE = 7,
+        FLAT_TRIM = 8,
+        TAKE_PHOTO = 9,
+        START_VIDEO = 10,
+        STOP_VIDEO = 11,
     }
 }

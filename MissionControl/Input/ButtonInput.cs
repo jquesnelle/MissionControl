@@ -28,12 +28,13 @@ namespace MissionControl.Input
     {
         private bool inverted;
 
-        public ButtonInput(InputProperties p, bool inverted) : base(p)
+        public ButtonInput(InputProperties p, bool inverted) : base(p, false)
         {
             this.inverted = inverted;
         }
 
         public event InputManager.InputButtonPressedHandler ButtonPressed;
+        public event InputManager.InputButtonPressedHandler ButtonReleased;
 
         internal override void ProcessData(IConnectedDevice device, int incomingValue, int offset)
         {
@@ -46,6 +47,11 @@ namespace MissionControl.Input
             {
                 if (!wasPressed && isPressed) 
                     ButtonPressed(this);
+            }
+            if(ButtonReleased != null)
+            {
+                if (wasPressed && !isPressed)
+                    ButtonReleased(this);
             }
 
         }

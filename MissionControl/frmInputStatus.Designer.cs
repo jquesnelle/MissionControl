@@ -35,11 +35,14 @@
             // 
             // flow
             // 
-            this.flow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flow.AutoSize = true;
+            this.flow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flow.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flow.Location = new System.Drawing.Point(0, 0);
             this.flow.Name = "flow";
-            this.flow.Size = new System.Drawing.Size(223, 258);
+            this.flow.Size = new System.Drawing.Size(0, 0);
             this.flow.TabIndex = 0;
+            this.flow.Resize += new System.EventHandler(this.flow_Resize);
             // 
             // timer
             // 
@@ -51,12 +54,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(223, 258);
+            this.ClientSize = new System.Drawing.Size(332, 91);
             this.Controls.Add(this.flow);
             this.Name = "frmInputStatus";
             this.Text = "Input Status";
             this.Shown += new System.EventHandler(this.frmInputStatus_Shown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

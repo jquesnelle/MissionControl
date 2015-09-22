@@ -643,6 +643,12 @@ class ARDroneSDK3PINVOKE {
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_DICTIONARY_NotifyAllCallbackInList")]
   public static extern void ARCONTROLLER_DICTIONARY_NotifyAllCallbackInList(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
+  [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCOMMANDS_HEADER_SIZE_get")]
+  public static extern int ARCOMMANDS_HEADER_SIZE_get();
+
+  [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCOMMANDS_HAS_DEBUG_COMMANDS_get")]
+  public static extern int ARCOMMANDS_HAS_DEBUG_COMMANDS_get();
+
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff")]
   public static extern int ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff(global::System.Runtime.InteropServices.HandleRef jarg1);
 
@@ -651,6 +657,15 @@ class ARDroneSDK3PINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD")]
   public static extern int ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD(global::System.Runtime.InteropServices.HandleRef jarg1, byte jarg2, sbyte jarg3, sbyte jarg4, sbyte jarg5, sbyte jarg6, float jarg7);
+
+  [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendPilotingFlatTrim")]
+  public static extern int ARCONTROLLER_FEATURE_ARDrone3_SendPilotingFlatTrim(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordPictureV2")]
+  public static extern int ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordPictureV2(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordVideoV2")]
+  public static extern int ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordVideoV2(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_GetDictionaryElement")]
   public static extern global::System.IntPtr GetDictionaryElement(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);

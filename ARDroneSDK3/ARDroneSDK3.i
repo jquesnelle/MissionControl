@@ -15,6 +15,7 @@
 #include <libARDiscovery/ARDISCOVERY_Connection.h>
 #include <libARDiscovery/ARDISCOVERY_NetworkConfiguration.h>
 #include <libARDiscovery/ARDISCOVERY_Error.h>
+#include <libARCommands/ARCOMMANDS_Types.h>
 %}
 
 %inline %{
@@ -97,10 +98,14 @@ typedef enum
 %include <libARController/ARCONTROLLER_Frame.h>
 %include <libARController/ARController_Device.h>
 %include <libARController/ARCONTROLLER_Dictionary.h>
+%include <libARCommands/ARCommands_Types.h>
 
 eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff (ARCONTROLLER_FEATURE_ARDrone3_t *feature);
 eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SendPilotingLanding (ARCONTROLLER_FEATURE_ARDrone3_t *feature);
 eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD (ARCONTROLLER_FEATURE_ARDrone3_t *feature, uint8_t flag, int8_t roll, int8_t pitch, int8_t yaw, int8_t gaz, float psi);
+eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SendPilotingFlatTrim (ARCONTROLLER_FEATURE_ARDrone3_t *feature);
+eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordPictureV2 (ARCONTROLLER_FEATURE_ARDrone3_t *feature);
+eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordVideoV2 (ARCONTROLLER_FEATURE_ARDrone3_t *feature, eARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEOV2_RECORD record);
 
 ARCONTROLLER_DICTIONARY_ELEMENT_t* GetDictionaryElement(ARCONTROLLER_DICTIONARY_ELEMENT_t *nativeDictionary, const char* key);
 ARCONTROLLER_DICTIONARY_ARG_t* GetDictionaryArg(ARCONTROLLER_DICTIONARY_ELEMENT_t *nativeDictionary, const char* key);

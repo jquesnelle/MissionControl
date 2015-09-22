@@ -37,9 +37,15 @@
             this.lblAltitude = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.altitude = new MissionControl.UI.AGauge();
-            this.aGauge2 = new MissionControl.UI.AGauge();
-            this.lblSpeed = new System.Windows.Forms.Label();
+            this.speedX = new MissionControl.UI.AGauge();
+            this.lblSpeedX = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblSpeedY = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblSpeedZ = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.speedY = new MissionControl.UI.AGauge();
+            this.speedZ = new MissionControl.UI.AGauge();
             this.SuspendLayout();
             // 
             // timer
@@ -91,11 +97,11 @@
             // 
             // attitudeIndicatorInstrumentControl1
             // 
-            this.attitudeIndicatorInstrumentControl1.Location = new System.Drawing.Point(12, 207);
+            this.attitudeIndicatorInstrumentControl1.Location = new System.Drawing.Point(226, 15);
             this.attitudeIndicatorInstrumentControl1.Name = "attitudeIndicatorInstrumentControl1";
             this.attitudeIndicatorInstrumentControl1.Size = new System.Drawing.Size(208, 203);
             this.attitudeIndicatorInstrumentControl1.TabIndex = 20;
-            this.attitudeIndicatorInstrumentControl1.Text = "attitudeIndicatorInstrumentControl1";
+            this.attitudeIndicatorInstrumentControl1.Text = "attitude";
             // 
             // label1
             // 
@@ -121,7 +127,7 @@
             // 
             this.lblAltitude.AutoSize = true;
             this.lblAltitude.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAltitude.Location = new System.Drawing.Point(368, 139);
+            this.lblAltitude.Location = new System.Drawing.Point(568, 142);
             this.lblAltitude.Name = "lblAltitude";
             this.lblAltitude.Size = new System.Drawing.Size(18, 18);
             this.lblAltitude.TabIndex = 25;
@@ -131,7 +137,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(298, 136);
+            this.label4.Location = new System.Drawing.Point(498, 139);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 21);
             this.label4.TabIndex = 24;
@@ -145,8 +151,8 @@
             this.altitude.BaseArcSweep = 180;
             this.altitude.BaseArcWidth = 2;
             this.altitude.Center = new System.Drawing.Point(100, 100);
-            this.altitude.Location = new System.Drawing.Point(257, 12);
-            this.altitude.MaxValue = 1000F;
+            this.altitude.Location = new System.Drawing.Point(457, 15);
+            this.altitude.MaxValue = 300F;
             this.altitude.MinValue = 0F;
             this.altitude.Name = "altitude";
             this.altitude.NeedleColor1 = MissionControl.UI.AGaugeNeedleColor.Gray;
@@ -161,7 +167,7 @@
             this.altitude.ScaleLinesMajorColor = System.Drawing.Color.Black;
             this.altitude.ScaleLinesMajorInnerRadius = 70;
             this.altitude.ScaleLinesMajorOuterRadius = 80;
-            this.altitude.ScaleLinesMajorStepValue = 250F;
+            this.altitude.ScaleLinesMajorStepValue = 100F;
             this.altitude.ScaleLinesMajorWidth = 2;
             this.altitude.ScaleLinesMinorColor = System.Drawing.Color.Gray;
             this.altitude.ScaleLinesMinorInnerRadius = 75;
@@ -178,76 +184,206 @@
             this.altitude.TabIndex = 23;
             this.altitude.Value = 0F;
             // 
-            // aGauge2
+            // speedX
             // 
-            this.aGauge2.BaseArcColor = System.Drawing.Color.Gray;
-            this.aGauge2.BaseArcRadius = 80;
-            this.aGauge2.BaseArcStart = 135;
-            this.aGauge2.BaseArcSweep = 270;
-            this.aGauge2.BaseArcWidth = 2;
-            this.aGauge2.Center = new System.Drawing.Point(100, 100);
-            this.aGauge2.Location = new System.Drawing.Point(257, 207);
-            this.aGauge2.MaxValue = 50F;
-            this.aGauge2.MinValue = 0F;
-            this.aGauge2.Name = "aGauge2";
-            this.aGauge2.NeedleColor1 = MissionControl.UI.AGaugeNeedleColor.Gray;
-            this.aGauge2.NeedleColor2 = System.Drawing.Color.DimGray;
-            this.aGauge2.NeedleRadius = 80;
-            this.aGauge2.NeedleType = MissionControl.UI.NeedleType.Advance;
-            this.aGauge2.NeedleWidth = 2;
-            this.aGauge2.ScaleLinesInterColor = System.Drawing.Color.Black;
-            this.aGauge2.ScaleLinesInterInnerRadius = 73;
-            this.aGauge2.ScaleLinesInterOuterRadius = 80;
-            this.aGauge2.ScaleLinesInterWidth = 1;
-            this.aGauge2.ScaleLinesMajorColor = System.Drawing.Color.Black;
-            this.aGauge2.ScaleLinesMajorInnerRadius = 70;
-            this.aGauge2.ScaleLinesMajorOuterRadius = 80;
-            this.aGauge2.ScaleLinesMajorStepValue = 10F;
-            this.aGauge2.ScaleLinesMajorWidth = 2;
-            this.aGauge2.ScaleLinesMinorColor = System.Drawing.Color.Gray;
-            this.aGauge2.ScaleLinesMinorInnerRadius = 75;
-            this.aGauge2.ScaleLinesMinorOuterRadius = 80;
-            this.aGauge2.ScaleLinesMinorTicks = 9;
-            this.aGauge2.ScaleLinesMinorWidth = 1;
-            this.aGauge2.ScaleNumbersColor = System.Drawing.Color.Black;
-            this.aGauge2.ScaleNumbersFormat = null;
-            this.aGauge2.ScaleNumbersRadius = 95;
-            this.aGauge2.ScaleNumbersRotation = 0;
-            this.aGauge2.ScaleNumbersStartScaleLine = 0;
-            this.aGauge2.ScaleNumbersStepScaleLines = 1;
-            this.aGauge2.Size = new System.Drawing.Size(208, 187);
-            this.aGauge2.TabIndex = 26;
-            this.aGauge2.Text = "speed";
-            this.aGauge2.Value = 0F;
+            this.speedX.BaseArcColor = System.Drawing.Color.Gray;
+            this.speedX.BaseArcRadius = 80;
+            this.speedX.BaseArcStart = 135;
+            this.speedX.BaseArcSweep = 270;
+            this.speedX.BaseArcWidth = 2;
+            this.speedX.Center = new System.Drawing.Point(100, 100);
+            this.speedX.Location = new System.Drawing.Point(12, 240);
+            this.speedX.MaxValue = 30F;
+            this.speedX.MinValue = 0F;
+            this.speedX.Name = "speedX";
+            this.speedX.NeedleColor1 = MissionControl.UI.AGaugeNeedleColor.Gray;
+            this.speedX.NeedleColor2 = System.Drawing.Color.DimGray;
+            this.speedX.NeedleRadius = 80;
+            this.speedX.NeedleType = MissionControl.UI.NeedleType.Advance;
+            this.speedX.NeedleWidth = 2;
+            this.speedX.ScaleLinesInterColor = System.Drawing.Color.Black;
+            this.speedX.ScaleLinesInterInnerRadius = 73;
+            this.speedX.ScaleLinesInterOuterRadius = 80;
+            this.speedX.ScaleLinesInterWidth = 1;
+            this.speedX.ScaleLinesMajorColor = System.Drawing.Color.Black;
+            this.speedX.ScaleLinesMajorInnerRadius = 70;
+            this.speedX.ScaleLinesMajorOuterRadius = 80;
+            this.speedX.ScaleLinesMajorStepValue = 5F;
+            this.speedX.ScaleLinesMajorWidth = 2;
+            this.speedX.ScaleLinesMinorColor = System.Drawing.Color.Gray;
+            this.speedX.ScaleLinesMinorInnerRadius = 75;
+            this.speedX.ScaleLinesMinorOuterRadius = 80;
+            this.speedX.ScaleLinesMinorTicks = 9;
+            this.speedX.ScaleLinesMinorWidth = 1;
+            this.speedX.ScaleNumbersColor = System.Drawing.Color.Black;
+            this.speedX.ScaleNumbersFormat = null;
+            this.speedX.ScaleNumbersRadius = 95;
+            this.speedX.ScaleNumbersRotation = 0;
+            this.speedX.ScaleNumbersStartScaleLine = 0;
+            this.speedX.ScaleNumbersStepScaleLines = 1;
+            this.speedX.Size = new System.Drawing.Size(208, 187);
+            this.speedX.TabIndex = 26;
+            this.speedX.Text = "speed";
+            this.speedX.Value = 0F;
             // 
-            // lblSpeed
+            // lblSpeedX
             // 
-            this.lblSpeed.AutoSize = true;
-            this.lblSpeed.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpeed.Location = new System.Drawing.Point(368, 392);
-            this.lblSpeed.Name = "lblSpeed";
-            this.lblSpeed.Size = new System.Drawing.Size(18, 18);
-            this.lblSpeed.TabIndex = 28;
-            this.lblSpeed.Text = "0";
+            this.lblSpeedX.AutoSize = true;
+            this.lblSpeedX.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpeedX.Location = new System.Drawing.Point(123, 425);
+            this.lblSpeedX.Name = "lblSpeedX";
+            this.lblSpeedX.Size = new System.Drawing.Size(18, 18);
+            this.lblSpeedX.TabIndex = 28;
+            this.lblSpeedX.Text = "0";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(309, 389);
+            this.label3.Location = new System.Drawing.Point(51, 422);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 21);
+            this.label3.Size = new System.Drawing.Size(66, 21);
             this.label3.TabIndex = 27;
-            this.label3.Text = "Speed";
+            this.label3.Text = "Speed X";
+            // 
+            // lblSpeedY
+            // 
+            this.lblSpeedY.AutoSize = true;
+            this.lblSpeedY.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpeedY.Location = new System.Drawing.Point(337, 425);
+            this.lblSpeedY.Name = "lblSpeedY";
+            this.lblSpeedY.Size = new System.Drawing.Size(18, 18);
+            this.lblSpeedY.TabIndex = 31;
+            this.lblSpeedY.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(265, 422);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(66, 21);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Speed Y";
+            // 
+            // lblSpeedZ
+            // 
+            this.lblSpeedZ.AutoSize = true;
+            this.lblSpeedZ.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpeedZ.Location = new System.Drawing.Point(568, 425);
+            this.lblSpeedZ.Name = "lblSpeedZ";
+            this.lblSpeedZ.Size = new System.Drawing.Size(18, 18);
+            this.lblSpeedZ.TabIndex = 34;
+            this.lblSpeedZ.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(496, 422);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 21);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Speed Z";
+            // 
+            // speedY
+            // 
+            this.speedY.BaseArcColor = System.Drawing.Color.Gray;
+            this.speedY.BaseArcRadius = 80;
+            this.speedY.BaseArcStart = 135;
+            this.speedY.BaseArcSweep = 270;
+            this.speedY.BaseArcWidth = 2;
+            this.speedY.Center = new System.Drawing.Point(100, 100);
+            this.speedY.Location = new System.Drawing.Point(226, 232);
+            this.speedY.MaxValue = 30F;
+            this.speedY.MinValue = 0F;
+            this.speedY.Name = "speedY";
+            this.speedY.NeedleColor1 = MissionControl.UI.AGaugeNeedleColor.Gray;
+            this.speedY.NeedleColor2 = System.Drawing.Color.DimGray;
+            this.speedY.NeedleRadius = 80;
+            this.speedY.NeedleType = MissionControl.UI.NeedleType.Advance;
+            this.speedY.NeedleWidth = 2;
+            this.speedY.ScaleLinesInterColor = System.Drawing.Color.Black;
+            this.speedY.ScaleLinesInterInnerRadius = 73;
+            this.speedY.ScaleLinesInterOuterRadius = 80;
+            this.speedY.ScaleLinesInterWidth = 1;
+            this.speedY.ScaleLinesMajorColor = System.Drawing.Color.Black;
+            this.speedY.ScaleLinesMajorInnerRadius = 70;
+            this.speedY.ScaleLinesMajorOuterRadius = 80;
+            this.speedY.ScaleLinesMajorStepValue = 5F;
+            this.speedY.ScaleLinesMajorWidth = 2;
+            this.speedY.ScaleLinesMinorColor = System.Drawing.Color.Gray;
+            this.speedY.ScaleLinesMinorInnerRadius = 75;
+            this.speedY.ScaleLinesMinorOuterRadius = 80;
+            this.speedY.ScaleLinesMinorTicks = 9;
+            this.speedY.ScaleLinesMinorWidth = 1;
+            this.speedY.ScaleNumbersColor = System.Drawing.Color.Black;
+            this.speedY.ScaleNumbersFormat = null;
+            this.speedY.ScaleNumbersRadius = 95;
+            this.speedY.ScaleNumbersRotation = 0;
+            this.speedY.ScaleNumbersStartScaleLine = 0;
+            this.speedY.ScaleNumbersStepScaleLines = 1;
+            this.speedY.Size = new System.Drawing.Size(208, 187);
+            this.speedY.TabIndex = 35;
+            this.speedY.Text = "speed";
+            this.speedY.Value = 0F;
+            // 
+            // speedZ
+            // 
+            this.speedZ.BaseArcColor = System.Drawing.Color.Gray;
+            this.speedZ.BaseArcRadius = 80;
+            this.speedZ.BaseArcStart = 135;
+            this.speedZ.BaseArcSweep = 270;
+            this.speedZ.BaseArcWidth = 2;
+            this.speedZ.Center = new System.Drawing.Point(100, 100);
+            this.speedZ.Location = new System.Drawing.Point(457, 232);
+            this.speedZ.MaxValue = 30F;
+            this.speedZ.MinValue = 0F;
+            this.speedZ.Name = "speedZ";
+            this.speedZ.NeedleColor1 = MissionControl.UI.AGaugeNeedleColor.Gray;
+            this.speedZ.NeedleColor2 = System.Drawing.Color.DimGray;
+            this.speedZ.NeedleRadius = 80;
+            this.speedZ.NeedleType = MissionControl.UI.NeedleType.Advance;
+            this.speedZ.NeedleWidth = 2;
+            this.speedZ.ScaleLinesInterColor = System.Drawing.Color.Black;
+            this.speedZ.ScaleLinesInterInnerRadius = 73;
+            this.speedZ.ScaleLinesInterOuterRadius = 80;
+            this.speedZ.ScaleLinesInterWidth = 1;
+            this.speedZ.ScaleLinesMajorColor = System.Drawing.Color.Black;
+            this.speedZ.ScaleLinesMajorInnerRadius = 70;
+            this.speedZ.ScaleLinesMajorOuterRadius = 80;
+            this.speedZ.ScaleLinesMajorStepValue = 5F;
+            this.speedZ.ScaleLinesMajorWidth = 2;
+            this.speedZ.ScaleLinesMinorColor = System.Drawing.Color.Gray;
+            this.speedZ.ScaleLinesMinorInnerRadius = 75;
+            this.speedZ.ScaleLinesMinorOuterRadius = 80;
+            this.speedZ.ScaleLinesMinorTicks = 9;
+            this.speedZ.ScaleLinesMinorWidth = 1;
+            this.speedZ.ScaleNumbersColor = System.Drawing.Color.Black;
+            this.speedZ.ScaleNumbersFormat = null;
+            this.speedZ.ScaleNumbersRadius = 95;
+            this.speedZ.ScaleNumbersRotation = 0;
+            this.speedZ.ScaleNumbersStartScaleLine = 0;
+            this.speedZ.ScaleNumbersStepScaleLines = 1;
+            this.speedZ.Size = new System.Drawing.Size(208, 187);
+            this.speedZ.TabIndex = 36;
+            this.speedZ.Text = "speed";
+            this.speedZ.Value = 0F;
             // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 439);
-            this.Controls.Add(this.lblSpeed);
+            this.ClientSize = new System.Drawing.Size(683, 465);
+            this.Controls.Add(this.speedZ);
+            this.Controls.Add(this.speedY);
+            this.Controls.Add(this.lblSpeedZ);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblSpeedY);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblSpeedX);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.aGauge2);
+            this.Controls.Add(this.speedX);
             this.Controls.Add(this.lblAltitude);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.altitude);
@@ -272,8 +408,14 @@
         private System.Windows.Forms.Label lblAltitude;
         private System.Windows.Forms.Label label4;
         private UI.AGauge altitude;
-        private UI.AGauge aGauge2;
-        private System.Windows.Forms.Label lblSpeed;
+        private UI.AGauge speedX;
+        private System.Windows.Forms.Label lblSpeedX;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblSpeedY;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblSpeedZ;
+        private System.Windows.Forms.Label label7;
+        private UI.AGauge speedY;
+        private UI.AGauge speedZ;
     }
 }

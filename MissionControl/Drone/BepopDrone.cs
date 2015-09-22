@@ -69,9 +69,25 @@ namespace MissionControl.Drone
 
         public float Altitude { get; private set; } = 0;
 
+        public float SpeedX { get; private set; } = 0;
+
+        public float SpeedY { get; private set; } = 0;
+
+        public float SpeedZ { get; private set; } = 0;
+
+        public float Roll { get; private set; } = 0;
+
+        public float Pitch { get; private set; } = 0;
+
+        public float Yaw { get; private set; } = 0;
+
         public float Latitude { get; private set; } = 0;
 
         public float Longitude { get; private set; } = 0;
+
+        public bool IsFlying { get; private set; } = false;
+
+        public bool IsRecordingVideo { get; private set; } = false;
 
         public ARCONTROLLER_Device_t DeviceController { get; private set; } = null;
 
@@ -232,6 +248,15 @@ namespace MissionControl.Drone
         static string LATITUDE_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_positionchanged_latitude";
         static string LONGITUDE_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_positionchanged_longitude";
         static string POS_ALTITUDE_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_positionchanged_altitude";
+        static string FLYINGSTATE_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_flyingstatechanged_state";
+        static string SPEEDX_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_speedchanged_speedx";
+        static string SPEEDY_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_speedchanged_speedy";
+        static string SPEEDZ_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_speedchanged_speedz";
+        static string ROLL_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_attitudechanged_roll";
+        static string PITCH_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_attitudechanged_pitch";
+        static string YAW_DICT_KEY = "arcontroller_dictionary_key_ardrone3_pilotingstate_attitudechanged_yaw";
+        static string PICTURE_DICT_KEY = "arcontroller_dictionary_key_ardrone3_mediarecordstate_picturestatechangedv2_state";
+        static string VIDEO_DICT_KEY = "arcontroller_dictionary_key_ardrone3_mediarecordstate_videostatechangedv2_state";
 
         private void CommandReceivedCallback(eARCONTROLLER_DICTIONARY_KEY commandKey, System.IntPtr elementDictionary, System.IntPtr customData)
         {
@@ -259,7 +284,37 @@ namespace MissionControl.Drone
                     break;
 
                 case eARCONTROLLER_DICTIONARY_KEY.ARCONTROLLER_DICTIONARY_KEY_ARDRONE3_PILOTINGSTATE_SPEEDCHANGED:
+                    if (TryGetSingleFloatElement(elementDictionary, SPEEDX_DICT_KEY, out fval))
+                        SpeedX = fval;
+                    if (TryGetSingleFloatElement(elementDictionary, SPEEDY_DICT_KEY, out fval))
+                        SpeedY = fval;
+                    if (TryGetSingleFloatElement(elementDictionary, SPEEDZ_DICT_KEY, out fval))
+                        SpeedZ = fval;
                     break;
+
+                case eARCONTROLLER_DICTIONARY_KEY.ARCONTROLLER_DICTIONARY_KEY_ARDRONE3_PILOTINGSTATE_ATTITUDECHANGED:
+                    if (TryGetSingleFloatElement(elementDictionary, ROLL_DICT_KEY, out fval))
+                        Roll = fval;
+                    if (TryGetSingleFloatElement(elementDictionary, PITCH_DICT_KEY, out fval))
+                        Pitch = fval;
+                    if (TryGetSingleFloatElement(elementDictionary, YAW_DICT_KEY, out fval))
+                        Yaw = fval;
+                    break;
+
+                case eARCONTROLLER_DICTIONARY_KEY.ARCONTROLLER_DICTIONARY_KEY_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED:
+                    if (TryGetSingleIntElement(elementDictionary, FLYINGSTATE_DICT_KEY, out val))
+                        IsFlying = ((eARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE)val) == eARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_LANDED ? false : true;
+                    break;
+
+                case eARCONTROLLER_DICTIONARY_KEY.ARCONTROLLER_DICTIONARY_KEY_ARDRONE3_MEDIARECORDSTATE_PICTURESTATECHANGEDV2:
+                    break;
+
+                case eARCONTROLLER_DICTIONARY_KEY.ARCONTROLLER_DICTIONARY_KEY_ARDRONE3_MEDIARECORDSTATE_VIDEOSTATECHANGEDV2:
+                    if (TryGetSingleIntElement(elementDictionary, VIDEO_DICT_KEY, out val))
+                        IsRecordingVideo = ((eARCOMMANDS_ARDRONE3_MEDIARECORDSTATE_VIDEOSTATECHANGEDV2_STATE)val) == eARCOMMANDS_ARDRONE3_MEDIARECORDSTATE_VIDEOSTATECHANGEDV2_STATE.ARCOMMANDS_ARDRONE3_MEDIARECORDSTATE_VIDEOSTATECHANGEDV2_STATE_STARTED ? true : false;
+                        break;
+
+
             }
 
         }
@@ -427,7 +482,7 @@ namespace MissionControl.Drone
 
         public void TakeOff()
         {
-            if(IsConnected && (DeviceController != null))
+            if (IsConnected && (DeviceController != null))
                 ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff(DeviceController.aRDrone3);
         }
 
@@ -443,5 +498,30 @@ namespace MissionControl.Drone
                 ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD(DeviceController.aRDrone3, 1,
                         (sbyte)roll, (sbyte)pitch, (sbyte)yaw, (sbyte)climbDescend, 0);
         }
+
+        public void FlatTrim()
+        {
+            if (IsConnected && (DeviceController != null))
+                ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SendPilotingFlatTrim(DeviceController.aRDrone3);
+        }
+
+        public void TakePhoto()
+        {
+            if (IsConnected && (DeviceController != null))
+                ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordPictureV2(DeviceController.aRDrone3);
+        }
+
+        public void StartRecordingVideo()
+        {
+            if (IsConnected && (DeviceController != null))
+                ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordVideoV2(DeviceController.aRDrone3, eARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEOV2_RECORD.ARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEOV2_RECORD_START);
+        }
+
+        public void StopRecordingVideo()
+        {
+            if (IsConnected && (DeviceController != null))
+                ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordVideoV2(DeviceController.aRDrone3, eARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEOV2_RECORD.ARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEOV2_RECORD_STOP);
+        }
+
     }
 }

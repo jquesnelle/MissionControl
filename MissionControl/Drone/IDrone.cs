@@ -41,13 +41,37 @@ namespace MissionControl.Drone
 
         float Altitude { get; }
 
+        float SpeedX { get; }
+
+        float SpeedY { get; }
+
+        float SpeedZ { get; }
+
+        float Roll { get; }
+
+        float Pitch { get; }
+
+        float Yaw { get;  }
+
         float Latitude { get; }
 
         float Longitude { get; }
 
+        bool IsFlying { get; }
+
+        bool IsRecordingVideo { get; }
+
         void TakeOff();
 
         void Land();
+
+        void FlatTrim();
+
+        void TakePhoto();
+
+        void StartRecordingVideo();
+
+        void StopRecordingVideo();
 
         void Pilot(int roll, int pitch, int yaw, int climbDescend);
 

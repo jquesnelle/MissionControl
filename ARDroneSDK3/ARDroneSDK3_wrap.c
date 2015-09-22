@@ -280,6 +280,7 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_ARDroneSDK3(SWIG_CSharpSt
 #include <libARDiscovery/ARDISCOVERY_Connection.h>
 #include <libARDiscovery/ARDISCOVERY_NetworkConfiguration.h>
 #include <libARDiscovery/ARDISCOVERY_Error.h>
+#include <libARCommands/ARCOMMANDS_Types.h>
 
 
 typedef int         int32_t;
@@ -2133,6 +2134,26 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ARCONTROLLER_DICTIONARY_NotifyAllCallbackInLi
 }
 
 
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCOMMANDS_HEADER_SIZE_get() {
+  int jresult ;
+  int result;
+  
+  result = (int)((4));
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCOMMANDS_HAS_DEBUG_COMMANDS_get() {
+  int jresult ;
+  int result;
+  
+  result = (int)((1));
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendPilotingTakeOff(void * jarg1) {
   int jresult ;
   ARCONTROLLER_FEATURE_ARDrone3_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
@@ -2176,6 +2197,44 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD(
   arg6 = (int8_t)jarg6; 
   arg7 = (float)jarg7; 
   result = (eARCONTROLLER_ERROR)ARCONTROLLER_FEATURE_ARDrone3_SetPilotingPCMD(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendPilotingFlatTrim(void * jarg1) {
+  int jresult ;
+  ARCONTROLLER_FEATURE_ARDrone3_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *)jarg1; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_FEATURE_ARDrone3_SendPilotingFlatTrim(arg1);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordPictureV2(void * jarg1) {
+  int jresult ;
+  ARCONTROLLER_FEATURE_ARDrone3_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *)jarg1; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordPictureV2(arg1);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordVideoV2(void * jarg1, int jarg2) {
+  int jresult ;
+  ARCONTROLLER_FEATURE_ARDrone3_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
+  eARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEOV2_RECORD arg2 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *)jarg1; 
+  arg2 = (eARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEOV2_RECORD)jarg2; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordVideoV2(arg1,arg2);
   jresult = (int)result; 
   return jresult;
 }

@@ -32,5 +32,7 @@ namespace MissionControl.Input
         public abstract event InputManager.InputChangedHandler InputChanged;
 
         internal abstract void ProcessData(IConnectedDevice device, int incomingValue, int offset);
+
+        internal abstract void BeforeProcess();
     }
 }

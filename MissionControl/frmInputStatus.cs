@@ -27,6 +27,14 @@ namespace MissionControl
             private Label value;
             private CheckBox box;
 
+            public Control Control
+            {
+                get
+                {
+                    return (Control)value ?? box;
+                }
+            }
+
             public StatusElements(frmInputStatus form, Input.INPUT_TYPE type)
             {
                 this.type = type;
@@ -66,13 +74,24 @@ namespace MissionControl
         private void frmInputStatus_Shown(object sender, EventArgs e)
         {
             foreach (var type in EnumExtensions.GetAllItems<Input.INPUT_TYPE>())
-                statusElements.Add(new StatusElements(this, type));
+            {
+                if(Program.Input.HaveInput(type))
+                    statusElements.Add(new StatusElements(this, type));
+            }
+
+            
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             foreach (var element in statusElements)
                 element.Update();
+        }
+
+        private void flow_Resize(object sender, EventArgs e)
+        {
+            Height = flow.Height + flow.Top + 5;
+            Width = flow.Width + flow.Left;
         }
     }
 }

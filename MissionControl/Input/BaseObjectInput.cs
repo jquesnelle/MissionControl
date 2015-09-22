@@ -27,6 +27,7 @@ namespace MissionControl.Input
     class BaseObjectInput : BaseInput
     {
         private int value;
+        private bool reset;
         protected InputProperties properties;
 
         public override event InputManager.InputChangedHandler InputChanged;
@@ -44,9 +45,11 @@ namespace MissionControl.Input
             get { return properties; }
         }
 
-        public BaseObjectInput(InputProperties p)
+        public BaseObjectInput(InputProperties p, bool reset)
         {
             properties = p;
+            this.reset = reset;
+            value = 0;
         }
 
         public override int Value
@@ -56,6 +59,12 @@ namespace MissionControl.Input
         internal override void ProcessData(IConnectedDevice device, int incomingValue, int offset)
         {
             OnNewValue(incomingValue);
+        }
+
+        internal override void BeforeProcess()
+        {
+            if (reset)
+                value = 0;
         }
     }
 }

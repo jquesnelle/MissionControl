@@ -26,6 +26,17 @@ namespace MissionControl
 
                 altitude.Value = Program.Drone.Altitude;
                 lblAltitude.Text = String.Format("{0:0.0} m", Program.Drone.Altitude);
+
+                attitudeIndicatorInstrumentControl1.SetAttitudeIndicatorParameters(Program.Drone.Pitch, Program.Drone.Roll);
+
+                speedX.Value = Program.Drone.SpeedX;
+                lblSpeedX.Text = String.Format("{0:0.0} m/s", Program.Drone.SpeedX);
+
+                speedY.Value = Program.Drone.SpeedY;
+                lblSpeedY.Text = String.Format("{0:0.0} m/s", Program.Drone.SpeedY);
+
+                speedZ.Value = Program.Drone.SpeedZ;
+                lblSpeedZ.Text = String.Format("{0:0.0} m/s", Program.Drone.SpeedZ);
             }
         }
     }

@@ -51,6 +51,7 @@ namespace MissionControl.Input
 
         public InputProperties? DeviceInputPropsFromName(string name)
         {
+            var objects = device.GetObjects();
             var info = device.GetObjectInfoByName(name);
             var prop = device.GetObjectPropertiesByName(name);
             object ret = getFromName.Invoke(device, new object[] { name });
@@ -80,17 +81,18 @@ namespace MissionControl.Input
 
         public void ProcessInput()
         {
+
+            foreach (var sets in offsetToInput.Values)
+                foreach (var value in sets)
+                    value.BeforeProcess();
+
             device.Poll();
 
             if(device is Joystick)
             {
                 var objects = (device as Joystick).GetBufferedData();
                 foreach (var obj in objects)
-                {
-                    //System.Diagnostics.Debug.Print("{0} {1}", Convert.ToString(obj.Offset), Convert.ToString(obj.Value));
-                    DispatchUpdate((int)obj.Offset, obj.Value);
-                }
-                    
+                    DispatchUpdate((int)obj.Offset, obj.Value); 
             }
             else if(device is Mouse)
             {

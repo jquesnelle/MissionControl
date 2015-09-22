@@ -124,6 +124,8 @@
     <Compile Include="frmInputStatus.Designer.cs">
       <DependentUpon>frmInputStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Input\CappedAxisInput.cs" />
+    <Compile Include="Input\DifferentialCappedAxis.cs" />
     <Compile Include="Input\INPUT_CLASS.cs" />
     <Compile Include="Input\INPUT_TYPE.cs" />
     <Compile Include="UI\AGauge.cs">

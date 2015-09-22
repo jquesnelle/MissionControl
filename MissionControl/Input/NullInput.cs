@@ -38,5 +38,10 @@ namespace MissionControl.Input
         {
 
         }
+
+        internal override void BeforeProcess()
+        {
+            
+        }
     }
 }

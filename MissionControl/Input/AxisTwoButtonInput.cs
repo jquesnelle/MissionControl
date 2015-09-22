@@ -68,5 +68,11 @@ namespace MissionControl.Input
                 InputChanged(this, oldValue, incomingValue);
 
         }
+
+        internal override void BeforeProcess()
+        {
+            positive.BeforeProcess();
+            negative.BeforeProcess();
+        }
     }
 }

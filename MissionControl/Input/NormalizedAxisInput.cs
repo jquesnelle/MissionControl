@@ -32,13 +32,15 @@ namespace MissionControl.Input
 
         int rawRange;
         int rawOffset;
+        int deadband;
 
-        public NormalizedAxisInput(InputProperties p, ushort r, bool inverted) : base(p)
+        public NormalizedAxisInput(InputProperties p, ushort r, ushort deadband, bool inverted, bool reset) : base(p, reset)
         {
             int sr = r;
             pRange = sr;
             nRange = sr * -1;
             this.inverted = inverted;
+            this.deadband = deadband;
 
             if (properties.Information.Aspect == ObjectAspect.Position)
             {
@@ -55,7 +57,10 @@ namespace MissionControl.Input
                     int pos = (int)lerp(nRange, pRange, (float)incomingValue / rawRange) + rawOffset;
                     if (inverted)
                         pos *= -1;
-                    OnNewValue(pos);
+                    if (deadband > 0 && Math.Abs(pos) < deadband)
+                        OnNewValue(0);
+                    else
+                        OnNewValue(pos);
                     break;
 
             }
