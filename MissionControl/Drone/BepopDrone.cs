@@ -499,6 +499,12 @@ namespace MissionControl.Drone
                         (sbyte)roll, (sbyte)pitch, (sbyte)yaw, (sbyte)climbDescend, 0);
         }
 
+        public void Camera(int tilt, int pan)
+        {
+            if (IsConnected && (DeviceController != null))
+                ARDroneSDK3.ARCONTROLLER_FEATURE_ARDrone3_SendCameraOrientation(DeviceController.aRDrone3, (sbyte)tilt, (sbyte)pan);
+        }
+
         public void FlatTrim()
         {
             if (IsConnected && (DeviceController != null))

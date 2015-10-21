@@ -47,7 +47,7 @@
             // mainLoop
             // 
             this.mainLoop.Enabled = true;
-            this.mainLoop.Interval = 15;
+            this.mainLoop.Interval = 33;
             this.mainLoop.Tick += new System.EventHandler(this.mainLoop_Tick);
             // 
             // window

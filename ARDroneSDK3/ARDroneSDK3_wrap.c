@@ -2240,6 +2240,22 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordV
 }
 
 
+SWIGEXPORT int SWIGSTDCALL CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendCameraOrientation(void * jarg1, signed char jarg2, signed char jarg3) {
+  int jresult ;
+  ARCONTROLLER_FEATURE_ARDrone3_t *arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *) 0 ;
+  int8_t arg2 ;
+  int8_t arg3 ;
+  eARCONTROLLER_ERROR result;
+  
+  arg1 = (ARCONTROLLER_FEATURE_ARDrone3_t *)jarg1; 
+  arg2 = (int8_t)jarg2; 
+  arg3 = (int8_t)jarg3; 
+  result = (eARCONTROLLER_ERROR)ARCONTROLLER_FEATURE_ARDrone3_SendCameraOrientation(arg1,arg2,arg3);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_GetDictionaryElement(void * jarg1, char * jarg2) {
   void * jresult ;
   ARCONTROLLER_DICTIONARY_ELEMENT_t *arg1 = (ARCONTROLLER_DICTIONARY_ELEMENT_t *) 0 ;

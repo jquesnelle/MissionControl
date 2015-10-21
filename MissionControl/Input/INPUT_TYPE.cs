@@ -20,5 +20,7 @@ namespace MissionControl.Input
         TAKE_PHOTO = 9,
         START_VIDEO = 10,
         STOP_VIDEO = 11,
+        CAMERA_TILT_AXIS = 12,
+        CAMERA_PAN_AXIS = 13
     }
 }

@@ -66,6 +66,7 @@ namespace MissionControl
             Program.Drone.VideoFrameReady += BepopDrone_VideoFrameReady;
             Program.Drone.Connect();
             sentZero = false;
+            sentTiltZero = false;
         }
 
         private void RefreshVideo()
@@ -142,6 +143,7 @@ namespace MissionControl
         }
 
         private bool sentZero;
+        private bool sentTiltZero;
 
         private void mainLoop_Tick(object sender, EventArgs e)
         {
@@ -155,9 +157,11 @@ namespace MissionControl
                 int pitch = hoverEnabled ? 0 : Program.Input.Pitch.Value;
                 int yaw = Program.Input.Yaw.Value;
                 int climbDescend = hoverEnabled ? 0 : Program.Input.Climb_Descend.Value;
+                int tilt = Program.Input.Camera_Tilt.Value;
 
-                bool send = false;
+                bool send = false, sendTilt = false;
                 bool isZero = (roll == 0 && pitch == 0 && yaw == 0 && climbDescend == 0) || hoverEnabled;
+                bool isTiltZero = tilt == 0;
 
                 if (isZero)
                 {
@@ -172,9 +176,26 @@ namespace MissionControl
                     send = true;
                     sentZero = false;
                 }
+
+                if(isTiltZero)
+                {
+                    if(!sentTiltZero)
+                    {
+                        sendTilt = true;
+                        sentTiltZero = true;
+                    }
+                }
+                else
+                {
+                    sendTilt = true;
+                    sentTiltZero = false;
+                }
                     
                 if(send)
                     Program.Drone.Pilot(roll, pitch, yaw, climbDescend);
+
+                if (sendTilt)
+                    Program.Drone.Camera(tilt, 0);
   
             }
         }

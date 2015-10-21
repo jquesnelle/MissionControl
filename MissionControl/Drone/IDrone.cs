@@ -75,5 +75,6 @@ namespace MissionControl.Drone
 
         void Pilot(int roll, int pitch, int yaw, int climbDescend);
 
+        void Camera(int tilt, int pan);
     }
 }

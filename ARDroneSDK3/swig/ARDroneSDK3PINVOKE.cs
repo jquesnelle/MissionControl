@@ -667,6 +667,9 @@ class ARDroneSDK3PINVOKE {
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordVideoV2")]
   public static extern int ARCONTROLLER_FEATURE_ARDrone3_SendMediaRecordVideoV2(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
+  [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_ARCONTROLLER_FEATURE_ARDrone3_SendCameraOrientation")]
+  public static extern int ARCONTROLLER_FEATURE_ARDrone3_SendCameraOrientation(global::System.Runtime.InteropServices.HandleRef jarg1, sbyte jarg2, sbyte jarg3);
+
   [global::System.Runtime.InteropServices.DllImport("ARDroneSDK3", EntryPoint="CSharp_GetDictionaryElement")]
   public static extern global::System.IntPtr GetDictionaryElement(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 

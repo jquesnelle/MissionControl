@@ -202,9 +202,10 @@ namespace MissionControl.Input
             var objects = xbox.Device.GetObjects();
 
             AddNormalizedAxisMapping(INPUT_TYPE.YAW_AXIS, xbox, "RotationX", false, false);
-            AddNormalizedAxisMapping(INPUT_TYPE.CLIMB_DESCEND_AXIS, xbox, "Z", true, false, 10);
-            AddNormalizedAxisMapping(INPUT_TYPE.PITCH_AXIS, xbox, "Y", true, false, 10);
-            AddNormalizedAxisMapping(INPUT_TYPE.ROLL_AXIS, xbox, "X", false, false, 10);
+            AddNormalizedAxisMapping(INPUT_TYPE.CLIMB_DESCEND_AXIS, xbox, "Z", true, false);
+            AddNormalizedAxisMapping(INPUT_TYPE.PITCH_AXIS, xbox, "Y", true, false);
+            AddNormalizedAxisMapping(INPUT_TYPE.ROLL_AXIS, xbox, "X", false, false);
+            AddNormalizedAxisMapping(INPUT_TYPE.CAMERA_TILT_AXIS, xbox, "RotationY", true, false, 50);
             AddButtonMapping(INPUT_TYPE.TAKE_OFF, xbox, "Buttons7", false);
             AddButtonMapping(INPUT_TYPE.LAND, xbox, "Buttons7", false);
             AddButtonMapping(INPUT_TYPE.FLAT_TRIM, xbox, "Buttons6", false);
@@ -279,6 +280,8 @@ namespace MissionControl.Input
                 case INPUT_TYPE.TAKE_PHOTO: return "Take photo";
                 case INPUT_TYPE.START_VIDEO: return "Start video";
                 case INPUT_TYPE.STOP_VIDEO: return "Stop video";
+                case INPUT_TYPE.CAMERA_TILT_AXIS: return "Camera tilt";
+                case INPUT_TYPE.CAMERA_PAN_AXIS: return "Camera pan";
                 default: return "";
             }
         }
@@ -384,6 +387,22 @@ namespace MissionControl.Input
             get
             {
                 return GetInput<IButtonInput>(INPUT_TYPE.STOP_VIDEO) ?? NULL_INPUT;
+            }
+        }
+
+        public IInput Camera_Tilt
+        {
+            get
+            {
+                return GetInput<IInput>(INPUT_TYPE.CAMERA_TILT_AXIS) ?? NULL_INPUT;
+            }
+        }
+
+        public IInput Camera_Pan
+        {
+            get
+            {
+                return GetInput<IInput>(INPUT_TYPE.CAMERA_PAN_AXIS) ?? NULL_INPUT;
             }
         }
 

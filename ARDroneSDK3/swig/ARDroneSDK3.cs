@@ -242,6 +242,11 @@ public class ARDroneSDK3 {
     return ret;
   }
 
+  public static eARCONTROLLER_ERROR ARCONTROLLER_FEATURE_ARDrone3_SendCameraOrientation(SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3_t feature, sbyte tilt, sbyte pan) {
+    eARCONTROLLER_ERROR ret = (eARCONTROLLER_ERROR)ARDroneSDK3PINVOKE.ARCONTROLLER_FEATURE_ARDrone3_SendCameraOrientation(SWIGTYPE_p_ARCONTROLLER_FEATURE_ARDrone3_t.getCPtr(feature), tilt, pan);
+    return ret;
+  }
+
   public static ARCONTROLLER_DICTIONARY_ELEMENT_t GetDictionaryElement(ARCONTROLLER_DICTIONARY_ELEMENT_t nativeDictionary, string key) {
     global::System.IntPtr cPtr = ARDroneSDK3PINVOKE.GetDictionaryElement(ARCONTROLLER_DICTIONARY_ELEMENT_t.getCPtr(nativeDictionary), key);
     ARCONTROLLER_DICTIONARY_ELEMENT_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new ARCONTROLLER_DICTIONARY_ELEMENT_t(cPtr, false);
